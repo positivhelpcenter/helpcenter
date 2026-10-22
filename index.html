@@ -17,12 +17,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#start" aria-label="Positivhelpcenter Startseite">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 40 40">
-            <path d="M20 33S5 24.4 5 14.4C5 7 14.4 4.5 20 12c5.6-7.5 15-5 15 2.4C35 24.4 20 33 20 33Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M11 20h6l3-6 4 12 3-6h3" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
+        <span class="brand-mark" aria-hidden="true">❤️</span>
         <span class="brand-copy">
           <strong>Positivhelpcenter</strong>
           <small>Kleine Schritte. Mehr Leichtigkeit.</small>
@@ -174,17 +169,22 @@
 
         <div class="chat-window">
           <div class="chat-topbar">
-            <div class="chat-avatar">
-              <svg viewBox="0 0 40 40" aria-hidden="true">
-                <path d="M20 32S6 24 6 14.5C6 7.5 14.7 5 20 12c5.3-7 14-4.5 14 2.5C34 24 20 32 20 32Z" fill="none" stroke="currentColor" stroke-width="2.3"/>
-                <path d="M12 20h5l3-5 3 10 3-5h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
+            <div class="chat-avatar" aria-hidden="true">❤️</div>
             <div class="chat-person">
               <strong>Mentalchat</strong>
               <span><i></i> Herz, Humor & gute Impulse</span>
             </div>
             <span class="demo-pill">DEMO</span>
+            <button
+              class="chat-fullscreen-toggle"
+              id="chatFullscreenToggle"
+              type="button"
+              aria-label="Chat im Vollbild öffnen"
+              aria-pressed="false"
+              title="Vollbild öffnen">
+              <span aria-hidden="true">⛶</span>
+              <span class="fullscreen-button-label">Vollbild</span>
+            </button>
           </div>
 
           <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chatverlauf">
@@ -276,7 +276,7 @@
   <footer class="site-footer">
     <div class="container footer-main">
       <a class="brand footer-brand" href="#start">
-        <span class="brand-mark">♡</span>
+        <span class="brand-mark">❤️</span>
         <span class="brand-copy"><strong>Positivhelpcenter</strong><small>Kleine Schritte. Mehr Leichtigkeit.</small></span>
       </a>
       <p>Ein kleiner Schritt zählt. Heute genauso wie morgen.</p>
@@ -288,5 +288,49 @@
     </div>
     <div class="container footer-safety">Der Mentalchat ist eine Demo und kein Therapie- oder Krisendienst.</div>
   </footer>
+
+  <script>
+    (() => {
+      const chat = document.querySelector(".chat-window");
+      const toggle = document.getElementById("chatFullscreenToggle");
+      const input = document.getElementById("chatInput");
+
+      if (!chat || !toggle) return;
+
+      function setFullscreen(active) {
+        chat.classList.toggle("chat-is-fullscreen", active);
+        document.body.classList.toggle("chat-fullscreen-active", active);
+
+        toggle.setAttribute("aria-pressed", String(active));
+        toggle.setAttribute(
+          "aria-label",
+          active ? "Vollbild schließen" : "Chat im Vollbild öffnen"
+        );
+        toggle.title = active ? "Vollbild schließen" : "Vollbild öffnen";
+
+        const icon = toggle.querySelector("span:first-child");
+        const label = toggle.querySelector(".fullscreen-button-label");
+
+        if (icon) icon.textContent = active ? "✕" : "⛶";
+        if (label) label.textContent = active ? "Schließen" : "Vollbild";
+
+        if (active && input) input.focus();
+      }
+
+      toggle.addEventListener("click", () => {
+        setFullscreen(!chat.classList.contains("chat-is-fullscreen"));
+      });
+
+      document.addEventListener("keydown", event => {
+        if (
+          event.key === "Escape" &&
+          chat.classList.contains("chat-is-fullscreen")
+        ) {
+          setFullscreen(false);
+          toggle.focus();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
