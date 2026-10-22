@@ -5,102 +5,48 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7fbf7">
-  <meta name="description" content="Das Positivhelpcenter unterstützt dich mit kleinen Alltagsschritten, positiven Impulsen und einem humorvollen Mentalchat.">
+  <meta name="description" content="Positive Impulse, Alltagshilfe und ein Mentalchat mit Herz und Humor.">
   <title>Positivhelpcenter – Ein kleiner Schritt zählt</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Zum Inhalt springen</a>
-
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="#start" aria-label="Positivhelpcenter Startseite">
-        <span class="brand-mark" aria-hidden="true">❤️</span>
-        <span class="brand-copy">
-          <strong>Positivhelpcenter</strong>
-          <small>Kleine Schritte. Mehr Leichtigkeit.</small>
-        </span>
+      <a class="brand" href="#start">
+        <span class="brand-heart">❤️</span>
+        <span><strong>Positivhelpcenter</strong><small>Kleine Schritte. Mehr Leichtigkeit.</small></span>
       </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Menü öffnen">
-        <span></span><span></span>
-      </button>
-
-      <nav class="main-nav" id="mainNav" aria-label="Hauptnavigation">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="mainNav">
         <a href="#alltag">Alltagshilfe</a>
         <a href="#impulse">Positiv-Momente</a>
         <a href="#ueber-uns">Über uns</a>
-        <a class="nav-cta" href="#mentalchat">Mentalchat <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="#mentalchat">Mentalchat ↗</a>
       </nav>
     </div>
   </header>
 
-  <section class="brand-banner" aria-label="Positivhelpcenter und Kooperationspartner">
-    <div class="container brand-banner-inner">
-      <div class="banner-wordmark">
-        <span class="banner-positiv">Positiv</span>
-        <span class="banner-helpcenter">Helpcenter</span>
-      </div>
-
-      <div class="banner-collaboration">
-        <div class="banner-logo" aria-label="Logo Doppelpunk-Klammer D">:D</div>
-        <div class="banner-collab-copy">
-          <span>In Zusammenarbeit mit</span>
-          <strong>MaxOfficial</strong>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <main id="main">
-    <section class="hero section" id="start">
+  <main>
+    <section class="hero" id="start">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            Ein Projekt für mehr Zuversicht
-          </div>
-
+          <span class="eyebrow"><span class="dot"></span> Ein Projekt für mehr Zuversicht</span>
           <h1>Du musst nicht alles schaffen. <em>Nur den nächsten Schritt.</em></h1>
-          <p class="hero-lede">Ein Ort für gute Impulse, kleine Schritte und einen Mentalchat mit Herz und Humor.</p>
-
+          <p>Ein Ort für gute Impulse, kleine Schritte und einen Mentalchat mit Herz und Humor.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#mentalchat">Mentalchat ausprobieren <span aria-hidden="true">→</span></a>
-            <a class="button button-quiet" href="#alltag">Ich brauche einen kleinen Anfang</a>
+            <a class="button button-primary" href="#mentalchat">Mentalchat ausprobieren →</a>
+            <a class="button button-secondary" href="#alltag">Kleinen Anfang finden</a>
           </div>
+          <p class="collaboration">In Zusammenarbeit mit <strong>MaxOfficial</strong></p>
         </div>
-
-        <div class="hero-art" aria-label="Illustration einer Pflanze, die aus einem kleinen grünen Hügel wächst">
-          <div class="art-orbit orbit-one"></div>
-          <div class="art-orbit orbit-two"></div>
-          <div class="art-sun"></div>
-          <div class="art-cloud cloud-one"></div>
-          <div class="art-cloud cloud-two"></div>
-          <div class="art-hill hill-back"></div>
-          <div class="art-hill hill-front"></div>
-
-          <div class="plant">
-            <span class="stem"></span>
-            <span class="leaf leaf-left"></span>
-            <span class="leaf leaf-right"></span>
-            <span class="leaf leaf-top"></span>
-          </div>
-
-          <div class="floating-card card-breathe">
-            <span class="float-icon">◎</span>
-            <span><strong>Einmal tief durchatmen</strong><small>Du bist gerade hier.</small></span>
-          </div>
-
-          <div class="floating-card card-progress">
-            <span class="progress-check">✓</span>
-            <span><strong>Kleine Schritte zählen</strong><small>Auch die ganz kleinen.</small></span>
-          </div>
-
-          <span class="spark spark-a">✳</span>
-          <span class="spark spark-b">✦</span>
-          <span class="spark spark-c">·</span>
+        <div class="hero-art" aria-label="Herz und Pflanze als Symbol für Zuversicht">
+          <div class="art-circle circle-one"></div>
+          <div class="art-circle circle-two"></div>
+          <div class="art-heart">❤️</div>
+          <div class="art-caption"><strong>Kleine Schritte zählen.</strong><span>Auch die ganz kleinen.</span></div>
+          <div class="art-leaf leaf-one"></div>
+          <div class="art-leaf leaf-two"></div>
         </div>
       </div>
     </section>
@@ -108,154 +54,117 @@
     <section class="section section-soft" id="alltag">
       <div class="container">
         <div class="section-heading">
-          <div>
-            <div class="eyebrow">Für genau jetzt</div>
-            <h2>Was würde dir gerade helfen?</h2>
-          </div>
-          <p>Wähl einfach, was gerade am ehesten passt.</p>
+          <div><span class="eyebrow">Für genau jetzt</span><h2>Was würde dir gerade helfen?</h2></div>
+          <p>Wähl einfach aus, was gerade am ehesten zu dir passt.</p>
         </div>
-
         <div class="help-grid">
           <button class="help-card" data-help="stress">
-            <span class="help-icon icon-mint">↘</span>
-            <span class="help-title">Alles ist zu viel</span>
-            <span class="help-description">Erstmal kurz durchatmen.</span>
-            <span class="help-link">Kleinen Anfang finden <b>→</b></span>
+            <span class="help-icon mint">↘</span>
+            <strong>Alles ist zu viel</strong>
+            <span>Erstmal kurz durchatmen.</span>
+            <b>Kleinen Anfang finden →</b>
           </button>
-
           <button class="help-card" data-help="sad">
-            <span class="help-icon icon-peach">♡</span>
-            <span class="help-title">Ich bin gerade traurig</span>
-            <span class="help-description">Mieser Tag? Du musst nichts vorspielen.</span>
-            <span class="help-link">Sanft weitermachen <b>→</b></span>
+            <span class="help-icon peach">♡</span>
+            <strong>Ich bin gerade traurig</strong>
+            <span>Du musst nichts vorspielen.</span>
+            <b>Sanft weitermachen →</b>
           </button>
-
           <button class="help-card" data-help="motivation">
-            <span class="help-icon icon-yellow">✳</span>
-            <span class="help-title">Mir fehlt der Antrieb</span>
-            <span class="help-description">Klein anfangen statt alles auf einmal.</span>
-            <span class="help-link">In Bewegung kommen <b>→</b></span>
+            <span class="help-icon yellow">✳</span>
+            <strong>Mir fehlt der Antrieb</strong>
+            <span>Klein anfangen statt alles auf einmal.</span>
+            <b>In Bewegung kommen →</b>
           </button>
-
           <button class="help-card" data-help="laugh">
-            <span class="help-icon icon-lilac">☻</span>
-            <span class="help-title">Ich brauche ein Lächeln</span>
-            <span class="help-description">Ein bisschen Quatsch kann helfen.</span>
-            <span class="help-link">Gute Laune suchen <b>→</b></span>
+            <span class="help-icon lilac">☻</span>
+            <strong>Ich brauche ein Lächeln</strong>
+            <span>Ein bisschen Quatsch kann helfen.</span>
+            <b>Gute Laune suchen →</b>
           </button>
         </div>
-
         <div class="quick-help" id="quickHelp" hidden aria-live="polite">
           <button class="quick-close" id="quickClose" aria-label="Schließen">×</button>
-          <div class="quick-kicker">Dein nächster kleiner Schritt</div>
+          <span class="eyebrow">Dein nächster kleiner Schritt</span>
           <h3 id="quickTitle">Ein Anfang reicht.</h3>
           <p id="quickText"></p>
-          <button class="text-button" id="quickToChat">Mit dem Mentalchat weitermachen <span>→</span></button>
+          <button class="text-button" id="quickToChat">Mit dem Mentalchat weitermachen →</button>
         </div>
       </div>
     </section>
 
     <section class="section" id="mentalchat">
-      <div class="container chat-section-grid">
+      <div class="container chat-layout">
         <div class="chat-intro">
-          <div class="eyebrow"><span class="eyebrow-dot"></span> Dein digitaler Mutmacher</div>
+          <span class="eyebrow"><span class="dot"></span> Dein digitaler Mutmacher</span>
           <h2>Ein bisschen Herz. Eine Prise Humor. <em>Und ein offenes Ohr.</em></h2>
-          <p>Erzähl, was los ist. Der Chat reagiert auf bekannte Begriffe, gibt kleine Impulse und macht – wenn's passt – auch mal einen Witz.</p>
-          <div class="demo-disclaimer">
-            <span>ⓘ</span>
-            <p><strong>Kleine Demo, keine echte KI.</strong> Deine Nachrichten bleiben in deinem Browser.</p>
-          </div>
+          <p>Erzähl, was los ist. Der Chat gibt kleine Impulse und macht – wenn's passt – auch mal einen Witz.</p>
+          <div class="notice"><strong>Gut zu wissen</strong><p>Der Mentalchat ist eine Demo mit vorbereiteten Antworten und keine echte KI. Er kann nicht jede Nachricht verstehen und ersetzt keine professionelle Unterstützung.</p></div>
         </div>
 
-        <div class="chat-window">
+        <div class="chat-window" id="chatWindow">
           <div class="chat-topbar">
-            <div class="chat-avatar" aria-hidden="true">❤️</div>
-            <div class="chat-person">
-              <strong>Mentalchat</strong>
-              <span><i></i> Herz, Humor & gute Impulse</span>
-            </div>
+            <div class="chat-avatar">❤️</div>
+            <div class="chat-person"><strong>Mentalchat</strong><span><i></i> Herz, Humor & gute Impulse</span></div>
             <span class="demo-pill">DEMO</span>
-            <button
-              class="chat-fullscreen-toggle"
-              id="chatFullscreenToggle"
-              type="button"
-              aria-label="Chat im Vollbild öffnen"
-              aria-pressed="false"
-              title="Vollbild öffnen">
-              <span aria-hidden="true">⛶</span>
-              <span class="fullscreen-button-label">Vollbild</span>
-            </button>
+            <button class="fullscreen-button" id="chatFullscreenToggle" type="button" aria-pressed="false" aria-label="Vollbild öffnen" title="Vollbild öffnen">⛶</button>
           </div>
 
-          <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chatverlauf">
+          <div class="chat-messages" id="chatMessages" role="log" aria-live="polite">
             <div class="message message-bot">
-              <div class="message-bubble">Hey, schön, dass du da bist. 🌱<br><br>Was liegt dir auf dem Herzen? Oder soll ich dir einfach einen kleinen Gute-Laune-Impuls dalassen?</div>
+              <div class="message-bubble">Hey, schön, dass du da bist. ❤️<br><br>Was liegt dir auf dem Herzen? Oder soll ich dir einfach einen kleinen Gute-Laune-Impuls dalassen?</div>
               <span class="message-time">Mentalchat · gerade eben</span>
             </div>
           </div>
 
           <div class="suggestions" id="suggestions">
-            <button data-prompt="Heute ist alles zu viel">Alles ist zu viel</button>
-            <button data-prompt="Erzähl mir einen positiven Spruch">Gib mir einen Impuls</button>
-            <button data-prompt="Ich brauche einen Witz">Ich brauche Humor</button>
+            <button type="button" data-prompt="Heute ist alles zu viel">Alles ist zu viel</button>
+            <button type="button" data-prompt="Erzähl mir einen positiven Spruch">Gib mir einen Impuls</button>
+            <button type="button" data-prompt="Ich brauche einen Witz">Ich brauche Humor</button>
           </div>
 
           <form class="chat-form" id="chatForm">
             <label class="sr-only" for="chatInput">Deine Nachricht</label>
-            <input id="chatInput" name="message" maxlength="500" placeholder="Schreib, was dir durch den Kopf geht …" autocomplete="off">
-            <button type="submit" aria-label="Nachricht senden">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 12 20 4l-5 16-3-6-8-2Zm8 2 8-10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
+            <input id="chatInput" name="message" maxlength="500" placeholder="Schreib, was dir durch den Kopf geht …" autocomplete="off" required>
+            <button type="submit" aria-label="Nachricht senden">➤</button>
           </form>
-
-          <div class="chat-footnote">Eine Demo mit vorbereiteten Antworten.</div>
+          <div class="chat-footnote">Deine Eingaben werden von dieser Demo nicht an einen Server gesendet.</div>
         </div>
       </div>
     </section>
 
     <section class="section section-green" id="impulse">
       <div class="container impulse-grid">
-        <div class="impulse-copy">
-          <div class="eyebrow eyebrow-light">Dein Positiv-Moment</div>
+        <div>
+          <span class="eyebrow eyebrow-light">Dein Positiv-Moment</span>
           <h2>Ein Gedanke für zwischendurch.</h2>
           <p>Manchmal reicht ein neuer Blick auf den nächsten kleinen Schritt.</p>
-          <button class="button button-white" id="newQuote">Neuer Spruch <span>↻</span></button>
+          <button class="button button-white" id="newQuote" type="button">Neuer Spruch ↻</button>
         </div>
-
         <div class="quote-card">
           <span class="quote-mark">“</span>
           <p id="quoteText">Du musst nicht den ganzen Weg sehen. Es reicht, den nächsten Schritt zu erkennen.</p>
-          <div class="quote-bottom">
-            <span id="quoteCategory">Kleine Schritte</span>
-            <span class="quote-spark">✳</span>
-          </div>
+          <div class="quote-bottom"><span id="quoteCategory">Kleine Schritte</span><span>✳</span></div>
         </div>
       </div>
     </section>
 
     <section class="section" id="ueber-uns">
       <div class="container">
-        <div class="section-heading about-heading">
-          <div>
-            <div class="eyebrow">Gemeinsam statt allein</div>
-            <h2>Zusammen geht mehr.</h2>
-          </div>
+        <div class="section-heading">
+          <div><span class="eyebrow">Gemeinsam statt allein</span><h2>Zusammen geht mehr.</h2></div>
           <p>Ein gemeinsames Projekt für mehr gute Laune und kleine positive Impulse.</p>
         </div>
-
         <div class="partner-grid">
-          <article class="partner-card partner-main">
-            <div class="partner-symbol">♡</div>
-            <span class="partner-label">Unser Projekt</span>
+          <article class="partner-card">
+            <span class="partner-symbol">❤️</span>
+            <span class="eyebrow">Unser Projekt</span>
             <h3>Positivhelpcenter</h3>
             <p>Kleine Impulse, ein bisschen Humor und ein freundlicher Blick nach vorn.</p>
           </article>
-
           <article class="partner-card">
-            <div class="partner-symbol symbol-soft">↗</div>
-            <span class="partner-label">In Zusammenarbeit mit</span>
+            <span class="partner-symbol">:D</span>
+            <span class="eyebrow">In Zusammenarbeit mit</span>
             <h3>MaxOfficial</h3>
             <p>Gemeinsam für mehr positive Momente.</p>
           </article>
@@ -265,72 +174,21 @@
 
     <section class="closing-section">
       <div class="container closing-inner">
-        <div class="closing-icon">✳</div>
+        <span class="closing-heart">❤️</span>
         <h2>Heute muss nicht perfekt sein.<br><em>Ein kleiner Schritt reicht.</em></h2>
         <p>Du darfst in deinem eigenen Tempo weitermachen.</p>
-        <a href="#mentalchat" class="button button-primary">Zum Mentalchat <span>→</span></a>
+        <a class="button button-primary" href="#mentalchat">Zum Mentalchat →</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-main">
-      <a class="brand footer-brand" href="#start">
-        <span class="brand-mark">❤️</span>
-        <span class="brand-copy"><strong>Positivhelpcenter</strong><small>Kleine Schritte. Mehr Leichtigkeit.</small></span>
-      </a>
-      <p>Ein kleiner Schritt zählt. Heute genauso wie morgen.</p>
-      <a class="footer-top" href="#start">Zurück nach oben ↑</a>
+      <a class="brand" href="#start"><span class="brand-heart">❤️</span><span><strong>Positivhelpcenter</strong><small>Kleine Schritte. Mehr Leichtigkeit.</small></span></a>
+      <a href="#start">Zurück nach oben ↑</a>
     </div>
-    <div class="container footer-bottom">
-      <span>© <span id="year"></span> Positivhelpcenter · Projekt-Demo</span>
-      <span></span>
-    </div>
+    <div class="container footer-bottom">© <span id="year"></span> Positivhelpcenter · Projekt-Demo</div>
     <div class="container footer-safety">Der Mentalchat ist eine Demo und kein Therapie- oder Krisendienst.</div>
   </footer>
-
-  <script>
-    (() => {
-      const chat = document.querySelector(".chat-window");
-      const toggle = document.getElementById("chatFullscreenToggle");
-      const input = document.getElementById("chatInput");
-
-      if (!chat || !toggle) return;
-
-      function setFullscreen(active) {
-        chat.classList.toggle("chat-is-fullscreen", active);
-        document.body.classList.toggle("chat-fullscreen-active", active);
-
-        toggle.setAttribute("aria-pressed", String(active));
-        toggle.setAttribute(
-          "aria-label",
-          active ? "Vollbild schließen" : "Chat im Vollbild öffnen"
-        );
-        toggle.title = active ? "Vollbild schließen" : "Vollbild öffnen";
-
-        const icon = toggle.querySelector("span:first-child");
-        const label = toggle.querySelector(".fullscreen-button-label");
-
-        if (icon) icon.textContent = active ? "✕" : "⛶";
-        if (label) label.textContent = active ? "Schließen" : "Vollbild";
-
-        if (active && input) input.focus();
-      }
-
-      toggle.addEventListener("click", () => {
-        setFullscreen(!chat.classList.contains("chat-is-fullscreen"));
-      });
-
-      document.addEventListener("keydown", event => {
-        if (
-          event.key === "Escape" &&
-          chat.classList.contains("chat-is-fullscreen")
-        ) {
-          setFullscreen(false);
-          toggle.focus();
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
