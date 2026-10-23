@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f7cf45">
-  <meta name="description" content="Ein ruhiger Ort zum Durchatmen, Sortieren und Weiterkommen.">
-  <title>Positivhelpcenter — Ein kleiner Lichtblick</title>
+  <meta name="description" content="Positivhelpcenter — Für dich. In deinem Tempo.">
+  <title>Positivhelpcenter</title>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
@@ -19,7 +19,8 @@
 
     <button class="menu-toggle" id="menuToggle"
       aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainNav">
-      <span></span><span></span>
+      <span></span>
+      <span></span>
     </button>
 
     <nav class="nav" id="mainNav">
@@ -34,15 +35,13 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> EIN PLATZ FÜR DICH</p>
         <h1>Du musst nicht<br>alles <span>allein</span> sortieren.</h1>
-        <p class="hero-text">
-          Ein kleiner Ort für schwere Tage, neue Gedanken
-          und einen Moment zum Durchatmen.
-        </p>
-        <a class="button button-dark" href="#hilfe">Hier anfangen <span>↘</span></a>
-        <p class="tiny-note">In deinem Tempo. Ohne Druck.</p>
+        <p class="hero-text">Für dich. In deinem Tempo.</p>
+        <a class="button button-dark" href="#hilfe">
+          Hier anfangen <span>↘</span>
+        </a>
       </div>
 
-      <div class="hero-art" aria-label="Dekorative Retro-Grafik">
+      <div class="hero-art" aria-label="Retro-Grafik">
         <div class="sun"></div>
         <div class="sun-label">TAKE<br>IT EASY</div>
         <div class="checker checker-hero" aria-hidden="true"></div>
@@ -50,8 +49,11 @@
         <div class="sparkle sparkle-two">✳</div>
         <div class="art-caption">KLEINE SCHRITTE ZÄHLEN.</div>
       </div>
+
       <div class="hero-bottom-line">
-        <span>ATMEN.</span><span>ORDNEN.</span><span>WEITERMACHEN.</span>
+        <span>ATMEN.</span>
+        <span>ORDNEN.</span>
+        <span>WEITERMACHEN.</span>
       </div>
     </section>
 
@@ -74,7 +76,7 @@
         <button class="help-card" data-help="down">
           <span class="card-symbol">☼</span>
           <span class="card-title">Ein schwerer Tag</span>
-          <span class="card-subtitle">Wieder etwas Boden finden</span>
+          <span class="card-subtitle">Wieder Boden finden</span>
         </button>
 
         <button class="help-card" data-help="talk">
@@ -94,46 +96,55 @@
     <section class="thought-section" id="gedanken">
       <div class="thought-inner section-wrap">
         <div class="checker checker-corner" aria-hidden="true"></div>
-        <p class="eyebrow">EIN GEDANKE FÜR DICH · 02 / 03</p>
+        <p class="eyebrow">GEDANKEN</p>
         <div class="thought-mark">“</div>
         <h2 id="quoteText">Du darfst langsam machen.</h2>
-        <button class="button button-outline" id="newQuote">Anderer Gedanke ↻</button>
+        <button class="button button-outline" id="newQuote">
+          Anderer Gedanke ↻
+        </button>
         <span class="thought-stamp">KEEP GOING<br>YOUR WAY</span>
       </div>
     </section>
 
     <section class="chat-section section-wrap" id="chat">
       <div class="chat-intro">
-        <p class="eyebrow">03 / 03 — DEIN MOMENT</p>
+        <p class="eyebrow">GEDANKENRAUM</p>
         <h2>Was liegt dir<br><span>auf dem Herzen?</span></h2>
-        <p>Du kannst deine Gedanken hier erst einmal aufschreiben.</p>
+        <p>Schreib es einfach auf.</p>
       </div>
 
       <div class="chat-card">
         <div class="chat-card-top">
-          <span class="chat-status"><span class="status-dot"></span> GEDANKENRAUM</span>
+          <span class="chat-status">
+            <span class="status-dot"></span> GEDANKENRAUM
+          </span>
           <span class="chat-decoration">✳</span>
         </div>
+
         <div class="chat-messages" id="chatMessages" aria-live="polite">
           <div class="message message-bot">
-            Hey. Was beschäftigt dich gerade? Du kannst ganz in deinem Tempo schreiben.
+            Hey. Was beschäftigt dich gerade?
           </div>
         </div>
+
         <form class="chat-form" id="chatForm">
           <label class="sr-only" for="chatInput">Deine Nachricht</label>
           <input id="chatInput" type="text" maxlength="500"
-            placeholder="Schreib deine Gedanken …" autocomplete="off" required>
+            placeholder="Deine Gedanken …" autocomplete="off" required>
           <button type="submit" aria-label="Nachricht senden">↑</button>
         </form>
-        <p class="chat-note">Ein einfacher Impuls-Chat, kein Ersatz für professionelle Hilfe.</p>
+
+        <p class="chat-note">
+          Ein Impuls-Chat, kein Ersatz für professionelle Hilfe.
+        </p>
       </div>
     </section>
 
     <section class="closing section-wrap">
       <div class="closing-checker" aria-hidden="true"></div>
-      <p class="eyebrow">EIN TAG NACH DEM ANDEREN</p>
-      <h2>Du bist mehr als<br>ein schlechter Tag.</h2>
-      <a href="#start" class="text-button">Zurück nach oben ↑</a>
+      <p class="eyebrow">WEITER IN DEINEM TEMPO</p>
+      <h2>Ein Schritt<br>nach dem anderen.</h2>
+      <a href="#start" class="text-button">Nach oben ↑</a>
     </section>
   </main>
 
@@ -142,7 +153,11 @@
       <span class="brand-mark">+</span>
       <span>positiv<span class="brand-light">helpcenter</span></span>
     </a>
-    <span class="footer-note">Ein kleiner Lichtblick im Alltag.</span>
+
+    <span class="footer-note">
+      In Zusammenarbeit mit <strong>MaxOffcial</strong> :D
+    </span>
+
     <span class="footer-copy">© <span id="currentYear"></span></span>
   </footer>
 </body>
