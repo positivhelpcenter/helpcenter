@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schule & Druck – Positivhelpcenter</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .schule-page {
+      --schule-yellow: #ffda57;
+      --schule-orange: #ffb36b;
+      --schule-cream: #fffaf0;
+      --schule-ink: #171717;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      color: var(--schule-ink);
+      font-family: "DM Sans", Arial, sans-serif;
+    }
+
+    .schule-page * {
+      box-sizing: border-box;
+    }
+
+    .schule-back {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 16px;
+      border: 2px solid var(--schule-ink);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--schule-ink);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 3px 3px 0 var(--schule-ink);
+    }
+
+    .schule-hero {
+      padding: 30px;
+      margin-bottom: 26px;
+      background: var(--schule-yellow);
+      border: 2px solid var(--schule-ink);
+      border-radius: 18px;
+      box-shadow: 5px 5px 0 var(--schule-ink);
+    }
+
+    .schule-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      border: 2px solid var(--schule-ink);
+      border-radius: 7px;
+      background: #fff;
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .schule-hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 6vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+    }
+
+    .schule-hero p {
+      max-width: 680px;
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .schule-section {
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 2px solid var(--schule-ink);
+      border-radius: 16px;
+      background: #fffdf8;
+    }
+
+    .schule-section h2 {
+      margin: 0 0 16px;
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.7px;
+    }
+
+    .schule-section h3 {
+      margin: 20px 0 8px;
+      font-size: 19px;
+    }
+
+    .schule-section p,
+    .schule-section li {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .schule-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .schule-columns > div + div {
+      padding-left: 24px;
+      border-left: 2px solid #e5dfd3;
+    }
+
+    .schule-note {
+      padding: 15px 17px;
+      margin-top: 18px;
+      border-left: 5px solid var(--schule-ink);
+      border-radius: 9px;
+      background: var(--schule-yellow);
+      line-height: 1.7;
+    }
+
+    .schule-tips {
+      padding: 0;
+      list-style: none;
+      counter-reset: schule-counter;
+    }
+
+    .schule-tips li {
+      position: relative;
+      min-height: 42px;
+      padding-left: 48px;
+      margin-bottom: 18px;
+      counter-increment: schule-counter;
+    }
+
+    .schule-tips li::before {
+      content: counter(schule-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--schule-yellow);
+      border: 1px solid var(--schule-ink);
+      font-weight: 800;
+    }
+
+    .schule-resource {
+      display: block;
+      padding: 15px;
+      margin-top: 12px;
+      border: 2px solid var(--schule-ink);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--schule-ink);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .schule-resource:hover {
+      transform: translateY(-2px);
+      box-shadow: 3px 3px 0 var(--schule-ink);
+    }
+
+    .schule-resource strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .schule-resource span {
+      display: block;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .schule-footer {
+      padding-top: 18px;
+      border-top: 2px dashed #aaa;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .schule-footer a {
+      color: var(--schule-ink);
+      font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      .schule-page {
+        padding: 16px 12px 28px;
+      }
+
+      .schule-hero {
+        padding: 22px 18px;
+      }
+
+      .schule-section {
+        padding: 19px 16px;
+      }
+
+      .schule-columns {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .schule-columns > div + div {
+        padding-left: 0;
+        padding-top: 18px;
+        border-left: none;
+        border-top: 2px solid #e5dfd3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="schule-page">
+
+    <a class="schule-back" href="hilfe.html">← Zurück zur Hilfe-Seite</a>
+
+    <header class="schule-hero">
+      <span class="schule-tag">Schule & Druck</span>
+      <h1>Wenn Schule Druck macht</h1>
+      <p>
+        Du musst nicht perfekt sein. Es ist okay, wenn gerade alles schwierig ist.
+        Du bist mehr als deine Noten – und es gibt Wege, mit dem Druck besser umzugehen.
+      </p>
+    </header>
+
+    <section class="schule-section">
+      <span class="schule-tag">Teil 01 · Die Gefühle</span>
+      <h2>Wenn alles zu viel wird</h2>
+
+      <div class="schule-columns">
+        <div>
+          <p>
+            Vielleicht kennst du das Gefühl, ständig funktionieren zu müssen.
+            Gute Noten schreiben, Hausaufgaben erledigen, für Arbeiten lernen
+            und gleichzeitig versuchen, den Erwartungen anderer gerecht zu werden.
+          </p>
+
+          <p>
+            Manchmal reicht schon eine einzige Aufgabe, damit sich alles überwältigend
+            anfühlt. Vielleicht vergleichst du dich mit anderen oder hast Angst,
+            jemanden zu enttäuschen.
+          </p>
+
+          <p>
+            Und selbst wenn du nach außen so tust, als wäre alles in Ordnung,
+            kann es in deinem Kopf ganz anders aussehen. Du darfst erschöpft sein.
+            Du darfst etwas nicht verstehen. Du darfst Hilfe brauchen.
+          </p>
+        </div>
+
+        <div>
+          <h3>So kann sich Schulstress anfühlen</h3>
+          <ul>
+            <li>Angst vor schlechten Noten oder Prüfungen.</li>
+            <li>Das Gefühl, niemals genug zu lernen.</li>
+            <li>Grübeln über Fehler und Erwartungen.</li>
+            <li>Schwierigkeiten, nach der Schule abzuschalten.</li>
+            <li>Reizbarkeit, Müdigkeit oder Konzentrationsprobleme.</li>
+            <li>Das Gefühl, keine Zeit mehr für sich selbst zu haben.</li>
+          </ul>
+
+          <div class="schule-note">
+            <strong>Denk daran:</strong><br>
+            Eine Note sagt etwas über eine bestimmte Leistung aus – nicht darüber,
+            wie viel du wert bist. Du musst nicht immer stark sein.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="schule-section" style="background: #fff0df;">
+      <span class="schule-tag">Teil 02 · Wissen und Hilfe</span>
+      <h2>Was du tun kannst – Schritt für Schritt</h2>
+
+      <div class="schule-columns">
+        <div>
+          <h3>Was im Alltag helfen kann</h3>
+
+          <ol class="schule-tips">
+            <li>
+              <strong>Mach aus viel etwas Kleines.</strong><br>
+              Schreib auf, was erledigt werden muss. Wähle eine Aufgabe aus
+              und beginne mit einem kleinen Schritt. Du musst nicht alles gleichzeitig schaffen.
+            </li>
+
+            <li>
+              <strong>Setze realistische Ziele.</strong><br>
+              Plane lieber überschaubare Lernzeiten, statt dir vorzunehmen,
+              den ganzen Stoff auf einmal zu schaffen.
+            </li>
+
+            <li>
+              <strong>Plane Pausen ein.</strong><br>
+              Trink etwas, bewege dich kurz oder leg deine Unterlagen für einen Moment weg.
+              Pausen gehören zum Lernen dazu.
+            </li>
+
+            <li>
+              <strong>Sprich mit jemandem.</strong><br>
+              Wende dich an eine vertraute Person, deine Eltern, eine Lehrkraft
+              oder die Schulsozialarbeit. Du musst nicht warten, bis gar nichts mehr geht.
+            </li>
+
+            <li>
+              <strong>Erlaube dir, Fehler zu machen.</strong><br>
+              Fehler sind Teil des Lernens. Eine schlechte Note ist kein Beweis dafür,
+              dass du etwas grundsätzlich nicht kannst.
+            </li>
+          </ol>
+
+          <div class="schule-note">
+            <strong>Für den nächsten Schritt:</strong><br>
+            Frage dich: „Was ist die eine Sache, die ich jetzt erledigen kann?“
+            Nur diese eine Sache zählt gerade.
+          </div>
+        </div>
+
+        <div>
+          <h3>Wann du Unterstützung holen solltest</h3>
+
+          <p>
+            Wenn der Druck über längere Zeit anhält, du kaum noch abschalten kannst,
+            häufig Angst hast oder Schule deinen Alltag stark belastet, sprich mit
+            einer erwachsenen Vertrauensperson oder einer Beratungsstelle.
+          </p>
+
+          <p>
+            Du musst nicht erst völlig überfordert sein, um Hilfe zu verdienen.
+            Auch wenn du nicht weißt, wie du anfangen sollst, darfst du darüber reden.
+          </p>
+
+          <h3>Hier findest du Unterstützung</h3>
+
+          <a class="schule-resource"
+             href="https://www.nummergegenkummer.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>Nummer gegen Kummer ↗</strong>
+            <span>
+              Kostenlose und anonyme Beratung für Kinder und Jugendliche.
+              Auf der Website findest du die aktuellen Kontaktmöglichkeiten.
+            </span>
+          </a>
+
+          <a class="schule-resource"
+             href="https://jugendnotmail.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>JugendNotmail ↗</strong>
+            <span>
+              Online-Beratung für junge Menschen bei Sorgen, Stress und persönlichen Problemen.
+            </span>
+          </a>
+
+          <a class="schule-resource"
+             href="https://www.telefonseelsorge.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>TelefonSeelsorge ↗</strong>
+            <span>
+              Vertrauliche Unterstützung bei seelischen Belastungen.
+              Auf der Website findest du die verfügbaren Beratungsangebote.
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="schule-footer">
+      <p>
+        Du bist mehr als deine Noten. Deine Gedanken und Gefühle sind wichtig.
+        <br>
+        In Zusammenarbeit mit MaxOfficial :D
+      </p>
+
+      <a href="hilfe.html">Zurück zur Übersicht →</a>
+    </footer>
+
+  </main>
+</body>
+</html>
