@@ -23,8 +23,8 @@
       <span></span>
     </button>
 
-    <nav class="nav" id="mainNav">
-      <a href="#hilfe">Hilfe</a>
+    <nav class="nav" id="mainNav" aria-label="Hauptnavigation">
+      <a href="hilfe.html" aria-label="Zur Hilfe-Seite">Hilfe <span aria-hidden="true">↗</span></a>
       <a href="#gedanken">Gedanken</a>
       <a href="#chat" class="nav-pill">Kurz reden ↗</a>
     </nav>
@@ -36,8 +36,8 @@
         <p class="eyebrow"><span class="status-dot"></span> EIN PLATZ FÜR DICH</p>
         <h1>Du musst nicht<br>alles <span>allein</span> sortieren.</h1>
         <p class="hero-text">Für dich. In deinem Tempo.</p>
-        <a class="button button-dark" href="#hilfe">
-          Hier anfangen <span>↘</span>
+        <a class="button button-dark" href="hilfe.html">
+          Hilfe finden <span>↗</span>
         </a>
       </div>
 
@@ -67,29 +67,36 @@
       </div>
 
       <div class="help-grid">
-        <button class="help-card" data-help="stress">
+        <button class="help-card" data-help="stress" type="button">
           <span class="card-symbol">↗</span>
           <span class="card-title">Zu viel im Kopf</span>
           <span class="card-subtitle">Gedanken sortieren</span>
         </button>
 
-        <button class="help-card" data-help="down">
+        <button class="help-card" data-help="down" type="button">
           <span class="card-symbol">☼</span>
           <span class="card-title">Ein schwerer Tag</span>
           <span class="card-subtitle">Wieder Boden finden</span>
         </button>
 
-        <button class="help-card" data-help="talk">
+        <button class="help-card" data-help="talk" type="button">
           <span class="card-symbol">···</span>
           <span class="card-title">Einfach reden</span>
           <span class="card-subtitle">Schreib, was dich beschäftigt</span>
         </button>
       </div>
 
-      <div class="help-response" id="helpResponse" hidden>
+      <div class="help-response" id="helpResponse" hidden aria-live="polite">
         <p class="eyebrow">EIN KLEINER IMPULS</p>
         <p id="helpResponseText"></p>
-        <button class="text-button" id="closeHelp">Schließen ×</button>
+        <button class="text-button" id="closeHelp" type="button">Schließen ×</button>
+      </div>
+
+      <div class="help-more">
+        <p>Du suchst etwas Bestimmtes oder möchtest verschiedene Themen entdecken?</p>
+        <a class="button button-dark" href="hilfe.html">
+          Zur gesamten Hilfe-Seite <span>↗</span>
+        </a>
       </div>
     </section>
 
@@ -99,7 +106,7 @@
         <p class="eyebrow">GEDANKEN</p>
         <div class="thought-mark">“</div>
         <h2 id="quoteText">Du darfst langsam machen.</h2>
-        <button class="button button-outline" id="newQuote">
+        <button class="button button-outline" id="newQuote" type="button">
           Anderer Gedanke ↻
         </button>
         <span class="thought-stamp">KEEP GOING<br>YOUR WAY</span>
@@ -129,7 +136,7 @@
 
         <form class="chat-form" id="chatForm">
           <label class="sr-only" for="chatInput">Deine Nachricht</label>
-          <input id="chatInput" type="text" maxlength="500"
+          <input id="chatInput" name="message" type="text" maxlength="500"
             placeholder="Deine Gedanken …" autocomplete="off" required>
           <button type="submit" aria-label="Nachricht senden">↑</button>
         </form>
@@ -144,6 +151,9 @@
       <div class="closing-checker" aria-hidden="true"></div>
       <p class="eyebrow">WEITER IN DEINEM TEMPO</p>
       <h2>Ein Schritt<br>nach dem anderen.</h2>
+      <a href="hilfe.html" class="button button-dark">
+        Hilfe entdecken ↗
+      </a>
       <a href="#start" class="text-button">Nach oben ↑</a>
     </section>
   </main>
