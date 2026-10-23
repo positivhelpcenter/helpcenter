@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fffaf0">
+  <meta name="description" content="Liebe, Nähe und Beziehungen verstehen. Persönliche Gedanken und sachliche Tipps für eine respektvolle Kommunikation.">
+  <title>Liebe & Beziehungen | Positivhelpcenter</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --love-paper: #fffaf0;
+      --love-ink: #25231f;
+      --love-orange: #f4a340;
+      --love-yellow: #ffe69a;
+      --love-pink: #f9dce0;
+      --love-green: #dcebdc;
+      --love-muted: #716b62;
+      --love-border: #e8dfcf;
+    }
+
+    body {
+      background: var(--love-paper);
+      color: var(--love-ink);
+    }
+
+    .love-page {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 32px 0 76px;
+    }
+
+    .love-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 28px;
+      color: var(--love-ink);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid var(--love-orange);
+      padding-bottom: 4px;
+    }
+
+    .love-back:hover {
+      opacity: .72;
+    }
+
+    .love-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 68px);
+      background: #fff0c5;
+      border: 2px solid var(--love-ink);
+      border-radius: 8px 8px 28px 8px;
+      box-shadow: 7px 7px 0 var(--love-ink);
+    }
+
+    .love-hero::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: 5%;
+      top: 14%;
+      opacity: .22;
+      background-image:
+        linear-gradient(45deg, var(--love-ink) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--love-ink) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--love-ink) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--love-ink) 75%);
+      background-size: 22px 22px;
+      pointer-events: none;
+    }
+
+    .love-eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 7px 11px;
+      background: #fffaf0;
+      border: 1px solid var(--love-ink);
+      border-radius: 3px;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .love-hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 7vw, 5.2rem);
+      line-height: .99;
+      letter-spacing: -.055em;
+    }
+
+    .love-hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.8;
+    }
+
+    .love-heart {
+      display: inline-block;
+      margin-left: 8px;
+      color: #d95b52;
+      font-size: .7em;
+      transform: rotate(-10deg);
+    }
+
+    .love-intro {
+      max-width: 760px;
+      margin: 42px auto;
+      text-align: center;
+    }
+
+    .love-intro h2 {
+      margin-bottom: 12px;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      letter-spacing: -.035em;
+    }
+
+    .love-intro p {
+      color: var(--love-muted);
+      line-height: 1.85;
+    }
+
+    .love-section {
+      margin-top: 38px;
+      padding: clamp(22px, 4vw, 42px);
+      border: 1px solid var(--love-border);
+      border-radius: 12px;
+      background: #fffdf8;
+    }
+
+    .love-section.personal {
+      background: var(--love-pink);
+      border: 2px solid #e8bfc6;
+      border-radius: 4px 18px 4px 18px;
+      box-shadow: 5px 5px 0 #e8bfc6;
+    }
+
+    .love-section.facts {
+      background: #f0f5e9;
+      border: 2px solid #cfddc6;
+      border-radius: 18px 4px 18px 4px;
+      box-shadow: 5px 5px 0 #cfddc6;
+    }
+
+    .love-section-label {
+      display: inline-block;
+      margin-bottom: 17px;
+      padding: 7px 10px;
+      border: 1px solid currentColor;
+      border-radius: 3px;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .personal .love-section-label {
+      background: #fff8f5;
+      color: #74434b;
+    }
+
+    .facts .love-section-label {
+      background: #fffdf8;
+      color: #36553b;
+    }
+
+    .love-section h2 {
+      margin: 0 0 18px;
+      font-size: clamp(1.65rem, 4vw, 2.55rem);
+      line-height: 1.12;
+      letter-spacing: -.04em;
+    }
+
+    .love-section h3 {
+      margin: 28px 0 9px;
+      font-size: 1.12rem;
+    }
+
+    .love-section p,
+    .love-section li {
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    .love-section p {
+      margin: 0 0 16px;
+    }
+
+    .love-section ul {
+      padding-left: 22px;
+    }
+
+    .love-quote {
+      margin: 24px 0;
+      padding: 17px 20px;
+      background: rgba(255,255,255,.58);
+      border-left: 4px solid #cf8e97;
+      font-size: 1.08rem;
+      font-weight: 650;
+      line-height: 1.75;
+    }
+
+    .love-note {
+      margin-top: 25px;
+      padding: 16px 18px;
+      background: #fff8dc;
+      border: 1px dashed #ad8740;
+      border-radius: 4px;
+      line-height: 1.75;
+    }
+
+    .love-takeaway {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(37,35,31,.2);
+      font-weight: 700;
+      line-height: 1.8;
+    }
+
+    .love-sources {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #cbd8c2;
+      font-size: .9rem;
+      line-height: 1.8;
+    }
+
+    .love-sources a {
+      color: #31583a;
+      overflow-wrap: anywhere;
+    }
+
+    .love-emergency {
+      margin-top: 34px;
+      padding: 22px;
+      border: 2px dashed #d9a33e;
+      background: #fff4cf;
+      line-height: 1.8;
+    }
+
+    .love-end {
+      margin-top: 46px;
+      padding: 30px 20px;
+      text-align: center;
+      background: #fff0c5;
+      border-radius: 8px;
+    }
+
+    .love-end h2 {
+      margin-top: 0;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+    }
+
+    .love-button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 20px;
+      color: #fff;
+      background: var(--love-ink);
+      border: 2px solid var(--love-ink);
+      border-radius: 4px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .love-button:hover {
+      color: var(--love-ink);
+      background: transparent;
+      transform: translateY(-2px);
+    }
+
+    .love-footer {
+      margin-top: 38px;
+      padding-top: 20px;
+      border-top: 1px solid var(--love-border);
+      text-align: center;
+      color: var(--love-muted);
+      font-size: .88rem;
+      line-height: 1.8;
+    }
+
+    .love-footer a {
+      color: inherit;
+    }
+
+    @media (max-width: 600px) {
+      .love-page {
+        width: min(100% - 24px, 1080px);
+        padding-top: 22px;
+      }
+
+      .love-hero::after {
+        width: 75px;
+        height: 75px;
+        right: 5%;
+        top: 6%;
+        background-size: 13px 13px;
+      }
+
+      .love-section {
+        margin-top: 28px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .love-button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Die vorhandene Navigation und der Header werden nicht verändert. -->
+
+  <main class="love-page">
+    <a class="love-back" href="hilfe.html">
+      <span aria-hidden="true">←</span> Zurück zur Hilfeübersicht
+    </a>
+
+    <header class="love-hero">
+      <span class="love-eyebrow">Positivhelpcenter · Beziehungen</span>
+      <h1>Liebe ist nicht immer einfach.<span class="love-heart" aria-hidden="true">♥</span></h1>
+      <p>
+        Nähe, Vertrauen, Missverständnisse und all die Dinge, die man manchmal
+        fühlt, aber nicht so leicht in Worte fassen kann. Hier geht es darum,
+        Beziehungen besser zu verstehen – ohne dass man dafür schon alle
+        Antworten kennen muss.
+      </p>
+    </header>
+
+    <section class="love-intro" aria-labelledby="intro-heading">
+      <h2 id="intro-heading">Manchmal steckt mehr dahinter.</h2>
+      <p>
+        Beziehungen bestehen nicht nur aus schönen Momenten. Auch Unsicherheit,
+        unterschiedliche Erwartungen und unausgesprochene Gedanken gehören dazu.
+        Diese Seite verbindet persönliche Gedanken mit Informationen, die im
+        Alltag wirklich weiterhelfen können.
+      </p>
+    </section>
+
+    <!-- TEIL 1: Persönliche Ebene -->
+    <article class="love-section personal" aria-labelledby="personal-heading">
+      <span class="love-section-label">Teil 1 · Gedanken zwischen den Zeilen</span>
+      <h2 id="personal-heading">Wenn dir jemand wirklich wichtig ist</h2>
+
+      <p>
+        Manchmal merkt man erst daran, wie viel man über eine Person nachdenkt,
+        welchen Platz sie im eigenen Leben bekommen hat. Eine kleine Nachricht
+        kann den Tag leichter machen. Ein gemeinsamer Moment bleibt einem noch
+        lange im Kopf, obwohl er für andere vielleicht völlig unscheinbar wäre.
+      </p>
+
+      <p>
+        Und manchmal verändert sich etwas, ohne dass man genau sagen kann, was.
+        Gespräche fühlen sich anders an, Antworten fallen kürzer aus oder man
+        fragt sich, ob die andere Person gerade genauso viel Nähe möchte wie man
+        selbst. Dann beginnt man, über Dinge nachzudenken, die man sonst kaum
+        beachten würde.
+      </p>
+
+      <div class="love-quote">
+        Das Schwierige ist manchmal nicht, jemanden gernzuhaben. Es ist die
+        Frage, ob man mit den eigenen Gedanken und Gefühlen bei dieser Person
+        genauso sicher sein kann, wie man es sich wünscht.
+      </div>
+
+      <p>
+        Vielleicht möchte man etwas ansprechen, hat aber Angst, dass es falsch
+        verstanden wird. Vielleicht will man nicht anstrengend wirken oder aus
+        einer Kleinigkeit ein großes Thema machen. Also behält man manches für
+        sich und hofft, dass sich die Unsicherheit von allein legt.
+      </p>
+
+      <p>
+        Dabei muss nicht jedes komische Gefühl bedeuten, dass etwas Schlimmes
+        passiert ist. Menschen haben unterschiedliche Tage, brauchen verschieden
+        viel Zeit für sich und zeigen Zuneigung nicht immer auf dieselbe Weise.
+        Trotzdem darf man ernst nehmen, wenn einen etwas beschäftigt.
+      </p>
+
+      <p>
+        Man darf jemanden vermissen, sich über gemeinsame Zeit freuen und sich
+        wünschen, verstanden zu werden. Man darf aber auch eigene Interessen
+        behalten, Zeit für sich brauchen und ehrlich sagen, wenn etwas wehtut.
+        Nähe sollte nicht bedeuten, dass man ständig erraten muss, was der andere
+        denkt.
+      </p>
+
+      <div class="love-note">
+        <strong>Ein Gedanke zum Mitnehmen:</strong><br>
+        Eine gute Beziehung muss nicht perfekt sein. Sie sollte aber Platz dafür
+        lassen, ehrlich zu sein, Fragen zu stellen und auch schwierige Gespräche
+        miteinander zu führen.
+      </div>
+    </article>
+
+    <!-- TEIL 2: Sachliche Informationen -->
+    <article class="love-section facts" aria-labelledby="facts-heading">
+      <span class="love-section-label">Teil 2 · Wissen und praktische Hilfe</span>
+      <h2 id="facts-heading">Was Beziehungen gesund und stabil macht</h2>
+
+      <p>
+        Jede Beziehung ist anders. Es gibt kein festes Rezept, mit dem alle
+        Konflikte verschwinden. Bestimmte Grundlagen können jedoch helfen,
+        Vertrauen aufzubauen und respektvoll miteinander umzugehen.
+      </p>
+
+      <h3>1. Offen und respektvoll kommunizieren</h3>
+      <p>
+        Missverständnisse lassen sich oft besser klären, wenn beide Personen
+        beschreiben können, was sie wahrnehmen und brauchen. Hilfreich sind
+        konkrete Ich-Botschaften statt Vorwürfen.
+      </p>
+      <ul>
+        <li>Statt „Du interessierst dich nie für mich“: „Ich vermisse unsere gemeinsame Zeit.“</li>
+        <li>Fragen stellen, statt die Gedanken der anderen Person vorauszusetzen.</li>
+        <li>Einander ausreden lassen und versuchen, die Perspektive des Gegenübers zu verstehen.</li>
+        <li>Schwierige Gespräche möglichst in einem ruhigen Moment führen.</li>
+      </ul>
+
+      <h3>2. Vertrauen braucht Zeit</h3>
+      <p>
+        Vertrauen entsteht durch wiederholte Erfahrungen: Absprachen werden
+        eingehalten, Grenzen respektiert und Fehler ehrlich angesprochen.
+        Vertrauen bedeutet nicht, dass man jederzeit alles wissen oder
+        kontrollieren muss, was die andere Person tut.
+      </p>
+
+      <h3>3. Grenzen sind erlaubt</h3>
+      <p>
+        Beide Menschen dürfen eigene Freundschaften, Interessen, Privatsphäre
+        und Zeit für sich haben. Ein Nein muss respektiert werden. Druck,
+        Einschüchterung, Kontrolle oder die Forderung, Kontakte zu anderen
+        Menschen abzubrechen, sind keine Voraussetzungen für Liebe.
+      </p>
+
+      <h3>4. Mit Unsicherheit umgehen</h3>
+      <p>
+        Wenn eine Nachricht anders klingt oder ein Treffen ausfällt, kennt man
+        den Grund nicht automatisch. Es kann helfen, zunächst zwischen dem zu
+        unterscheiden, was tatsächlich passiert ist, und dem, was man daraus
+        schlussfolgert.
+      </p>
+      <ul>
+        <li>Was weiß ich sicher – und was vermute ich nur?</li>
+        <li>Gibt es eine andere mögliche Erklärung?</li>
+        <li>Kann ich ruhig nachfragen, statt die Situation allein zu interpretieren?</li>
+        <li>Was würde mir gerade guttun, unabhängig von der Antwort?</li>
+      </ul>
+
+      <h3>5. Streit bedeutet nicht automatisch das Ende</h3>
+      <p>
+        Unterschiedliche Meinungen sind normal. Wichtig ist, wie man mit ihnen
+        umgeht. Beleidigungen, Drohungen und absichtliche Demütigungen sind
+        keine gesunde Konfliktlösung. Wenn ein Gespräch zu aufgeladen wird,
+        können beide eine Pause vereinbaren und später darauf zurückkommen.
+      </p>
+
+      <h3>6. Du musst nicht alles allein lösen</h3>
+      <p>
+        Wenn dich eine Beziehung dauerhaft belastet, du dich unter Druck gesetzt
+        fühlst oder nicht mehr weißt, wem du vertrauen kannst, sprich mit einer
+        Person, bei der du dich sicher fühlst. Das kann eine vertraute Person,
+        eine Beratungsstelle oder eine andere erwachsene Vertrauensperson sein.
+        Du musst nicht erst beweisen, dass ein Problem „schlimm genug“ ist, um
+        dir Unterstützung zu holen.
+      </p>
+
+      <div class="love-takeaway">
+        Merke dir: Du kannst die Gefühle und Entscheidungen eines anderen
+        Menschen nicht vollständig kontrollieren. Du kannst aber deine eigenen
+        Bedürfnisse ernst nehmen, Grenzen setzen und entscheiden, wie du
+        kommunizieren möchtest.
+      </div>
+
+      <div class="love-sources">
+        <strong>Weiterführende Informationen</strong>
+        <ul>
+          <li>
+            <a href="https://www.loveline.de/" target="_blank" rel="noopener noreferrer">
+              loveline.de – Informationen zu Liebe, Beziehungen und Sexualität
+            </a>
+          </li>
+          <li>
+            <a href="https://www.nummergegenkummer.de/" target="_blank" rel="noopener noreferrer">
+              Nummer gegen Kummer – Beratung für Kinder, Jugendliche und Eltern
+            </a>
+          </li>
+          <li>
+            <a href="https://www.hilfetelefon.de/" target="_blank" rel="noopener noreferrer">
+              Hilfetelefon – Informationen und Hilfe bei Gewalt
+            </a>
+          </li>
+        </ul>
+        <p>
+          Die Tipps auf dieser Seite sind allgemeine Informationen und ersetzen
+          keine individuelle Beratung.
+        </p>
+      </div>
+    </article>
+
+    <aside class="love-emergency">
+      <strong>Wenn sich eine Beziehung nicht sicher anfühlt</strong>
+      <p>
+        Wenn du bedroht, kontrolliert oder verletzt wirst, musst du damit nicht
+        allein bleiben. Wende dich an eine vertraute Person oder eine passende
+        Beratungsstelle. Bei unmittelbarer Gefahr kannst du in Deutschland die
+        Polizei unter 110 erreichen.
+      </p>
+    </aside>
+
+    <section class="love-end">
+      <h2>Du darfst Fragen haben.</h2>
+      <p>
+        Du musst nicht heute alles verstehen oder sofort eine Entscheidung
+        treffen. Manchmal ist der erste Schritt einfach, die eigenen Gedanken
+        ernst zu nehmen.
+      </p>
+      <a class="love-button" href="hilfe.html">Zur Hilfeübersicht</a>
+    </section>
+
+    <footer class="love-footer">
+      <p>Positivhelpcenter · Ein Ort zum Lesen, Verstehen und Weiterkommen.</p>
+      <p>In Zusammenarbeit mit MaxOfficial :D</p>
+      <p><a href="hilfe.html">Zurück zur Startseite der Hilfe</a></p>
+    </footer>
+  </main>
+</body>
+</html>
