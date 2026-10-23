@@ -11,10 +11,7 @@
   <script src="hilfe.js" defer></script>
 
   <style>
-    /* Gestaltung nur für die Hilfeseite */
-    .help-page {
-      background: #fffdf6;
-    }
+    .help-page { background: #fffdf6; }
 
     .help-page .lifebuoy-hero {
       position: relative;
@@ -26,10 +23,7 @@
       padding-bottom: 70px;
     }
 
-    .help-page .lifebuoy-copy {
-      position: relative;
-      z-index: 2;
-    }
+    .help-page .lifebuoy-copy { position: relative; z-index: 2; }
 
     .help-page .lifebuoy-art {
       position: relative;
@@ -106,7 +100,6 @@
       letter-spacing: 1.3px;
     }
 
-    /* Suche im Light-Glass-Stil */
     .help-page .lifebuoy-search {
       padding-top: 55px;
       padding-bottom: 80px;
@@ -133,9 +126,7 @@
       -webkit-backdrop-filter: blur(18px);
     }
 
-    .help-page .search-input-wrap {
-      position: relative;
-    }
+    .help-page .search-input-wrap { position: relative; }
 
     .help-page .article-search textarea {
       display: block;
@@ -151,9 +142,7 @@
       font: 14px/1.7 var(--sans);
     }
 
-    .help-page .article-search textarea::placeholder {
-      color: #888373;
-    }
+    .help-page .article-search textarea::placeholder { color: #888373; }
 
     .help-page .article-search textarea:focus {
       border-color: rgba(190,143,28,.6);
@@ -180,10 +169,7 @@
       transform: scale(1.06);
     }
 
-    .help-page .search-submit svg {
-      width: 19px;
-      height: 19px;
-    }
+    .help-page .search-submit svg { width: 19px; height: 19px; }
 
     .help-page .search-bottom {
       display: flex;
@@ -219,11 +205,8 @@
       transform: translateY(-2px);
     }
 
-    .help-page .quick-topics {
-      margin-top: 35px;
-    }
+    .help-page .quick-topics { margin-top: 35px; }
 
-    /* Hängende Post-its */
     .help-page .urgent-section {
       padding: 65px 0 80px;
       background: #fff4d0;
@@ -231,10 +214,7 @@
       border-bottom: 1px solid rgba(25,25,20,.08);
     }
 
-    .help-page .urgent-heading {
-      max-width: 680px;
-      margin-bottom: 35px;
-    }
+    .help-page .urgent-heading { max-width: 680px; margin-bottom: 35px; }
 
     .help-page .urgent-heading > p:last-child {
       color: var(--muted);
@@ -299,15 +279,8 @@
       line-height: 1.25;
     }
 
-    .help-page .urgent-card p {
-      margin: 0;
-      font-size: 12px;
-      line-height: 1.85;
-    }
-
-    .help-page .urgent-card .text-button {
-      margin-top: 14px;
-    }
+    .help-page .urgent-card p { margin: 0; font-size: 12px; line-height: 1.85; }
+    .help-page .urgent-card .text-button { margin-top: 14px; }
 
     .help-page .urgent-note {
       margin-top: 38px;
@@ -316,11 +289,7 @@
       line-height: 1.8;
     }
 
-    /* Artikelkarten */
-    .help-page .article-library {
-      padding-top: 80px;
-      padding-bottom: 85px;
-    }
+    .help-page .article-library { padding-top: 80px; padding-bottom: 85px; }
 
     .help-page .article-grid {
       display: grid;
@@ -359,10 +328,7 @@
       font-size: 11px;
     }
 
-    .help-page .help-article .eyebrow {
-      margin-bottom: 8px;
-      font-size: 9px;
-    }
+    .help-page .help-article .eyebrow { margin-bottom: 8px; font-size: 9px; }
 
     .help-page .help-article h3 {
       margin: 0 0 9px;
@@ -389,9 +355,7 @@
       font-weight: 700;
     }
 
-    .help-page .article-open-link:hover {
-      color: #8a5a0a;
-    }
+    .help-page .article-open-link:hover { color: #8a5a0a; }
 
     .help-page .help-last {
       margin-bottom: 60px;
@@ -414,58 +378,29 @@
         padding-top: 45px;
       }
 
-      .help-page .lifebuoy-art {
-        min-height: 285px;
-        margin-top: 5px;
-      }
-
-      .help-page .lifebuoy {
-        width: 205px;
-      }
-
-      .help-page .lifebuoy-center {
-        width: 90px;
-      }
-
-      .help-page .lifebuoy-caption {
-        bottom: 0;
-      }
+      .help-page .lifebuoy-art { min-height: 285px; margin-top: 5px; }
+      .help-page .lifebuoy { width: 205px; }
+      .help-page .lifebuoy-center { width: 90px; }
+      .help-page .lifebuoy-caption { bottom: 0; }
 
       .help-page .urgent-grid,
-      .help-page .article-grid {
-        grid-template-columns: 1fr;
-      }
+      .help-page .article-grid { grid-template-columns: 1fr; }
 
       .help-page .urgent-card,
       .help-page .urgent-card:nth-child(2),
-      .help-page .urgent-card:nth-child(3) {
-        transform: rotate(-.4deg);
-      }
+      .help-page .urgent-card:nth-child(3) { transform: rotate(-.4deg); }
 
-      .help-page .urgent-card:nth-child(2) {
-        transform: rotate(.5deg);
-      }
+      .help-page .urgent-card:nth-child(2) { transform: rotate(.5deg); }
 
-      .help-page .search-bottom {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .help-page .search-bottom .button {
-        align-self: flex-start;
-      }
-
-      .help-page .help-last {
-        padding: 28px 23px;
-      }
+      .help-page .search-bottom { align-items: stretch; flex-direction: column; }
+      .help-page .search-bottom .button { align-self: flex-start; }
+      .help-page .help-last { padding: 28px 23px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .help-page .help-article,
       .help-page .topic-chips button,
-      .help-page .search-submit {
-        transition: none;
-      }
+      .help-page .search-submit { transition: none; }
     }
   </style>
 </head>
@@ -587,6 +522,10 @@
           <button type="button" data-topic="einsamkeit">Einsamkeit</button>
           <button type="button" data-topic="schlaf">Schlaf & Unruhe</button>
           <button type="button" data-topic="kraft">Neue Kraft finden</button>
+          <button type="button" data-topic="zwang">Zwangsstörungen</button>
+          <button type="button" data-topic="tics">Tics</button>
+          <button type="button" data-topic="queer">Frei fühlen & Werte</button>
+          <button type="button" data-topic="positive">Positive Sätze</button>
         </div>
       </div>
     </section>
@@ -762,6 +701,50 @@
           <h3>Wenn du neue Kraft brauchst</h3>
           <p>Manchmal reicht es, erst einmal nur den nächsten Schritt zu sehen.</p>
           <a class="article-open-link" href="Kraft-hilfe.html">Artikel lesen <span>↗</span></a>
+        </article>
+
+        <article class="help-article" id="artikel-zwang"
+          data-article="zwang"
+          data-title="Zwangsstörungen verstehen"
+          data-keywords="zwang zwänge zwangsstörung zwangsstörungen zwangsgedanken zwangshandlungen zweifel kontrollieren wiederholen angst gedanken">
+          <span class="article-symbol">10</span>
+          <p class="eyebrow">GEDANKEN & ZWÄNGE</p>
+          <h3>Zwangsstörungen verstehen</h3>
+          <p>Wenn Gedanken nicht loslassen oder du dich zu Wiederholungen gedrängt fühlst.</p>
+          <a class="article-open-link" href="Zwangsstoerungen-hilfe.html">Artikel lesen <span>↗</span></a>
+        </article>
+
+        <article class="help-article" id="artikel-tics"
+          data-article="tics"
+          data-title="Tics verstehen"
+          data-keywords="tic tics zucken blinzeln bewegungen laute unwillkürlich vokale motorische tics tourette">
+          <span class="article-symbol">11</span>
+          <p class="eyebrow">KÖRPER & VERSTÄNDNIS</p>
+          <h3>Tics verstehen</h3>
+          <p>Was unwillkürliche Bewegungen oder Laute bedeuten können und wie du Unterstützung findest.</p>
+          <a class="article-open-link" href="Tics-hilfe.html">Artikel lesen <span>↗</span></a>
+        </article>
+
+        <article class="help-article" id="artikel-queer"
+          data-article="queer"
+          data-title="Frei fühlen und eigene Werte erkennen"
+          data-keywords="queer schwul lesbisch LGBTQ LGBT sexualität identität coming out selbstakzeptanz werte liebe freiheit respekt orientierung">
+          <span class="article-symbol">12</span>
+          <p class="eyebrow">IDENTITÄT & LIEBE</p>
+          <h3>Frei fühlen & Werte erkennen</h3>
+          <p>Queere Identität, lesbische und schwule Liebe, Selbstakzeptanz und das, was dir wichtig ist.</p>
+          <a class="article-open-link" href="Freifuehlen-Werte-hilfe.html">Artikel lesen <span>↗</span></a>
+        </article>
+
+        <article class="help-article" id="artikel-positive"
+          data-article="positive"
+          data-title="Positive Sätze für schwierige Tage"
+          data-keywords="positive sätze sprüche mut hoffnung aufmuntern lächeln motivation freundlichkeit selbstwert zuversicht">
+          <span class="article-symbol">13</span>
+          <p class="eyebrow">MUT & HOFFNUNG</p>
+          <h3>Positive Sätze für schwierige Tage</h3>
+          <p>Kleine Erinnerungen daran, freundlich mit dir selbst zu sein und Schritt für Schritt weiterzugehen.</p>
+          <a class="article-open-link" href="positive-sprueche.html">Sätze entdecken <span>↗</span></a>
         </article>
 
       </div>
