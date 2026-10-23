@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schlaf & Unruhe – Positivhelpcenter</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .schlaf-page {
+      --schlaf-yellow: #ffda57;
+      --schlaf-orange: #ffb36b;
+      --schlaf-ink: #171717;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      color: var(--schlaf-ink);
+      font-family: "DM Sans", Arial, sans-serif;
+    }
+
+    .schlaf-page * {
+      box-sizing: border-box;
+    }
+
+    .schlaf-back {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 16px;
+      border: 2px solid var(--schlaf-ink);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--schlaf-ink);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 3px 3px 0 var(--schlaf-ink);
+    }
+
+    .schlaf-hero {
+      padding: 30px;
+      margin-bottom: 26px;
+      background: var(--schlaf-yellow);
+      border: 2px solid var(--schlaf-ink);
+      border-radius: 18px;
+      box-shadow: 5px 5px 0 var(--schlaf-ink);
+    }
+
+    .schlaf-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      border: 2px solid var(--schlaf-ink);
+      border-radius: 7px;
+      background: #fff;
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .schlaf-hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 6vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+    }
+
+    .schlaf-hero p {
+      max-width: 700px;
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .schlaf-section {
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 2px solid var(--schlaf-ink);
+      border-radius: 16px;
+      background: #fffdf8;
+    }
+
+    .schlaf-section h2 {
+      margin: 0 0 16px;
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.7px;
+    }
+
+    .schlaf-section h3 {
+      margin: 18px 0 8px;
+      font-size: 19px;
+    }
+
+    .schlaf-section p,
+    .schlaf-section li {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .schlaf-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .schlaf-columns > div + div {
+      padding-left: 24px;
+      border-left: 2px solid #e5dfd3;
+    }
+
+    .schlaf-note {
+      padding: 15px 17px;
+      margin-top: 18px;
+      border-left: 5px solid var(--schlaf-ink);
+      border-radius: 9px;
+      background: var(--schlaf-yellow);
+      line-height: 1.7;
+    }
+
+    .schlaf-tips {
+      padding: 0;
+      list-style: none;
+      counter-reset: schlaf-counter;
+    }
+
+    .schlaf-tips li {
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 18px;
+      counter-increment: schlaf-counter;
+    }
+
+    .schlaf-tips li::before {
+      content: counter(schlaf-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--schlaf-ink);
+      border-radius: 50%;
+      background: var(--schlaf-yellow);
+      font-weight: 800;
+    }
+
+    .schlaf-resource {
+      display: block;
+      padding: 15px;
+      margin-top: 12px;
+      border: 2px solid var(--schlaf-ink);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--schlaf-ink);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .schlaf-resource:hover {
+      transform: translateY(-2px);
+      box-shadow: 3px 3px 0 var(--schlaf-ink);
+    }
+
+    .schlaf-resource strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .schlaf-resource span {
+      display: block;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .schlaf-footer {
+      padding-top: 18px;
+      border-top: 2px dashed #aaa;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .schlaf-footer a {
+      color: var(--schlaf-ink);
+      font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      .schlaf-page {
+        padding: 16px 12px 28px;
+      }
+
+      .schlaf-hero {
+        padding: 22px 18px;
+      }
+
+      .schlaf-section {
+        padding: 19px 16px;
+      }
+
+      .schlaf-columns {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .schlaf-columns > div + div {
+        padding-left: 0;
+        padding-top: 18px;
+        border-left: none;
+        border-top: 2px solid #e5dfd3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="schlaf-page">
+
+    <a class="schlaf-back" href="hilfe.html">← Zurück zur Hilfe-Seite</a>
+
+    <header class="schlaf-hero">
+      <span class="schlaf-tag">Ruhe & Erholung</span>
+      <h1>Wenn du nicht zur Ruhe kommst</h1>
+      <p>
+        Wenn dein Kopf abends nicht abschaltet oder du schlecht einschlafen kannst,
+        kann sich selbst die Nacht anstrengend anfühlen. Du musst dich dafür nicht
+        verurteilen. Es gibt kleine Schritte, die dir helfen können.
+      </p>
+    </header>
+
+    <section class="schlaf-section">
+      <span class="schlaf-tag">Teil 01 · Die Gefühle</span>
+      <h2>Wenn dein Kopf einfach weitermacht</h2>
+
+      <div class="schlaf-columns">
+        <div>
+          <p>
+            Vielleicht kennst du das: Der Tag ist vorbei, du liegst im Bett und
+            möchtest eigentlich schlafen. Aber plötzlich kommen all die Gedanken,
+            für die tagsüber keine Zeit war.
+          </p>
+
+          <p>
+            Du denkst an die Schule, an Gespräche, an Dinge, die du noch erledigen
+            musst, oder an etwas, das dich beschäftigt. Je mehr du versuchst,
+            endlich einzuschlafen, desto angespannter wirst du vielleicht.
+          </p>
+
+          <p>
+            Und wenn du dann auch noch auf die Uhr schaust, kann schnell der Gedanke
+            entstehen, dass du morgen bestimmt völlig erschöpft sein wirst.
+            Das kann zusätzlichen Druck machen.
+          </p>
+
+          <p>
+            Schlafprobleme sind kein persönliches Versagen. Du musst dich nicht
+            dafür schämen, wenn dein Körper oder deine Gedanken gerade schwer
+            zur Ruhe kommen.
+          </p>
+        </div>
+
+        <div>
+          <h3>Was du vielleicht bemerkst</h3>
+          <ul>
+            <li>Du brauchst lange, bis du einschläfst.</li>
+            <li>Du wachst nachts häufig auf.</li>
+            <li>Deine Gedanken drehen sich immer wieder um dieselben Dinge.</li>
+            <li>Du bist tagsüber müde oder unkonzentriert.</li>
+            <li>Du machst dir Sorgen, ob du genug Schlaf bekommst.</li>
+            <li>Du fühlst dich abends unruhig, obwohl du erschöpft bist.</li>
+          </ul>
+
+          <div class="schlaf-note">
+            <strong>Denk daran:</strong><br>
+            Du musst Schlaf nicht erzwingen. Eine unruhige Nacht bedeutet nicht,
+            dass die nächste genauso sein muss. Versuche, dir den zusätzlichen
+            Druck zu nehmen.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="schlaf-section" style="background: #fff0df;">
+      <span class="schlaf-tag">Teil 02 · Wissen und Hilfe</span>
+      <h2>Was dir helfen kann, wieder mehr Ruhe zu finden</h2>
+
+      <div class="schlaf-columns">
+        <div>
+          <h3>Kleine Schritte für den Alltag</h3>
+
+          <ol class="schlaf-tips">
+            <li>
+              <strong>Finde einen ruhigen Übergang zum Schlafen.</strong><br>
+              Versuche, den Tag langsam ausklingen zu lassen. Ruhige Musik, Lesen
+              oder eine entspannte Abendroutine können dir dabei helfen.
+            </li>
+
+            <li>
+              <strong>Schreibe Gedanken auf.</strong><br>
+              Wenn du ständig an Aufgaben oder Sorgen denken musst, notiere sie
+              kurz auf Papier. Du kannst dich am nächsten Tag wieder darum kümmern.
+            </li>
+
+            <li>
+              <strong>Schau möglichst nicht ständig auf die Uhr.</strong><br>
+              Häufiges Kontrollieren kann den Druck erhöhen. Wenn möglich, lege
+              die Uhr außer Sichtweite und konzentriere dich auf eine ruhige Umgebung.
+            </li>
+
+            <li>
+              <strong>Gib deinem Körper Zeit.</strong><br>
+              Wenn du nach einer Weile im Bett immer unruhiger wirst, kann es helfen,
+              kurz aufzustehen und bei gedämpftem Licht etwas Ruhiges zu machen.
+              Geh zurück ins Bett, wenn du wieder schläfriger wirst.
+            </li>
+
+            <li>
+              <strong>Versuche, einen regelmäßigen Rhythmus zu finden.</strong><br>
+              Möglichst ähnliche Schlaf- und Aufstehzeiten können deinem Körper
+              helfen, einen Rhythmus zu entwickeln. Plane dabei genug Schlaf ein.
+            </li>
+
+            <li>
+              <strong>Sei tagsüber freundlich zu dir.</strong><br>
+              Tageslicht, Bewegung und regelmäßige Mahlzeiten können das Wohlbefinden
+              unterstützen. Du musst daraus kein perfektes Programm machen.
+            </li>
+          </ol>
+
+          <div class="schlaf-note">
+            <strong>Eine kleine Übung:</strong><br>
+            Atme langsam und angenehm ein und aus. Lass deine Schultern locker
+            und richte deine Aufmerksamkeit auf das, was du gerade wahrnimmst.
+            Du musst dabei nichts perfekt machen.
+          </div>
+        </div>
+
+        <div>
+          <h3>Wenn die Unruhe anhält</h3>
+
+          <p>
+            Schlafprobleme können viele Ursachen haben, zum Beispiel Stress,
+            Sorgen, Veränderungen im Alltag oder körperliche Beschwerden.
+            Aus einer einzelnen schlechten Nacht lässt sich noch keine Erkrankung
+            ableiten.
+          </p>
+
+          <p>
+            Wenn du über längere Zeit schlecht schläfst, tagsüber stark erschöpft
+            bist oder deine Sorgen rund um den Schlaf immer größer werden, sprich
+            mit einer vertrauten erwachsenen Person und lass dich bei Bedarf
+            ärztlich beraten.
+          </p>
+
+          <p>
+            Du musst nicht allein herausfinden, was dahintersteckt. Bitte nimm
+            regelmäßig auftretende oder stark belastende Beschwerden ernst.
+          </p>
+
+          <h3>Hier kannst du Unterstützung finden</h3>
+
+          <a class="schlaf-resource"
+             href="https://www.nummergegenkummer.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>Nummer gegen Kummer ↗</strong>
+            <span>
+              Kostenlose und anonyme Beratung für Kinder und Jugendliche.
+              Auf der Website findest du die aktuellen Kontaktmöglichkeiten.
+            </span>
+          </a>
+
+          <a class="schlaf-resource"
+             href="https://jugendnotmail.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>JugendNotmail ↗</strong>
+            <span>
+              Online-Beratung für junge Menschen bei Sorgen, Stress und
+              persönlichen Problemen.
+            </span>
+          </a>
+
+          <a class="schlaf-resource"
+             href="https://www.telefonseelsorge.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>TelefonSeelsorge ↗</strong>
+            <span>
+              Vertrauliche Unterstützung bei seelischen Belastungen.
+              Auf der Website findest du die verfügbaren Beratungsangebote.
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="schlaf-footer">
+      <p>
+        Du musst nicht jede Nacht perfekt schlafen. Du verdienst Ruhe und Unterstützung.
+        <br>
+        In Zusammenarbeit mit MaxOfficial :D
+      </p>
+
+      <a href="hilfe.html">Zurück zur Übersicht →</a>
+    </footer>
+
+  </main>
+</body>
+</html>
