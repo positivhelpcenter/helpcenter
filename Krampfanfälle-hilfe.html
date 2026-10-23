@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krampfanfälle – Positivhelpcenter</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .krampf-page {
+      --krampf-yellow: #ffda57;
+      --krampf-orange: #ffb36b;
+      --krampf-ink: #171717;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      color: var(--krampf-ink);
+      font-family: "DM Sans", Arial, sans-serif;
+    }
+
+    .krampf-page * {
+      box-sizing: border-box;
+    }
+
+    .krampf-back {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 16px;
+      border: 2px solid var(--krampf-ink);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--krampf-ink);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 3px 3px 0 var(--krampf-ink);
+    }
+
+    .krampf-hero {
+      padding: 30px;
+      margin-bottom: 26px;
+      background: var(--krampf-yellow);
+      border: 2px solid var(--krampf-ink);
+      border-radius: 18px;
+      box-shadow: 5px 5px 0 var(--krampf-ink);
+    }
+
+    .krampf-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      border: 2px solid var(--krampf-ink);
+      border-radius: 7px;
+      background: #fff;
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .krampf-hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 6vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+    }
+
+    .krampf-hero p {
+      max-width: 720px;
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .krampf-section {
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 2px solid var(--krampf-ink);
+      border-radius: 16px;
+      background: #fffdf8;
+    }
+
+    .krampf-section h2 {
+      margin: 0 0 16px;
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.7px;
+    }
+
+    .krampf-section h3 {
+      margin: 20px 0 8px;
+      font-size: 19px;
+    }
+
+    .krampf-section p,
+    .krampf-section li {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .krampf-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .krampf-columns > div + div {
+      padding-left: 24px;
+      border-left: 2px solid #e5dfd3;
+    }
+
+    .krampf-note {
+      padding: 15px 17px;
+      margin-top: 18px;
+      border-left: 5px solid var(--krampf-ink);
+      border-radius: 9px;
+      background: var(--krampf-yellow);
+      line-height: 1.7;
+    }
+
+    .krampf-warning {
+      padding: 17px;
+      margin: 18px 0;
+      border: 2px solid var(--krampf-ink);
+      border-radius: 12px;
+      background: #ffe1c7;
+      line-height: 1.8;
+    }
+
+    .krampf-list {
+      padding: 0;
+      list-style: none;
+      counter-reset: krampf-counter;
+    }
+
+    .krampf-list li {
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 18px;
+      counter-increment: krampf-counter;
+    }
+
+    .krampf-list li::before {
+      content: counter(krampf-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--krampf-ink);
+      border-radius: 50%;
+      background: var(--krampf-yellow);
+      font-weight: 800;
+    }
+
+    .krampf-resource {
+      display: block;
+      padding: 15px;
+      margin-top: 12px;
+      border: 2px solid var(--krampf-ink);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--krampf-ink);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .krampf-resource:hover {
+      transform: translateY(-2px);
+      box-shadow: 3px 3px 0 var(--krampf-ink);
+    }
+
+    .krampf-resource strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .krampf-resource span {
+      display: block;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .krampf-footer {
+      padding-top: 18px;
+      border-top: 2px dashed #aaa;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .krampf-footer a {
+      color: var(--krampf-ink);
+      font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      .krampf-page {
+        padding: 16px 12px 28px;
+      }
+
+      .krampf-hero {
+        padding: 22px 18px;
+      }
+
+      .krampf-section {
+        padding: 19px 16px;
+      }
+
+      .krampf-columns {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .krampf-columns > div + div {
+        padding-left: 0;
+        padding-top: 18px;
+        border-left: none;
+        border-top: 2px solid #e5dfd3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="krampf-page">
+
+    <a class="krampf-back" href="hilfe.html">← Zurück zur Hilfe-Seite</a>
+
+    <header class="krampf-hero">
+      <span class="krampf-tag">Medizinische Information</span>
+      <h1>Wenn jemand einen Krampfanfall hat</h1>
+      <p>
+        Einen Krampfanfall mitzuerleben, kann beängstigend und überwältigend sein.
+        Vielleicht weißt du im ersten Moment nicht, was du tun sollst.
+        Wichtig ist: Du musst nicht alles allein bewältigen. Es gibt einfache
+        Erste-Hilfe-Schritte, mit denen du helfen kannst.
+      </p>
+    </header>
+
+    <section class="krampf-section">
+      <span class="krampf-tag">Teil 01 · Die Situation</span>
+      <h2>Wenn plötzlich etwas passiert</h2>
+
+      <div class="krampf-columns">
+        <div>
+          <p>
+            Stell dir vor, du bist mit anderen Menschen zusammen und plötzlich
+            geht es jemandem nicht gut. Die Person reagiert vielleicht nicht mehr
+            wie gewohnt oder bekommt unkontrollierte Bewegungen.
+          </p>
+
+          <p>
+            In so einem Moment können viele Gedanken gleichzeitig kommen:
+            Was passiert gerade? Ist die Person in Gefahr? Soll ich jemanden rufen?
+            Es ist völlig verständlich, wenn du dich erschreckst.
+          </p>
+
+          <p>
+            Du musst keine medizinische Fachperson sein, um erste Hilfe zu leisten.
+            Das Wichtigste ist, möglichst ruhig zu bleiben, Gefahren in der Umgebung
+            zu verringern und die betroffene Person nicht allein zu lassen.
+          </p>
+        </div>
+
+        <div>
+          <h3>Was du wissen solltest</h3>
+
+          <p>
+            Krampfanfälle können unterschiedlich aussehen. Manche führen zu
+            starken unkontrollierten Bewegungen und Bewusstseinsverlust.
+            Andere zeigen sich zum Beispiel durch kurze Abwesenheit,
+            Verwirrtheit oder kleinere Muskelzuckungen.
+          </p>
+
+          <p>
+            Ein Krampfanfall bedeutet nicht automatisch, dass jemand Epilepsie hat.
+            Es gibt unterschiedliche mögliche Ursachen. Besonders bei einem
+            erstmaligen Anfall ist eine medizinische Abklärung wichtig.
+          </p>
+
+          <div class="krampf-note">
+            <strong>Das Wichtigste:</strong><br>
+            Du musst nicht herausfinden, welche Art von Anfall es ist.
+            Konzentriere dich darauf, die Person zu schützen und bei Bedarf
+            medizinische Hilfe zu holen.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="krampf-section" style="background: #fff0df;">
+      <span class="krampf-tag">Teil 02 · Erste Hilfe</span>
+      <h2>Was du während eines Anfalls tun kannst</h2>
+
+      <ol class="krampf-list">
+        <li>
+          <strong>Bewahre möglichst Ruhe und bleib bei der Person.</strong><br>
+          Sprich ruhig und bitte andere Menschen, Platz zu machen.
+          Lass die betroffene Person nicht allein, wenn es sich vermeiden lässt.
+        </li>
+
+        <li>
+          <strong>Schütze die Person vor Verletzungen.</strong><br>
+          Entferne gefährliche Gegenstände aus der unmittelbaren Umgebung.
+          Wenn möglich, lege etwas Weiches unter den Kopf, ohne die Person
+          unnötig zu bewegen.
+        </li>
+
+        <li>
+          <strong>Halte die Bewegungen nicht fest.</strong><br>
+          Versuche nicht, Arme oder Beine festzuhalten oder die Person
+          gewaltsam ruhigzustellen. Das könnte zu Verletzungen führen.
+        </li>
+
+        <li>
+          <strong>Stecke nichts in den Mund.</strong><br>
+          Versuche nicht, den Mund zu öffnen oder Gegenstände zwischen die Zähne
+          zu schieben. Gib während des Anfalls nichts zu essen oder zu trinken.
+        </li>
+
+        <li>
+          <strong>Achte auf die Dauer des Anfalls.</strong><br>
+          Merke dir, wann der Anfall beginnt. Dauert er fünf Minuten oder länger,
+          ist das ein medizinischer Notfall. Hole sofort den Rettungsdienst.
+        </li>
+
+        <li>
+          <strong>Bleib auch danach bei der Person.</strong><br>
+          Sie kann zunächst müde, verwirrt oder verunsichert sein. Sprich ruhig
+          mit ihr und gib ihr Zeit, sich zu orientieren.
+        </li>
+      </ol>
+
+      <div class="krampf-warning">
+        <strong>Wann muss sofort der Rettungsdienst gerufen werden?</strong>
+        <ul>
+          <li>Der Anfall dauert fünf Minuten oder länger.</li>
+          <li>Mehrere Anfälle treten direkt hintereinander auf.</li>
+          <li>Die Person hat Schwierigkeiten zu atmen oder kommt nicht wieder zu sich.</li>
+          <li>Die Person hat sich verletzt.</li>
+          <li>Es ist der erste bekannte Krampfanfall.</li>
+          <li>Der Anfall passiert im Wasser.</li>
+        </ul>
+        Bei akuter Gefahr: **112** anrufen. Das ist eine Notrufnummer, keine gewöhnliche Beratungsstelle.
+      </div>
+
+      <p>
+        Wenn der Anfall vorbei ist, prüfe, ob die Person normal atmet.
+        Ist sie bewusstlos, atmet aber normal, bringe sie vorsichtig in die
+        stabile Seitenlage, sofern das sicher möglich ist, und beobachte die Atmung.
+        Wenn sie nicht normal atmet, rufe den Rettungsdienst und folge den Anweisungen
+        der Leitstelle.
+      </p>
+
+      <div class="krampf-note">
+        <strong>Wichtig:</strong><br>
+        Wenn die Person einen individuellen Notfallplan hat und du weißt,
+        wie dieser sicher anzuwenden ist, folge diesem Plan. Verabreiche keine
+        Medikamente, wenn du dafür nicht ausdrücklich eingewiesen bist.
+      </div>
+    </section>
+
+    <section class="krampf-section">
+      <span class="krampf-tag">Nach dem Anfall</span>
+      <h2>Was die Person danach brauchen könnte</h2>
+
+      <div class="krampf-columns">
+        <div>
+          <h3>Ruhe und Sicherheit</h3>
+
+          <p>
+            Nach einem Anfall kann die betroffene Person erschöpft sein oder
+            einige Zeit brauchen, um wieder vollständig orientiert zu sein.
+            Sprich ruhig und erkläre kurz, was passiert ist.
+          </p>
+
+          <p>
+            Schütze ihre Privatsphäre. Bitte andere Menschen, nicht zu starren
+            oder zu filmen. Die Person sollte nicht gedrängt werden, sofort
+            aufzustehen oder alles zu erklären.
+          </p>
+        </div>
+
+        <div>
+          <h3>Was du vermeiden solltest</h3>
+
+          <ul>
+            <li>Die Person schütteln oder anschreien.</li>
+            <li>Die Bewegungen gewaltsam unterdrücken.</li>
+            <li>Etwas in den Mund stecken.</li>
+            <li>Während des Anfalls Essen, Trinken oder Tabletten geben.</li>
+            <li>Die Person direkt danach allein lassen, wenn sie noch nicht wieder orientiert ist.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="krampf-section" style="background: #fff0df;">
+      <span class="krampf-tag">Seriöse Informationen</span>
+      <h2>Hier kannst du mehr erfahren</h2>
+
+      <p>
+        Diese Informationen ersetzen keinen Erste-Hilfe-Kurs und keine medizinische
+        Untersuchung. Wenn du unsicher bist, hole dir Unterstützung von einer
+        erwachsenen Vertrauensperson oder medizinischem Fachpersonal.
+      </p>
+
+      <a class="krampf-resource"
+         href="https://www.gesundheitsinformation.de/was-tun-wenn-jemand-einen-epileptischen-anfall-hat.html"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>Gesundheitsinformation.de ↗</strong>
+        <span>
+          Verständliche Informationen dazu, wie du bei einem epileptischen Anfall
+          helfen kannst und wann ein Notfall vorliegt.
+        </span>
+      </a>
+
+      <a class="krampf-resource"
+         href="https://www.drk.de/hilfe-in-deutschland/erste-hilfe/hirnbedingte-krampfanfaelle/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>Deutsches Rotes Kreuz ↗</strong>
+        <span>
+          Erste-Hilfe-Hinweise zu Krampfanfällen und zum Schutz der betroffenen Person.
+        </span>
+      </a>
+
+      <a class="krampf-resource"
+         href="https://gesund.bund.de/wege-im-gesundheitswesen/jugend/notfaelle-1/notruf-und-notaufnahme"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>gesund.bund.de ↗</strong>
+        <span>
+          Offizielle Informationen zu Notfällen und dazu, wann medizinische Hilfe nötig ist.
+        </span>
+      </a>
+    </section>
+
+    <footer class="krampf-footer">
+      <p>
+        Du musst nicht perfekt reagieren. Ruhig bleiben, Gefahren verringern
+        und Hilfe holen sind wichtige erste Schritte.
+        <br>
+        In Zusammenarbeit mit MaxOfficial :D
+      </p>
+
+      <a href="hilfe.html">Zurück zur Übersicht →</a>
+    </footer>
+
+  </main>
+</body>
+</html>
+``
