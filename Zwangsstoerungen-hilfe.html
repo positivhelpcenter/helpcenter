@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f0df">
+  <meta name="description" content="Informationen und Unterstützung bei Zwangsgedanken und Zwangshandlungen. Du bist nicht allein und musst damit nicht allein klarkommen.">
+  <title>Zwangsstörungen – Positivhelpcenter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    #zwang-page {
+      --cream: #f6f0df;
+      --paper: #fffdf6;
+      --yellow: #ffe66d;
+      --orange: #ff8b42;
+      --black: #171717;
+      --muted: #656158;
+      --line: 2px solid var(--black);
+
+      color: var(--black);
+      background: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    #zwang-page * {
+      box-sizing: border-box;
+    }
+
+    #zwang-page a {
+      color: inherit;
+    }
+
+    #zwang-page .zwang-top {
+      border-bottom: var(--line);
+      padding: 14px 20px;
+      background: var(--yellow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    #zwang-page .zwang-brand {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      text-decoration: none;
+    }
+
+    #zwang-page .zwang-label {
+      font: 11px "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #zwang-page .zwang-wrap {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 38px 0 54px;
+    }
+
+    #zwang-page .zwang-back {
+      display: inline-block;
+      border: var(--line);
+      background: var(--paper);
+      padding: 9px 13px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 3px 3px 0 var(--black);
+      margin-bottom: 28px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    #zwang-page .zwang-back:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--black);
+    }
+
+    #zwang-page .zwang-hero {
+      border: 2px solid var(--black);
+      background: var(--yellow);
+      padding: clamp(24px, 5vw, 48px);
+      position: relative;
+      box-shadow: 7px 7px 0 var(--black);
+      margin-bottom: 34px;
+      overflow: hidden;
+    }
+
+    #zwang-page .zwang-kicker {
+      font: 11px "DM Mono", monospace;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+
+    #zwang-page h1 {
+      font-size: clamp(34px, 7vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin: 0 0 18px;
+      font-weight: 800;
+      max-width: 700px;
+    }
+
+    #zwang-page .zwang-intro {
+      font-size: 17px;
+      max-width: 680px;
+      margin: 0;
+    }
+
+    #zwang-page .zwang-stamp {
+      display: inline-block;
+      border: 2px solid var(--black);
+      background: var(--orange);
+      padding: 7px 11px;
+      font: 11px "DM Mono", monospace;
+      text-transform: uppercase;
+      margin-top: 24px;
+      transform: rotate(-2deg);
+    }
+
+    #zwang-page .zwang-section {
+      margin: 32px 0;
+    }
+
+    #zwang-page h2 {
+      font-size: clamp(23px, 4vw, 31px);
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+      margin: 0 0 14px;
+    }
+
+    #zwang-page h3 {
+      font-size: 18px;
+      line-height: 1.3;
+      margin: 0 0 8px;
+    }
+
+    #zwang-page p {
+      margin: 0 0 14px;
+    }
+
+    #zwang-page .zwang-card {
+      background: var(--paper);
+      border: var(--line);
+      padding: 22px;
+      margin: 16px 0;
+    }
+
+    #zwang-page .zwang-card.yellow {
+      background: #fff0a8;
+    }
+
+    #zwang-page .zwang-card.orange {
+      background: #ffe0c8;
+    }
+
+    #zwang-page .zwang-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    #zwang-page .zwang-grid .zwang-card {
+      margin: 0;
+    }
+
+    #zwang-page .zwang-number {
+      font: 12px "DM Mono", monospace;
+      margin-bottom: 10px;
+      display: inline-block;
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 3px;
+    }
+
+    #zwang-page .zwang-list {
+      padding-left: 22px;
+      margin: 10px 0 0;
+    }
+
+    #zwang-page .zwang-list li {
+      margin: 9px 0;
+      padding-left: 3px;
+    }
+
+    #zwang-page .zwang-note {
+      border-left: 5px solid var(--orange);
+      padding: 13px 16px;
+      background: var(--paper);
+      margin: 18px 0;
+    }
+
+    #zwang-page .zwang-quote {
+      border: var(--line);
+      background: var(--yellow);
+      padding: 25px;
+      font-size: clamp(20px, 4vw, 27px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: -0.5px;
+      margin: 25px 0;
+    }
+
+    #zwang-page .zwang-resources a {
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    #zwang-page .zwang-footer {
+      border-top: var(--line);
+      padding: 22px 16px;
+      text-align: center;
+      font-size: 12px;
+      background: var(--yellow);
+    }
+
+    #zwang-page .zwang-footer p {
+      margin: 4px 0;
+    }
+
+    #zwang-page .zwang-mono {
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+
+    @media (max-width: 600px) {
+      #zwang-page .zwang-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #zwang-page .zwang-wrap {
+        width: min(100% - 24px, 900px);
+        padding-top: 25px;
+      }
+
+      #zwang-page .zwang-hero {
+        box-shadow: 4px 4px 0 var(--black);
+      }
+
+      #zwang-page h1 {
+        letter-spacing: -1.2px;
+      }
+    }
+  </style>
+</head>
+
+<body style="margin:0;">
+  <main id="zwang-page">
+    <header class="zwang-top">
+      <a class="zwang-brand" href="hilfe.html">POSITIVHELPCENTER</a>
+      <span class="zwang-label">Wissen · Verständnis · Unterstützung</span>
+    </header>
+
+    <div class="zwang-wrap">
+      <a class="zwang-back" href="hilfe.html">← Zurück zur Hilfe-Übersicht</a>
+
+      <section class="zwang-hero">
+        <p class="zwang-kicker">01 / Gedanken verstehen</p>
+        <h1>Zwangsstörungen</h1>
+        <p class="zwang-intro">
+          Wenn Gedanken nicht loslassen oder du das Gefühl hast, etwas immer
+          wieder tun zu müssen, kann das unglaublich anstrengend sein.
+          Du bist damit nicht allein. Und du bist nicht schuld daran.
+        </p>
+        <span class="zwang-stamp">Du verdienst Unterstützung.</span>
+      </section>
+
+      <section class="zwang-section">
+        <h2>Was ist eine Zwangsstörung?</h2>
+        <p>
+          Eine Zwangsstörung ist eine psychische Erkrankung. Dabei können
+          wiederkehrende, aufdringliche Gedanken, Bilder oder Impulse auftreten,
+          die Angst, Zweifel oder starke Anspannung auslösen. Manche Menschen
+          fühlen sich dadurch gedrängt, bestimmte Handlungen zu wiederholen
+          oder Dinge innerlich immer wieder zu überprüfen.
+        </p>
+        <p>
+          Solche Gedanken können sich unerwünscht anfühlen und nicht zu den
+          eigenen Werten oder Wünschen passen. Dass ein Gedanke auftaucht,
+          bedeutet nicht, dass man ihn gutheißt, dass er wahr ist oder dass
+          man danach handeln muss.
+        </p>
+
+        <div class="zwang-card yellow">
+          <h3>Wichtig zu wissen</h3>
+          <p>
+            Eine Zwangsstörung ist nicht einfach nur Ordnungsliebe,
+            Genauigkeit oder ein Wunsch nach Perfektion. Entscheidend ist unter
+            anderem, ob Gedanken und Handlungen viel Stress verursachen,
+            viel Zeit beanspruchen oder den Alltag beeinträchtigen.
+          </p>
+        </div>
+      </section>
+
+      <section class="zwang-section">
+        <h2>Zwei Begriffe, die du kennen solltest</h2>
+
+        <div class="zwang-grid">
+          <article class="zwang-card">
+            <span class="zwang-number">01 / ZWANGSGEDANKEN</span>
+            <h3>Gedanken, die sich aufdrängen</h3>
+            <p>
+              Unerwünschte Gedanken, Zweifel, Bilder oder Befürchtungen können
+              immer wieder auftauchen. Betroffene versuchen häufig, die
+              dadurch ausgelöste Anspannung loszuwerden.
+            </p>
+          </article>
+
+          <article class="zwang-card">
+            <span class="zwang-number">02 / ZWANGSHANDLUNGEN</span>
+            <h3>Das Gefühl, etwas tun zu müssen</h3>
+            <p>
+              Das können wiederholte Handlungen oder gedankliche Rituale sein.
+              Sie sollen oft Angst oder Zweifel verringern. Die Erleichterung
+              hält jedoch häufig nicht lange an, sodass der Kreislauf erneut
+              beginnen kann.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="zwang-section">
+        <h2>Warum kann das so erschöpfend sein?</h2>
+        <p>
+          Bei Zwangsstörungen kann sich ein Kreislauf entwickeln: Ein Gedanke
+          oder Zweifel löst Anspannung aus. Eine Handlung oder ein inneres
+          Ritual bringt kurz Erleichterung. Danach kehrt der Zweifel zurück
+          und verlangt scheinbar nach einer erneuten Reaktion.
+        </p>
+        <p>
+          Das kostet Kraft. Manche Betroffene schämen sich, ziehen sich zurück
+          oder versuchen, ihre Schwierigkeiten zu verbergen. Andere wissen,
+          dass die Wiederholung eigentlich nicht hilft, fühlen sich aber
+          trotzdem stark dazu gedrängt.
+        </p>
+
+        <div class="zwang-note">
+          <strong>Du musst dich dafür nicht schämen.</strong>
+          Zwangsgedanken und Zwangshandlungen sind keine Charakterschwäche.
+          Du musst sie auch nicht allein durch Willenskraft bewältigen.
+        </div>
+      </section>
+
+      <section class="zwang-section">
+        <h2>Was kann im Alltag helfen?</h2>
+
+        <article class="zwang-card">
+          <h3>1. Erkenne an, dass es gerade schwer ist</h3>
+          <p>
+            Du musst deine Gefühle nicht wegdrücken oder sofort eine Lösung
+            finden. Es reicht zunächst, wahrzunehmen, dass du gerade belastet
+            bist.
+          </p>
+        </article>
+
+        <article class="zwang-card">
+          <h3>2. Behandle dich nicht wie deinen eigenen Gegner</h3>
+          <p>
+            Beschimpfe dich nicht dafür, dass du Schwierigkeiten hast.
+            Eine Zwangsstörung kann sehr belastend sein, und du verdienst
+            Verständnis statt zusätzlichem Druck.
+          </p>
+        </article>
+
+        <article class="zwang-card">
+          <h3>3. Hole dir Unterstützung</h3>
+          <p>
+            Du kannst mit einer vertrauten Person, einer Ärztin, einem Arzt
+            oder einer psychotherapeutischen Fachperson sprechen. Du musst
+            nicht erst warten, bis alles unerträglich wird.
+          </p>
+        </article>
+
+        <article class="zwang-card">
+          <h3>4. Versuche nicht, jeden Gedanken endgültig zu klären</h3>
+          <p>
+            Bei Zwangsstörungen kann der Versuch, für jeden Zweifel absolute
+            Sicherheit zu bekommen, den Kreislauf verstärken. Es kann hilfreich
+            sein, dieses Muster gemeinsam mit einer Fachperson zu verstehen,
+            statt immer wieder nach einer endgültigen Gewissheit zu suchen.
+          </p>
+        </article>
+
+        <article class="zwang-card">
+          <h3>5. Mach kleine, machbare Schritte</h3>
+          <p>
+            Du musst nicht alles auf einmal verändern. Behandlungsschritte
+            können gemeinsam mit einer Fachperson geplant und an deine
+            Situation angepasst werden. Setze dich nicht unter Druck,
+            schwierige Übungen allein oder plötzlich bewältigen zu müssen.
+          </p>
+        </article>
+      </section>
+
+      <section class="zwang-section">
+        <h2>Wie kann eine Behandlung helfen?</h2>
+        <p>
+          Zwangsstörungen sind behandelbar. Eine häufig eingesetzte Behandlung
+          ist die kognitive Verhaltenstherapie, insbesondere die
+          Exposition mit Reaktionsmanagement (ERP). Dabei lernen Betroffene
+          mit therapeutischer Unterstützung schrittweise, anders mit
+          Zwangsgedanken und dem Drang zu Ritualen umzugehen.
+        </p>
+        <p>
+          Je nach Situation können weitere Behandlungen, darunter Medikamente,
+          eine Rolle spielen. Welche Unterstützung passt, sollte mit einer
+          qualifizierten medizinischen oder psychotherapeutischen Fachperson
+          besprochen werden.
+        </p>
+        <div class="zwang-card orange">
+          <h3>Du musst nicht erst „schlimm genug“ dran sein.</h3>
+          <p>
+            Wenn Zwangsgedanken oder Zwangshandlungen dich belasten, deinen
+            Alltag einschränken oder dir viel Zeit nehmen, ist es völlig
+            in Ordnung, dir Hilfe zu holen.
+          </p>
+        </div>
+      </section>
+
+      <section class="zwang-section">
+        <h2>Wenn du jünger bist</h2>
+        <p>
+          Du darfst mit solchen Problemen zu einer erwachsenen Person gehen,
+          der du vertraust. Das kann ein Elternteil, ein anderes
+          Familienmitglied, eine Lehrkraft, eine Schulsozialarbeiterin oder
+          ein Schulsozialarbeiter sein.
+        </p>
+        <p>
+          Du musst nicht jedes Detail deiner Gedanken erzählen, um zu sagen,
+          dass du Hilfe brauchst. Du könntest zum Beispiel anfangen mit:
+        </p>
+        <div class="zwang-card yellow">
+          „Ich habe wiederkehrende Gedanken oder einen starken Drang, Dinge
+          zu wiederholen. Das belastet mich, und ich möchte mit jemandem
+          darüber sprechen, der sich damit auskennt.“
+        </div>
+      </section>
+
+      <section class="zwang-section">
+        <h2>Ein paar Sätze für schwierige Momente</h2>
+        <div class="zwang-quote">
+          „Ein Gedanke ist nicht automatisch eine Tatsache.“
+        </div>
+        <div class="zwang-quote">
+          „Ich bin nicht meine Zwangsgedanken.“
+        </div>
+        <div class="zwang-quote">
+          „Ich darf Unterstützung brauchen.“
+        </div>
+        <div class="zwang-quote">
+          „Fortschritt muss nicht perfekt sein.“
+        </div>
+        <p>
+          Diese Sätze sind keine Zauberformeln und müssen nicht ständig
+          wiederholt werden, bis du dich sicher fühlst. Sie sollen dich
+          freundlich daran erinnern, dass du mehr bist als das, was dich
+          gerade belastet.
+        </p>
+      </section>
+
+      <section class="zwang-section zwang-resources">
+        <h2>Wo kannst du Hilfe finden?</h2>
+        <div class="zwang-card">
+          <h3>TelefonSeelsorge</h3>
+          <p>
+            Wenn du jemanden zum Reden brauchst, kannst du dich in Deutschland
+            kostenlos und anonym an die TelefonSeelsorge wenden.
+          </p>
+          <p>
+            Telefon: <strong>0800 111 0 111</strong>,
+            <strong>0800 111 0 222</strong> oder <strong>116 123</strong>.
+          </p>
+          <p>
+            Online: <a href="https://www.telefonseelsorge.de/" target="_blank" rel="noopener noreferrer">telefonseelsorge.de</a>
+          </p>
+        </div>
+
+        <div class="zwang-card">
+          <h3>Nummer gegen Kummer</h3>
+          <p>
+            Für Kinder und Jugendliche gibt es ein anonymes und kostenloses
+            Beratungsangebot.
+          </p>
+          <p>
+            Telefon: <strong>116 111</strong>.
+            Die aktuellen Zeiten und weiteren Kontaktmöglichkeiten findest du
+            auf der Website.
+          </p>
+          <p>
+            Online: <a href="https://www.nummergegenkummer.de/" target="_blank" rel="noopener noreferrer">nummergegenkummer.de</a>
+          </p>
+        </div>
+
+        <div class="zwang-card">
+          <h3>Professionelle Hilfe</h3>
+          <p>
+            Eine Hausarztpraxis, eine psychotherapeutische Praxis oder eine
+            Beratungsstelle kann dir helfen, passende Unterstützung zu finden.
+            Du kannst auch eine Vertrauensperson bitten, dich bei der Suche
+            oder bei einem ersten Termin zu begleiten.
+          </p>
+        </div>
+
+        <p class="zwang-mono">
+          Bei unmittelbarer Gefahr oder einem medizinischen Notfall: 112.
+        </p>
+      </section>
+
+      <section class="zwang-section">
+        <h2>Zum Schluss</h2>
+        <div class="zwang-card yellow">
+          <p>
+            Du bist nicht schwach, weil dein Kopf dich manchmal erschöpft.
+            Du musst dich für deine Gedanken nicht schämen und musst auch
+            nicht alles allein lösen.
+          </p>
+          <p>
+            Es gibt Unterstützung, und es ist möglich, einen besseren Umgang
+            mit Zwangsgedanken und Zwangshandlungen zu lernen. Du bist mehr
+            als das, womit du gerade kämpfst.
+          </p>
+        </div>
+      </section>
+
+      <a class="zwang-back" href="hilfe.html">← Zurück zur Hilfe-Übersicht</a>
+    </div>
+
+    <footer class="zwang-footer">
+      <p><strong>POSITIVHELPCENTER</strong></p>
+      <p>Ein Ort für Verständnis, Orientierung und neue Kraft.</p>
+      <p>In Zusammenarbeit mit MaxOfficial :D</p>
+      <p class="zwang-mono">Du musst nicht alles allein schaffen.</p>
+    </footer>
+  </main>
+</body>
+</html>
