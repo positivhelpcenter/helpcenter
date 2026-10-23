@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7e8b5">
+  <title>Angst – Hilfe finden</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --angst-paper: #fff9e9;
+      --angst-ink: #25231f;
+      --angst-yellow: #ffdc59;
+      --angst-orange: #ff914d;
+      --angst-border: #25231f;
+      --angst-muted: #625e54;
+    }
+
+    body {
+      background: var(--angst-paper);
+      color: var(--angst-ink);
+    }
+
+    .angst-page {
+      width: min(100% - 32px, 900px);
+      margin: 0 auto;
+      padding: 24px 0 60px;
+    }
+
+    .angst-back {
+      display: inline-block;
+      margin: 0 0 24px;
+      padding: 10px 15px;
+      border: 2px solid var(--angst-border);
+      border-radius: 8px;
+      color: var(--angst-ink);
+      background: white;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--angst-border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .angst-back:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--angst-border);
+    }
+
+    .angst-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 58px);
+      background: var(--angst-yellow);
+      border: 3px solid var(--angst-border);
+      border-radius: 16px;
+      box-shadow: 7px 7px 0 var(--angst-border);
+      margin-bottom: 38px;
+    }
+
+    .angst-label {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 2px solid var(--angst-border);
+      border-radius: 5px;
+      background: white;
+      font-family: "DM Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .angst-hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 20px 0 14px;
+      font-size: clamp(2.3rem, 7vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      overflow-wrap: anywhere;
+    }
+
+    .angst-hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.7;
+    }
+
+    .angst-decoration {
+      position: absolute;
+      right: 25px;
+      bottom: -30px;
+      font-size: clamp(6rem, 18vw, 12rem);
+      line-height: 1;
+      opacity: 0.13;
+      transform: rotate(-12deg);
+      pointer-events: none;
+    }
+
+    .angst-section {
+      margin: 34px 0;
+      padding: clamp(22px, 4vw, 36px);
+      border: 2px solid var(--angst-border);
+      border-radius: 14px;
+      box-shadow: 5px 5px 0 var(--angst-border);
+    }
+
+    .angst-section.personal {
+      background: #fff;
+    }
+
+    .angst-section.facts {
+      background: #ffe7d3;
+    }
+
+    .angst-section h2 {
+      margin: 14px 0 20px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .angst-section h3 {
+      margin: 26px 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .angst-section p,
+    .angst-section li {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .angst-section p {
+      margin: 12px 0;
+    }
+
+    .angst-section ul {
+      padding-left: 22px;
+    }
+
+    .angst-section li {
+      margin: 8px 0;
+    }
+
+    .angst-note {
+      margin-top: 22px;
+      padding: 17px 19px;
+      background: var(--angst-yellow);
+      border-left: 5px solid var(--angst-border);
+      border-radius: 5px;
+      line-height: 1.7;
+    }
+
+    .angst-resource {
+      display: block;
+      margin: 12px 0;
+      padding: 16px 18px;
+      border: 2px solid var(--angst-border);
+      border-radius: 9px;
+      background: white;
+      color: var(--angst-ink);
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--angst-border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .angst-resource:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--angst-border);
+    }
+
+    .angst-resource strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .angst-resource span {
+      display: block;
+      color: var(--angst-muted);
+      line-height: 1.6;
+    }
+
+    .angst-footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 2px dashed var(--angst-border);
+      text-align: center;
+      color: var(--angst-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 520px) {
+      .angst-page {
+        width: min(100% - 22px, 900px);
+        padding-top: 16px;
+      }
+
+      .angst-hero {
+        box-shadow: 4px 4px 0 var(--angst-border);
+      }
+
+      .angst-section {
+        box-shadow: 3px 3px 0 var(--angst-border);
+      }
+
+      .angst-section p,
+      .angst-section li {
+        font-size: 0.96rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="angst-page">
+
+    <a class="angst-back" href="hilfe.html">← Zurück zur Hilfe-Seite</a>
+
+    <header class="angst-hero">
+      <span class="angst-label">Ein Thema, über das wir reden sollten</span>
+      <h1>Du musst nicht jede Angst allein tragen.</h1>
+      <p>
+        Angst kann sich überwältigend anfühlen. Doch deine Gedanken sind
+        nicht automatisch Vorhersagen, und du musst nicht alles sofort
+        lösen, um wieder etwas Ruhe zu finden.
+      </p>
+      <div class="angst-decoration" aria-hidden="true">✳</div>
+    </header>
+
+    <!-- TEIL 1: PERSÖNLICH UND EMOTIONAL -->
+    <section class="angst-section personal">
+      <span class="angst-label">Teil 01 · Die Gefühle</span>
+      <h2>Wenn dein Kopf einfach nicht aufhören will</h2>
+
+      <p>
+        Manchmal beginnt es mit einem kleinen Gedanken. Du fragst dich,
+        ob etwas schiefgehen könnte, ob du etwas falsch gemacht hast oder
+        ob sich etwas verändern wird. Eigentlich möchtest du an etwas
+        anderes denken – aber der Gedanke kommt immer wieder zurück.
+      </p>
+
+      <p>
+        Vielleicht versuchst du, jede Möglichkeit durchzugehen, damit dich
+        nichts überrascht. Vielleicht suchst du nach einer Antwort, die dir
+        endlich Sicherheit gibt. Und selbst wenn du dich kurz beruhigt fühlst,
+        taucht schon die nächste Frage auf.
+      </p>
+
+      <p>
+        Das kann anstrengend sein. Vor allem, wenn andere gar nicht bemerken,
+        wie viel in deinem Kopf los ist. Von außen sieht vielleicht alles
+        normal aus, während du innerlich versuchst, mit einer ganzen Reihe
+        von Sorgen klarzukommen.
+      </p>
+
+      <h3>Du bist nicht deine Angst</h3>
+
+      <p>
+        Angst kann dir einreden, dass du etwas unbedingt verhindern,
+        kontrollieren oder sofort klären musst. Das Gefühl kann sehr stark
+        sein. Trotzdem bedeutet ein beängstigender Gedanke nicht automatisch,
+        dass etwas Schlimmes passieren wird.
+      </p>
+
+      <p>
+        Du musst auch nicht jeden Gedanken beantworten. Manchmal darf eine
+        Frage offenbleiben, obwohl sich das zunächst unangenehm anfühlt.
+        Nicht alles lässt sich vorhersehen – und nicht jede Unsicherheit
+        muss sofort verschwinden.
+      </p>
+
+      <h3>Du darfst dir Zeit lassen</h3>
+
+      <p>
+        Vielleicht vergleichst du dich mit Menschen, die scheinbar viel
+        entspannter durchs Leben gehen. Aber du siehst nicht immer, was
+        andere beschäftigt. Und du musst deine Gefühle nicht mit denen
+        anderer vergleichen, um sie ernst nehmen zu dürfen.
+      </p>
+
+      <p>
+        Du musst nicht von heute auf morgen mutig und sorgenfrei werden.
+        Mut kann auch bedeuten, einen kleinen Schritt zu machen, obwohl
+        noch Unsicherheit da ist. Oder jemandem zu sagen, dass du gerade
+        Unterstützung brauchst.
+      </p>
+
+      <div class="angst-note">
+        <strong>Erinnere dich:</strong> Ein Gedanke ist nicht automatisch
+        eine Tatsache. Ein Gefühl ist nicht automatisch eine Vorhersage.
+        Und du musst nicht alles allein herausfinden.
+      </div>
+    </section>
+
+    <!-- TEIL 2: FAKTEN UND PRAKTISCHE HILFE -->
+    <section class="angst-section facts">
+      <span class="angst-label">Teil 02 · Wissen und Hilfe</span>
+      <h2>Was bei Angst helfen kann</h2>
+
+      <p>
+        Angst ist eine natürliche Reaktion auf Situationen, die unser Gehirn
+        als bedrohlich einschätzt. Sie kann den Körper auf eine mögliche
+        Gefahr vorbereiten. Manchmal wird diese Alarmreaktion jedoch sehr
+        stark oder tritt auf, obwohl gerade keine unmittelbare Gefahr besteht.
+      </p>
+
+      <p>
+        Jeder Mensch erlebt Angst anders. Wenn sie häufig auftritt, lange
+        anhält oder deinen Alltag deutlich einschränkt, kann professionelle
+        Unterstützung sinnvoll sein.
+      </p>
+
+      <h3>1. Komm zuerst im gegenwärtigen Moment an</h3>
+
+      <p>
+        Wenn du merkst, dass deine Gedanken immer schneller werden, halte
+        kurz inne. Stell beide Füße auf den Boden und nimm wahr, was gerade
+        um dich herum ist. Du kannst zum Beispiel fünf Dinge benennen, die
+        du siehst, oder auf die Geräusche in deiner Umgebung achten.
+      </p>
+
+      <p>
+        Du musst dabei nicht erzwingen, dass die Angst sofort verschwindet.
+        Das Ziel ist zunächst, deine Aufmerksamkeit wieder etwas mehr auf
+        den gegenwärtigen Moment zu richten.
+      </p>
+
+      <h3>2. Unterscheide zwischen Gedanken und überprüfbaren Fakten</h3>
+
+      <p>
+        Wenn dich eine Sorge beschäftigt, kannst du dich fragen:
+        „Was weiß ich tatsächlich – und was befürchte ich gerade?“
+        Das bedeutet nicht, deine Gefühle abzuwerten. Es hilft dir vielmehr,
+        eine Befürchtung nicht automatisch wie eine sichere Tatsache zu behandeln.
+      </p>
+
+      <h3>3. Geh in kleinen Schritten vor</h3>
+
+      <p>
+        Wenn du eine Situation aus Angst vermeidest, kann kurzfristig
+        Erleichterung entstehen. Langfristig kann Vermeidung die Angst
+        manchmal verstärken. Kleine, machbare Schritte können helfen,
+        wieder mehr Sicherheit zu gewinnen.
+      </p>
+
+      <p>
+        Bei sehr starker Angst oder Panik musst du dich nicht allein zu
+        schwierigen Situationen zwingen. Ein behutsamer Plan mit einer
+        vertrauten Person oder einer Fachkraft kann sinnvoller sein.
+      </p>
+
+      <h3>4. Achte auf deinen Alltag</h3>
+
+      <p>
+        Regelmäßiger Schlaf, ausreichend Essen und Trinken, Bewegung und
+        Pausen können dabei helfen, mit Belastungen besser umzugehen.
+        Sie sind keine Garantie gegen Angst, bilden aber eine hilfreiche
+        Grundlage für dein Wohlbefinden.
+      </p>
+
+      <h3>5. Hol dir Hilfe, wenn die Angst dich einschränkt</h3>
+
+      <p>
+        Sprich mit einer vertrauten erwachsenen Person, deiner Hausarztpraxis,
+        einer Schulsozialarbeiterin oder einem Schulsozialarbeiter oder einer
+        psychologischen Beratungsstelle, wenn die Angst deinen Alltag
+        beeinträchtigt oder du alleine nicht weiterkommst.
+      </p>
+
+      <p>
+        Eine psychotherapeutische Fachkraft kann mit dir herausfinden,
+        was hinter deinen Ängsten steckt, und passende Strategien erarbeiten.
+        Du musst nicht erst warten, bis es richtig schlimm wird.
+      </p>
+
+      <div class="angst-note">
+        <strong>Wichtig:</strong> Wenn du immer wieder nach Bestätigung
+        suchst, kontrollierst oder bestimmte Dinge wiederholen musst, um
+        dich kurz sicher zu fühlen, und es dir schwerfällt, damit aufzuhören,
+        kannst du das ebenfalls mit einer Fachperson besprechen. Du musst
+        dich dafür nicht schämen.
+      </div>
+
+      <h3>Hier kannst du dir Unterstützung holen</h3>
+
+      <a class="angst-resource"
+         href="https://www.nummergegenkummer.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>Nummer gegen Kummer</strong>
+        <span>
+          Kostenlose und anonyme Beratung für Kinder und Jugendliche.
+          Auf der offiziellen Website findest du die aktuellen
+          Kontaktmöglichkeiten.
+        </span>
+      </a>
+
+      <a class="angst-resource"
+         href="https://www.jugendnotmail.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>JugendNotmail</strong>
+        <span>
+          Online-Beratung für junge Menschen bei Sorgen, Ängsten und
+          persönlichen Belastungen.
+        </span>
+      </a>
+
+      <a class="angst-resource"
+         href="https://www.telefonseelsorge.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>TelefonSeelsorge</strong>
+        <span>
+          Vertrauliche Unterstützung bei seelischen Belastungen.
+          Auf der Website findest du die verfügbaren Beratungsangebote.
+        </span>
+      </a>
+    </section>
+
+    <footer class="angst-footer">
+      <p>Du musst nicht angstfrei sein, um den nächsten Schritt zu schaffen.</p>
+      <p>In Zusammenarbeit mit MaxOfficial :D</p>
+      <a href="hilfe.html">Zurück zur Übersicht</a>
+    </footer>
+
+  </main>
+</body>
+</html>
