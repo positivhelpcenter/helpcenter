@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menuToggle && mainNav) {
     menuToggle.addEventListener("click", () => {
       const isOpen = mainNav.classList.toggle("is-open");
+
       menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute(
         "aria-label",
@@ -50,10 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-help]").forEach((card) => {
     card.addEventListener("click", () => {
       const key = card.dataset.help;
+
       if (!helpMessages[key] || !helpResponse || !helpResponseText) return;
 
       helpResponseText.textContent = helpMessages[key];
       helpResponse.hidden = false;
+
       helpResponse.scrollIntoView({
         behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
           ? "auto"
@@ -93,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let index;
+
     do {
       index = Math.floor(Math.random() * quotes.length);
     } while (index === lastQuote);
@@ -105,8 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     newQuote.addEventListener("click", showRandomQuote);
   }
 
-  // Simple local chat with prepared responses.
-  // Messages are not sent to a server or stored by this script.
+  // Local chat with prepared replies
   const chatForm = document.getElementById("chatForm");
   const chatInput = document.getElementById("chatInput");
   const chatMessages = document.getElementById("chatMessages");
@@ -115,32 +118,32 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       keywords: ["stress", "druck", "überfordert", "zu viel", "kopf"],
       reply:
-        "Das klingt nach ganz schön viel auf einmal. Was davon fühlt sich gerade am dringendsten an? Du musst nicht alles auf einmal lösen."
+        "Das klingt nach ganz schön viel auf einmal. Was davon fühlt sich gerade am dringendsten an?"
     },
     {
       keywords: ["traurig", "traurigkeit", "einsam", "allein", "weinen"],
       reply:
-        "Es tut mir leid, dass es sich gerade so schwer anfühlt. Du musst deine Gefühle nicht wegdrücken. Gibt es jemanden, bei dem du dich sicher und verstanden fühlst?"
+        "Es tut mir leid, dass es sich gerade so schwer anfühlt. Gibt es jemanden, bei dem du dich sicher und verstanden fühlst?"
     },
     {
       keywords: ["angst", "ängste", "sorge", "sorgen", "panik"],
       reply:
-        "Angst kann sich sehr überwältigend anfühlen. Versuch, kurz im Hier und Jetzt anzukommen: Schau dich um und benenne drei Dinge, die du sehen kannst. Was macht dir gerade am meisten Sorgen?"
+        "Angst kann sich überwältigend anfühlen. Versuch, kurz im Hier und Jetzt anzukommen. Was macht dir gerade am meisten Sorgen?"
     },
     {
       keywords: ["schule", "noten", "prüfung", "lernen", "lehrer"],
       reply:
-        "Schule kann einen ganz schön fordern. Vielleicht hilft es, die Sache in einen kleinen nächsten Schritt aufzuteilen. Was genau steht gerade an?"
+        "Schule kann einen ganz schön fordern. Vielleicht hilft es, die Sache in einen kleinen nächsten Schritt aufzuteilen. Was steht gerade an?"
     },
     {
       keywords: ["freunde", "freundschaft", "streit", "beziehung", "liebe"],
       reply:
-        "Zwischenmenschliche Dinge können ganz schön kompliziert sein. Was ist passiert, und was würdest du dir in dieser Situation wünschen?"
+        "Zwischenmenschliche Dinge können kompliziert sein. Was ist passiert, und was würdest du dir wünschen?"
     },
     {
       keywords: ["müde", "erschöpft", "schlafen", "pause", "kraftlos"],
       reply:
-        "Vielleicht brauchst du gerade nicht noch mehr von dir selbst, sondern eine Pause. Was wäre eine kleine Sache, die dir jetzt guttun könnte?"
+        "Vielleicht brauchst du gerade eine Pause. Was wäre eine kleine Sache, die dir jetzt guttun könnte?"
     }
   ];
 
@@ -148,27 +151,34 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!chatMessages) return;
 
     const message = document.createElement("div");
-    message.className = `message ${type === "user" ? "message-user" : "message-bot"}`;
+
+    message.className =
+      "message " + (type === "user" ? "message-user" : "message-bot");
+
     message.textContent = text;
     chatMessages.appendChild(message);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  function getReply(text) {
-    const normalized = text
+  function normalizeText(text) {
+    return text
       .toLocaleLowerCase("de-DE")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function getReply(text) {
+    const normalized = normalizeText(text);
 
     const match = chatReplies.find((entry) =>
-      entry.keywords.some((word) => normalized.includes(
-        word.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-      ))
+      entry.keywords.some((word) =>
+        normalized.includes(normalizeText(word))
+      )
     );
 
     if (match) return match.reply;
 
-    return "Danke, dass du das aufschreibst. Ich kann nicht alles verstehen oder beurteilen, aber ich kann dir helfen, deine Gedanken zu sortieren. Was ist dir daran gerade besonders wichtig?";
+    return "Danke, dass du das aufschreibst. Was ist dir daran gerade besonders wichtig?";
   }
 
   if (chatForm && chatInput && chatMessages) {
@@ -188,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Footer year
   const currentYear = document.getElementById("currentYear");
+
   if (currentYear) {
     currentYear.textContent = String(new Date().getFullYear());
   }
