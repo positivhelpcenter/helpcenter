@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neue Kraft finden – Positivhelpcenter</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .kraft-page {
+      --kraft-yellow: #ffda57;
+      --kraft-orange: #ffb36b;
+      --kraft-ink: #171717;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      color: var(--kraft-ink);
+      font-family: "DM Sans", Arial, sans-serif;
+    }
+
+    .kraft-page * {
+      box-sizing: border-box;
+    }
+
+    .kraft-back {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 16px;
+      border: 2px solid var(--kraft-ink);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--kraft-ink);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 3px 3px 0 var(--kraft-ink);
+    }
+
+    .kraft-hero {
+      padding: 30px;
+      margin-bottom: 26px;
+      background: var(--kraft-yellow);
+      border: 2px solid var(--kraft-ink);
+      border-radius: 18px;
+      box-shadow: 5px 5px 0 var(--kraft-ink);
+    }
+
+    .kraft-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      border: 2px solid var(--kraft-ink);
+      border-radius: 7px;
+      background: #fff;
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .kraft-hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 6vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+    }
+
+    .kraft-hero p {
+      max-width: 700px;
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .kraft-section {
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 2px solid var(--kraft-ink);
+      border-radius: 16px;
+      background: #fffdf8;
+    }
+
+    .kraft-section h2 {
+      margin: 0 0 16px;
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.7px;
+    }
+
+    .kraft-section h3 {
+      margin: 18px 0 8px;
+      font-size: 19px;
+    }
+
+    .kraft-section p,
+    .kraft-section li {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .kraft-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .kraft-columns > div + div {
+      padding-left: 24px;
+      border-left: 2px solid #e5dfd3;
+    }
+
+    .kraft-note {
+      padding: 15px 17px;
+      margin-top: 18px;
+      border-left: 5px solid var(--kraft-ink);
+      border-radius: 9px;
+      background: var(--kraft-yellow);
+      line-height: 1.7;
+    }
+
+    .kraft-tips {
+      padding: 0;
+      list-style: none;
+      counter-reset: kraft-counter;
+    }
+
+    .kraft-tips li {
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 18px;
+      counter-increment: kraft-counter;
+    }
+
+    .kraft-tips li::before {
+      content: counter(kraft-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--kraft-ink);
+      border-radius: 50%;
+      background: var(--kraft-yellow);
+      font-weight: 800;
+    }
+
+    .kraft-resource {
+      display: block;
+      padding: 15px;
+      margin-top: 12px;
+      border: 2px solid var(--kraft-ink);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--kraft-ink);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .kraft-resource:hover {
+      transform: translateY(-2px);
+      box-shadow: 3px 3px 0 var(--kraft-ink);
+    }
+
+    .kraft-resource strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .kraft-resource span {
+      display: block;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .kraft-footer {
+      padding-top: 18px;
+      border-top: 2px dashed #aaa;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .kraft-footer a {
+      color: var(--kraft-ink);
+      font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      .kraft-page {
+        padding: 16px 12px 28px;
+      }
+
+      .kraft-hero {
+        padding: 22px 18px;
+      }
+
+      .kraft-section {
+        padding: 19px 16px;
+      }
+
+      .kraft-columns {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .kraft-columns > div + div {
+        padding-left: 0;
+        padding-top: 18px;
+        border-left: none;
+        border-top: 2px solid #e5dfd3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="kraft-page">
+
+    <a class="kraft-back" href="hilfe.html">← Zurück zur Hilfe-Seite</a>
+
+    <header class="kraft-hero">
+      <span class="kraft-tag">Kraft & Mut</span>
+      <h1>Wenn du neue Kraft brauchst</h1>
+      <p>
+        Du musst nicht jeden Tag alles schaffen. Manchmal bedeutet Stärke,
+        einen Schritt zurückzugehen, durchzuatmen und sich Unterstützung zu holen.
+        Du darfst langsam machen.
+      </p>
+    </header>
+
+    <section class="kraft-section">
+      <span class="kraft-tag">Teil 01 · Die Gefühle</span>
+      <h2>Wenn selbst kleine Dinge anstrengend werden</h2>
+
+      <div class="kraft-columns">
+        <div>
+          <p>
+            Es gibt Zeiten, in denen sich alles schwerer anfühlt als sonst.
+            Dinge, die früher selbstverständlich waren, kosten plötzlich viel Energie.
+            Vielleicht fällt es dir schwer, aufzustehen, dich zu konzentrieren
+            oder überhaupt zu wissen, wo du anfangen sollst.
+          </p>
+
+          <p>
+            Vielleicht versuchst du trotzdem, weiterzumachen. Du möchtest niemanden
+            enttäuschen und hast das Gefühl, funktionieren zu müssen. Dabei merkst
+            du vielleicht erst spät, wie erschöpft du eigentlich bist.
+          </p>
+
+          <p>
+            Du musst deine Gefühle nicht erst erklären oder rechtfertigen, damit
+            sie ernst genommen werden. Auch wenn du nicht genau weißt, was los ist,
+            darfst du sagen: „Mir geht es gerade nicht gut.“
+          </p>
+        </div>
+
+        <div>
+          <h3>Vielleicht kommt dir das bekannt vor</h3>
+          <ul>
+            <li>Du fühlst dich oft müde oder ausgelaugt.</li>
+            <li>Selbst kleine Aufgaben wirken plötzlich riesig.</li>
+            <li>Du ziehst dich zurück oder möchtest deine Ruhe haben.</li>
+            <li>Du hast das Gefühl, anderen nicht gerecht zu werden.</li>
+            <li>Du weißt nicht, was dir gerade guttun würde.</li>
+            <li>Du vermisst das Gefühl, dich auf etwas freuen zu können.</li>
+          </ul>
+
+          <div class="kraft-note">
+            <strong>Denk daran:</strong><br>
+            Du musst nicht erst völlig erschöpft sein, um eine Pause zu verdienen.
+            Dein Wert hängt nicht davon ab, wie viel du an einem Tag schaffst.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="kraft-section" style="background: #fff0df;">
+      <span class="kraft-tag">Teil 02 · Wissen und Hilfe</span>
+      <h2>Wie du Schritt für Schritt wieder Halt finden kannst</h2>
+
+      <div class="kraft-columns">
+        <div>
+          <h3>Kleine Schritte für schwierige Tage</h3>
+
+          <ol class="kraft-tips">
+            <li>
+              <strong>Erwarte nicht alles auf einmal von dir.</strong><br>
+              Wähle eine kleine, machbare Sache aus. Du musst nicht gleich den ganzen
+              Tag bewältigen. Ein kleiner Schritt ist auch ein Schritt.
+            </li>
+
+            <li>
+              <strong>Kümmere dich um deine Grundbedürfnisse.</strong><br>
+              Versuche regelmäßig zu essen und zu trinken, ausreichend zu schlafen
+              und etwas frische Luft zu bekommen. Du musst daraus kein perfektes
+              Programm machen.
+            </li>
+
+            <li>
+              <strong>Gib dir Pausen ohne schlechtes Gewissen.</strong><br>
+              Du darfst dich ausruhen, Musik hören, etwas Ruhiges machen oder einfach
+              eine Weile nichts leisten.
+            </li>
+
+            <li>
+              <strong>Bleib mit Menschen in Verbindung.</strong><br>
+              Du musst nicht alles erzählen. Schon eine Nachricht oder etwas Zeit
+              mit einer vertrauten Person kann ein Anfang sein.
+            </li>
+
+            <li>
+              <strong>Erkenne an, was du geschafft hast.</strong><br>
+              Schwierige Tage kosten Kraft. Auch wenn du heute weniger erledigst
+              als geplant, bedeutet das nicht, dass du versagt hast.
+            </li>
+          </ol>
+
+          <div class="kraft-note">
+            <strong>Eine kleine Übung:</strong><br>
+            Frage dich: Was brauche ich gerade am dringendsten – Ruhe, etwas zu essen,
+            Bewegung, Gesellschaft oder jemanden zum Reden? Du musst nicht alles
+            gleichzeitig lösen.
+          </div>
+        </div>
+
+        <div>
+          <h3>Wenn es länger nicht besser wird</h3>
+
+          <p>
+            Wenn du über längere Zeit erschöpft, traurig oder antriebslos bist
+            oder dein Alltag immer schwieriger wird, sprich bitte mit einer
+            erwachsenen Vertrauensperson oder einer Fachperson.
+          </p>
+
+          <p>
+            Hinter anhaltender Erschöpfung können unterschiedliche Gründe stecken.
+            Du musst nicht selbst herausfinden, woran es liegt. Eine Ärztin,
+            ein Arzt oder eine psychologische Fachperson kann dir helfen,
+            passende Unterstützung zu finden.
+          </p>
+
+          <h3>Hier kannst du Unterstützung finden</h3>
+
+          <a class="kraft-resource"
+             href="https://www.nummergegenkummer.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>Nummer gegen Kummer ↗</strong>
+            <span>
+              Kostenlose und anonyme Beratung für Kinder und Jugendliche.
+              Auf der Website findest du die aktuellen Kontaktmöglichkeiten.
+            </span>
+          </a>
+
+          <a class="kraft-resource"
+             href="https://jugendnotmail.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>JugendNotmail ↗</strong>
+            <span>
+              Online-Beratung für junge Menschen bei Sorgen, seelischer Belastung
+              und persönlichen Problemen.
+            </span>
+          </a>
+
+          <a class="kraft-resource"
+             href="https://www.telefonseelsorge.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>TelefonSeelsorge ↗</strong>
+            <span>
+              Vertrauliche Unterstützung bei seelischen Belastungen.
+              Auf der Website findest du die verfügbaren Beratungsangebote.
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="kraft-footer">
+      <p>
+        Du musst nicht alles heute schaffen. Du bist wichtig – auch an schwierigen Tagen.
+        <br>
+        In Zusammenarbeit mit MaxOfficial :D
+      </p>
+
+      <a href="hilfe.html">Zurück zur Übersicht →</a>
+    </footer>
+
+  </main>
+</body>
+</html>
