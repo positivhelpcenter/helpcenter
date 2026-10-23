@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7cf45">
+  <meta name="description" content="Positive Sätze und kleine Erinnerungen für schwierige Tage. Finde Worte, die dir guttun.">
+  <title>Positive Sätze – Positivhelpcenter</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .positive-page { background: #fffdf6; }
+    .positive-hero { padding-top: 65px; padding-bottom: 55px; }
+    .positive-hero h1 { max-width: 800px; }
+    .positive-hero .lead {
+      max-width: 670px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+    .positive-intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 35px;
+    }
+    .positive-intro p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+    .phrase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+    .phrase-card {
+      position: relative;
+      display: flex;
+      min-height: 215px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 25px;
+      border: 1px solid rgba(40,35,20,.12);
+      background: #fff2a8;
+      box-shadow: 3px 5px 0 rgba(40,35,20,.07);
+      transform: rotate(-.6deg);
+    }
+    .phrase-card:nth-child(3n+2) {
+      background: #f9e4d0;
+      transform: rotate(.7deg);
+    }
+    .phrase-card:nth-child(3n) {
+      background: #eaf0d4;
+      transform: rotate(-.2deg);
+    }
+    .phrase-number {
+      margin-bottom: 22px;
+      font: 10px var(--mono);
+      letter-spacing: 1px;
+    }
+    .phrase-card blockquote {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -.45px;
+      line-height: 1.5;
+    }
+    .phrase-card button {
+      margin-top: auto;
+      padding: 12px 0 0;
+      border: 0;
+      background: transparent;
+      font: 11px var(--sans);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .positive-reminder {
+      margin-top: 55px;
+      margin-bottom: 70px;
+      padding: 35px;
+      border: 1px solid var(--line);
+      background: #fffefa;
+    }
+    .positive-reminder h2 { margin-bottom: 12px; }
+    .positive-reminder p {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+    .phrase-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .phrase-actions button {
+      padding: 12px 16px;
+      border: 1px solid var(--ink);
+      background: var(--yellow);
+      font: 12px var(--sans);
+      cursor: pointer;
+    }
+    .phrase-actions button:hover { background: var(--orange); }
+    .phrase-status {
+      min-height: 22px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    @media (max-width: 760px) {
+      .positive-hero { padding-top: 42px; }
+      .phrase-grid { grid-template-columns: 1fr; }
+      .positive-intro { align-items: flex-start; flex-direction: column; }
+      .positive-reminder { padding: 25px 20px; }
+      .phrase-card,
+      .phrase-card:nth-child(3n+2),
+      .phrase-card:nth-child(3n) { transform: none; }
+    }
+  </style>
+</head>
+<body class="positive-page">
+
+<header class="topbar">
+  <a class="brand" href="index.html" aria-label="Zur Startseite">
+    <span class="brand-mark">+</span>
+    <span>positiv<span class="brand-light">helpcenter</span></span>
+  </a>
+  <button class="menu-toggle" id="menuToggle" type="button"
+    aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainNav">
+    <span></span><span></span>
+  </button>
+  <nav class="nav" id="mainNav" aria-label="Hauptnavigation">
+    <a href="index.html">Startseite</a>
+    <a href="hilfe.html">Hilfe finden</a>
+    <a href="#saetze">Positive Sätze</a>
+  </nav>
+</header>
+
+<main>
+  <section class="positive-hero section-wrap">
+    <p class="eyebrow">POSITIVHELPCENTER · MUT & HOFFNUNG</p>
+    <h1>Ein Satz für jetzt.<br><span>Mehr musst du nicht schaffen.</span></h1>
+    <p class="lead">
+      Manchmal helfen kleine Erinnerungen, den Blick für einen Moment
+      zu verändern. Du musst nicht jeden Satz fühlen oder sofort daran
+      glauben. Nimm dir einfach mit, was sich für dich passend anfühlt.
+    </p>
+  </section>
+
+  <section class="section-wrap" id="saetze">
+    <div class="positive-intro">
+      <div>
+        <p class="eyebrow">KLEINE ERINNERUNGEN</p>
+        <h2>Such dir einen Satz aus.</h2>
+      </div>
+      <p>
+        Du kannst einen Satz kopieren oder dir zufällig einen anzeigen
+        lassen. Die Sätze sind keine Aufgaben und keine Versprechen –
+        sie sollen dich freundlich begleiten.
+      </p>
+    </div>
+
+    <div class="phrase-grid" id="phraseGrid">
+
+      <article class="phrase-card">
+        <span class="phrase-number">01 / GEDULD</span>
+        <blockquote>Ich darf mir Zeit lassen.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">02 / SELBSTWERT</span>
+        <blockquote>Mein Wert hängt nicht davon ab, wie viel ich heute schaffe.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">03 / NEU ANFANGEN</span>
+        <blockquote>Ein kleiner Schritt ist auch ein Schritt.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">04 / GEFÜHLE</span>
+        <blockquote>Ich muss nicht jedes Gefühl sofort verstehen.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">05 / PAUSE</span>
+        <blockquote>Ich darf eine Pause machen, ohne sie mir verdienen zu müssen.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">06 / MUT</span>
+        <blockquote>Mut kann auch bedeuten, um Hilfe zu bitten.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">07 / VERGLEICH</span>
+        <blockquote>Mein Weg muss nicht aussehen wie der Weg anderer.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">08 / UNVOLLKOMMEN</span>
+        <blockquote>Ich darf Fehler machen und trotzdem respektvoll mit mir umgehen.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">09 / VERÄNDERUNG</span>
+        <blockquote>Ich muss heute nicht alle Antworten kennen.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">10 / IDENTITÄT</span>
+        <blockquote>Ich darf herausfinden, wer ich bin, in meinem eigenen Tempo.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">11 / GRENZEN</span>
+        <blockquote>Ich darf Nein sagen und meine Grenzen ernst nehmen.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">12 / UNTERSTÜTZUNG</span>
+        <blockquote>Ich muss nicht alles allein tragen.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">13 / SCHWIERIGE TAGE</span>
+        <blockquote>Ein schwieriger Tag erzählt nicht meine ganze Geschichte.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">14 / SELBSTFREUNDLICHKEIT</span>
+        <blockquote>Ich darf mit mir so freundlich sprechen, wie ich mit einem Freund sprechen würde.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+      <article class="phrase-card">
+        <span class="phrase-number">15 / HOFFNUNG</span>
+        <blockquote>Ich muss nicht wissen, wie alles wird, um den nächsten Schritt zu gehen.</blockquote>
+        <button type="button" class="copy-phrase">Satz kopieren ↗</button>
+      </article>
+
+    </div>
+
+    <div class="positive-reminder">
+      <p class="eyebrow">FÜR DICH</p>
+      <h2>Du musst nicht positiv sein, um Unterstützung zu verdienen.</h2>
+      <p>
+        Es ist in Ordnung, wenn sich ein Satz gerade nicht richtig anfühlt.
+        Du musst schwierige Gefühle nicht überspielen oder dich zum Lächeln
+        zwingen. Manchmal ist es genug, ehrlich anzuerkennen, dass gerade
+        etwas schwer ist.
+      </p>
+
+      <div class="phrase-actions">
+        <button type="button" id="randomPhrase">Zufälligen Satz finden ↻</button>
+        <button type="button" id="copyAllPhrases">Alle Sätze kopieren ↗</button>
+      </div>
+      <p class="phrase-status" id="phraseStatus" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="section-wrap" style="padding-bottom: 65px;">
+    <p class="eyebrow">NOCH ETWAS ANDERES?</p>
+    <h2>Du kannst hier weitersuchen.</h2>
+    <p style="max-width: 650px; color: var(--muted); font-size: 14px; line-height: 1.9;">
+      Wenn du mehr als einen positiven Satz brauchst, findest du im
+      Hilfe-Bereich weitere Themen und Informationen.
+    </p>
+    <a class="button button-dark" href="hilfe.html">Alle Hilfethemen ansehen <span>↗</span></a>
+  </section>
+</main>
+
+<footer class="footer">
+  <a class="brand footer-brand" href="index.html">
+    <span class="brand-mark">+</span>
+    <span>positiv<span class="brand-light">helpcenter</span></span>
+  </a>
+  <span class="footer-note">In Zusammenarbeit mit <strong>MaxOfficial</strong> :D</span>
+  <span class="footer-copy">© <span id="currentYear"></span></span>
+</footer>
+
+<script>
+  const yearElement = document.getElementById("currentYear");
+  if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+  const status = document.getElementById("phraseStatus");
+
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = "Kopiert. Du kannst den Satz jetzt einfügen.";
+    } catch (error) {
+      status.textContent = "Kopieren ist hier nicht möglich. Markiere den Satz und kopiere ihn manuell.";
+    }
+  }
+
+  document.querySelectorAll(".copy-phrase").forEach((button) => {
+    button.addEventListener("click", () => {
+      const quote = button.closest(".phrase-card").querySelector("blockquote");
+      if (quote) copyText(quote.innerText.trim());
+    });
+  });
+
+  document.getElementById("randomPhrase").addEventListener("click", () => {
+    const cards = Array.from(document.querySelectorAll(".phrase-card"));
+    if (!cards.length) return;
+
+    const chosen = cards[Math.floor(Math.random() * cards.length)];
+    const quote = chosen.querySelector("blockquote");
+
+    cards.forEach((card) => {
+      card.style.outline = "none";
+    });
+
+    chosen.style.outline = "3px solid #f7cf45";
+    chosen.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    status.textContent = quote
+      ? "Dein Satz: " + quote.innerText.trim()
+      : "Hier ist dein zufälliger Satz.";
+  });
+
+  document.getElementById("copyAllPhrases").addEventListener("click", () => {
+    const quotes = Array.from(document.querySelectorAll(".phrase-card blockquote"))
+      .map((quote) => quote.innerText.trim());
+
+    copyText(quotes.join("\n\n"));
+  });
+</script>
+
+</body>
+</html>
