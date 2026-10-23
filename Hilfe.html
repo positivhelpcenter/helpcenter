@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7cf45">
+  <meta name="description" content="Ein ruhiger Ort für schwierige Momente. Finde Hilfe, wenn gerade alles zu viel ist.">
+  <title>Hilfe finden – Positivhelpcenter</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="hilfe.js" defer></script>
+</head>
+
+<body class="help-page">
+
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Zur Startseite">
+      <span class="brand-mark">+</span>
+      <span>positiv<span class="brand-light">helpcenter</span></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainNav">
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav" id="mainNav">
+      <a href="index.html">Startseite</a>
+      <a href="#suche">Hilfe suchen</a>
+      <a href="#soforthilfe">Soforthilfe</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="lifebuoy-hero section-wrap">
+      <div class="lifebuoy-copy">
+        <p class="eyebrow">
+          <span class="status-dot"></span>
+          DU BIST HIER WILLKOMMEN
+        </p>
+
+        <h1>Wenn gerade<br>alles <span>zu viel</span> ist.</h1>
+
+        <p class="hero-text">
+          Du musst nicht sofort wissen, was du brauchst.
+          Beschreib einfach, was los ist. Wir suchen den
+          passendsten Hilfe-Artikel für dich.
+        </p>
+
+        <a class="button button-dark" href="#suche">
+          Einen Anfang finden <span>↓</span>
+        </a>
+      </div>
+
+      <div class="lifebuoy-art" aria-label="Rettungsring als Zeichen für Unterstützung">
+        <div class="lifebuoy-shadow"></div>
+        <div class="lifebuoy">
+          <div class="lifebuoy-center"></div>
+        </div>
+        <div class="lifebuoy-checker checker" aria-hidden="true"></div>
+        <span class="lifebuoy-sparkle">✳</span>
+        <span class="lifebuoy-caption">DU MUSST NICHT ALLES ALLEIN SCHAFFEN.</span>
+      </div>
+    </section>
+
+    <section class="lifebuoy-search section-wrap" id="suche">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">DEIN ANLIEGEN</p>
+          <h2>Was ist gerade los?</h2>
+        </div>
+        <span class="section-number">01 / HILFE</span>
+      </div>
+
+      <p class="search-intro">
+        Ein Wort reicht. Du kannst aber auch einen ganzen Satz
+        oder mehrere Gedanken hineinschreiben.
+      </p>
+
+      <form id="articleSearchForm" class="article-search">
+        <label class="sr-only" for="articleSearch">
+          Suche nach einem Thema oder beschreibe deine Situation
+        </label>
+
+        <textarea
+          id="articleSearch"
+          rows="3"
+          maxlength="1500"
+          placeholder="Zum Beispiel: Ich habe Angst, mein Kopf ist voll und ich weiß nicht, was ich tun soll …"
+          required
+        ></textarea>
+
+        <div class="search-bottom">
+          <span>Dein Text wird nur lokal im Browser durchsucht.</span>
+          <button class="button button-dark" type="submit">
+            Hilfe finden <span>→</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="search-results" id="searchResults" aria-live="polite" hidden>
+        <p class="eyebrow">DAS KÖNNTE DIR HELFEN</p>
+        <div id="searchResultList"></div>
+      </div>
+
+      <div class="quick-topics">
+        <p class="eyebrow">ODER WÄHLE EIN THEMA</p>
+        <div class="topic-chips">
+          <button type="button" data-topic="angst">Angst & Panik</button>
+          <button type="button" data-topic="ueberforderung">Überforderung</button>
+          <button type="button" data-topic="krampfanfall">Krampfanfall</button>
+          <button type="button" data-topic="traurigkeit">Traurigkeit</button>
+          <button type="button" data-topic="streit">Streit & Beziehungen</button>
+          <button type="button" data-topic="schule">Schule & Druck</button>
+          <button type="button" data-topic="einsamkeit">Einsamkeit</button>
+          <button type="button" data-topic="schlaf">Schlaf & Unruhe</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="urgent-section" id="soforthilfe">
+      <div class="urgent-inner section-wrap">
+        <p class="eyebrow">BEVOR DU WEITERSUCHST</p>
+        <h2>Du brauchst gerade sofort Hilfe?</h2>
+
+        <p>
+          Wenn du dich akut unsicher fühlst, starke körperliche
+          Beschwerden hast oder jemand einen Krampfanfall hat,
+          warte nicht auf einen Artikel.
+        </p>
+
+        <div class="urgent-grid">
+          <article class="urgent-card">
+            <span class="urgent-number">01</span>
+            <h3>Akute Gefahr</h3>
+            <p>
+              Bei unmittelbarer Gefahr oder einem medizinischen
+              Notfall in Deutschland: <strong>112</strong> anrufen.
+              Bitte hole auch eine erwachsene Vertrauensperson dazu.
+            </p>
+            <a class="button button-dark" href="tel:112">112 anrufen</a>
+          </article>
+
+          <article class="urgent-card">
+            <span class="urgent-number">02</span>
+            <h3>Krampfanfall</h3>
+            <p>
+              Räume gefährliche Gegenstände weg, schütze den Kopf,
+              halte die Person nicht fest und stecke nichts in den
+              Mund. Miss die Dauer und rufe bei einem ersten Anfall,
+              einem Anfall über fünf Minuten, wiederholten Anfällen,
+              Atemproblemen oder Verletzungen den Notruf.
+            </p>
+            <a class="text-button" href="#artikel-krampfanfall">
+              Artikel zum Krampfanfall lesen ↓
+            </a>
+          </article>
+
+          <article class="urgent-card">
+            <span class="urgent-number">03</span>
+            <h3>Nicht allein bleiben</h3>
+            <p>
+              Wenn du kannst, gehe zu einer vertrauten erwachsenen
+              Person und sage direkt: „Mir geht es gerade nicht gut.
+              Bitte bleib bei mir.“
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="article-library section-wrap" id="artikel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">KLEINE SCHRITTE</p>
+          <h2>Die Hilfe-Artikel.</h2>
+        </div>
+        <span class="section-number">02 / DEIN TEMPO</span>
+      </div>
+
+      <p class="library-intro">
+        Du kannst die Artikel direkt öffnen oder oben nach
+        passenden Stichwörtern suchen.
+      </p>
+
+      <div class="article-grid">
+
+        <article class="help-article" id="artikel-angst"
+          data-article="angst"
+          data-title="Wenn Angst oder Panik hochkommt"
+          data-keywords="angst panik panikattacke angstzustand herzklopfen zittern atemnot unruhe angstgefühl überwältigt nervös angst haben">
+          <span class="article-symbol">01</span>
+          <p class="eyebrow">ANGST & UNRUHE</p>
+          <h3>Wenn Angst oder Panik hochkommt</h3>
+          <p>Ein kleiner Anker für den Moment, in dem alles bedrohlich wirkt.</p>
+          <div class="article-body">
+            <h4>Du musst gerade nicht alles lösen.</h4>
+            <ol>
+              <li>Wenn möglich, setz dich an einen sicheren Ort und lass deine Füße den Boden berühren.</li>
+              <li>Schau dich langsam um. Nenne fünf Dinge, die du sehen kannst, und drei Geräusche, die du hörst.</li>
+              <li>Atme so, wie es für dich angenehm ist. Du musst deinen Atem nicht erzwingen oder besonders tief einatmen.</li>
+              <li>Erinnere dich: „Ich erlebe gerade starke Angst. Ich darf mir Unterstützung holen.“</li>
+              <li>Wenn du dich körperlich sehr schlecht fühlst, die Beschwerden neu oder ungewöhnlich sind oder du unsicher bist, hole medizinische Hilfe.</li>
+            </ol>
+            <p>Wenn möglich, sag einer vertrauten Person, was gerade passiert.</p>
+          </div>
+          <button class="text-button article-toggle" type="button" aria-expanded="false">
+            Artikel öffnen ↓
+          </button>
+        </article>
+
+        <article class="help-article" id="artikel-ueberforderung"
+          data-article="ueberforderung"
+          data-title="Wenn alles gleichzeitig zu viel ist"
+          data-keywords="überforderung stress druck zu viel kopf gedanken chaos alles gleichzeitig panik aufgaben erschöpft nicht mehr können">
+          <span class="article-symbol">02</span>
+          <p class="eyebrow">STRESS & GEDANKEN</p>
+          <h3>Wenn alles gleichzeitig zu viel ist</h3>
+          <p>Du musst nicht alle Probleme auf einmal bearbeiten.</p>
+          <div class="article-body">
+            <h4>Mach die nächste Minute kleiner.</h4>
+            <ol>
+              <li>Unterbrich kurz das, was du gerade tust, wenn du an einem sicheren Ort bist.</li>
+              <li>Schreib alles auf, was in deinem Kopf kreist. Du musst es nicht sortieren.</li>
+              <li>Wähle nur eine Sache, die wirklich als Nächstes dran ist. Der Rest darf warten.</li>
+              <li>Trink etwas Wasser, lockere deine Schultern oder setz dich kurz hin.</li>
+              <li>Wenn es weiterhin zu viel ist, bitte jemanden, mit dir gemeinsam den nächsten Schritt zu finden.</li>
+            </ol>
+            <p>Du musst nicht erst zusammenbrechen, bevor du eine Pause machen darfst.</p>
+          </div>
+          <button class="text-button article-toggle" type="button" aria-expanded="false">
+            Artikel öffnen ↓
+          </button>
+        </article>
+
+        <article class="help-article" id="artikel-krampfanfall"
+          data-article="krampfanfall"
+          data-title="Wenn jemand einen Krampfanfall hat"
+          data-keywords="krampfanfall krämpfe epilepsie zucken bewusstlos notfall anfall medizinische hilfe verletzung atmen">
+          <span class="article-symbol">03</span>
+          <p class="eyebrow">MEDIZINISCHE SOFORTHILFE</p>
+          <h3>Wenn jemand einen Krampfanfall hat</h3>
+          <p>Wichtige Sicherheitsregeln – kein Ersatz für den Rettungsdienst.</p>
+          <div class="article-body">
+            <h4>So kannst du helfen.</h4>
+            <ol>
+              <li>Bleib möglichst ruhig und bitte eine weitere Person um Hilfe.</li>
+              <li>Räume gefährliche Gegenstände aus der Umgebung und lege, wenn möglich, etwas Weiches unter den Kopf.</li>
+              <li>Halte die Person nicht fest. Stecke nichts in den Mund und gib nichts zu trinken.</li>
+              <li>Merke dir, wann der Anfall begonnen hat. Beobachte, was passiert.</li>
+              <li>Rufe 112, wenn es der erste Anfall ist, der Anfall länger als fünf Minuten dauert, weitere Anfälle folgen, die Atmung problematisch ist oder eine Verletzung auftritt.</li>
+              <li>Wenn die Krampfbewegungen vorbei sind, überprüfe die Atmung. Wenn die Person bewusstlos ist, aber normal atmet, bringe sie – sofern möglich – in die stabile Seitenlage. Folge den Anweisungen der Leitstelle.</li>
+            </ol>
+            <p>Wenn du selbst betroffen bist, versuche nicht, die Situation allein zu bewältigen. Hole sofort eine erwachsene Person und medizinische Hilfe.</p>
+          </div>
+          <button class="text-button article-toggle" type="button" aria-expanded="false">
+            Artikel öffnen ↓
+          </button>
+        </article>
+
+        <article class="help-article" id="artikel-traurigkeit"
+          data-article="traurigkeit"
+          data-title="Wenn du traurig bist"
+          data-keywords="traurig traurig sein weinen niedergeschlagen enttäuscht hoffnungslos schlechte laune weinen gefühle schwerer tag">
+          <span class="article-symbol">04</span>
+          <p class="eyebrow">GEFÜHLE</p>
+          <h3>Wenn du traurig bist</h3>
+          <p>Du musst deine Gefühle nicht sofort wegmachen.</p>
+          <div class="article-body">
+            <h4>Gib dir etwas Raum.</h4>
+            <ol>
+              <li>Versuche nicht, dich dafür zu verurteilen, dass du traurig bist.</li>
+              <li>Überlege, ob du gerade Ruhe, Gesellschaft, Bewegung oder ein Gespräch brauchst.</li>
+              <li>Schreib auf, was dich belastet, oder erzähle es jemandem, dem du vertraust.</li>
+              <li>Such dir eine kleine, machbare Sache für diesen Moment – zum Beispiel etwas trinken oder dich gemütlich hinsetzen.</li>
+            </ol>
+            <p>Wenn die Traurigkeit lange anhält oder deinen Alltag stark beeinträchtigt, darfst du dir professionelle Unterstützung holen.</p>
+          </div>
+          <button class="text-button article-toggle" type="button" aria-expanded="false">
+            Artikel öffnen ↓
+          </button>
+        </article>
+
+        <article class="help-article" id="artikel-streit"
+          data-article="streit"
+          data-title="Wenn es Streit oder Probleme mit Menschen gibt"
+          data-keywords="streit freund freundin beziehung eltern familie freunde mobbing konflikt missverständnis wut enttäuschung liebe">
+          <span class="article-symbol">05</span>
+          <p class="eyebrow">MENSCHEN & BEZIEHUNGEN</p>
+          <h3>Wenn es Streit gibt</h3>
+          <p>Du darfst kurz Abstand gewinnen, bevor du reagieren musst.</p>
+          <div class="article-body">
+            <h4>Erst sortieren, dann entscheiden.</h4>
+            <ol>
+              <li>Wenn es sicher ist, nimm dir etwas Abstand, bis du wieder ruhiger denken kannst.</li>
+              <li>Trenne das, was tatsächlich passiert ist, von dem, was du befürchtest.</li>
+              <li>Überlege, was du brauchst: eine Entschuldigung, eine Erklärung, eine Grenze oder einfach Zeit.</li>
+              <li>Wenn du reden möchtest, beschreibe deine Gefühle, ohne dich zu etwas zu zwingen.</li>
+              <li>Wenn dich jemand bedroht, kontrolliert oder verletzt, wende dich an eine vertrauenswürdige Person.</li>
+            </ol>
+          </div>
+          <button class="text-button article-toggle" type="button" aria-expanded="false">
+            Artikel öffnen ↓
+          </button>
+        </article>
+
+        <article class="help-article" id="artikel-schule"
+          data-article="schule"
+          data-title="Wenn Schule und Erwartungen Druck machen"
+          data-keywords="schule hausaufgaben lernen prüfung noten lehrer klausur stress druck versagen leistungsdruck angst vor schule">
+          <span class="article-symbol">06</span>
+          <p class="eyebrow">SCHULE & ERWARTUNGEN</p>
+          <h3>Wenn Schule Druck macht</h3>
+          <p>Du bist mehr als deine Noten und erledigten Aufgaben.</p>
+          <div class="article-body">
+            <h4>Eine Aufgabe nach der anderen.</h4>
+            <ol>
+              <li>Schreib auf, was wirklich erledigt werden muss.</li>
+              <li>Wähle einen kleinen Anfang, nicht gleich das ganze Projekt.</li>
+              <li>Plane Pausen ein und bitte um Hilfe, wenn du nicht weiterkommst.</li>
+              <li>Sprich mit einer Lehrkraft, einer Vertrauensperson oder deinen Eltern, wenn der Druck zu groß wird.</li>
+            </ol>
+            <p>Du musst nicht perfekt sein, um Hilfe verdient zu haben.</p>
+          </div>
+          <button class="text-button article-toggle" type="button" aria-expanded="false">
+            Artikel öffnen ↓
+          </button>
+        </article>
+
+        <article class="help-article" id="artikel-einsamkeit"
+          data-article="einsamkeit"
+          data-title="Wenn du dich allein fühlst"
+          data-keywords="einsam allein niemand versteht mich keine freunde ausgeschlossen unverstanden isoliert kontakt">
+          <span class="article-symbol">07</span>
+          <p class="eyebrow">NÄHE & VERBINDUNG</p>
+          <h3>Wenn du dich allein fühlst</h3>
+          <p>Du musst nicht viele Menschen haben. Ein sicherer Kontakt kann ein Anfang sein.</p>
+          <div class="article-body">
+            <h4>Ein kleiner Kontakt reicht für den Anfang.</h4>
+            <ol>
+              <li>Überlege, ob es eine Person gibt, bei der du dich einigermaßen sicher fühlst.</li>
+              <li>Du kannst eine kurze Nachricht schicken: „Hey, mir geht es gerade nicht so gut. Hast du kurz Zeit?“</li>
+              <li>Wenn dir Schreiben schwerfällt, suche einen Ort, an dem du dich wohlfühlst, oder eine vertraute erwachsene Person.</li>
+              <li>Wenn du dich schon länger einsam fühlst, darfst du dir Unterstützung holen. Du musst das nicht allein lösen.</li>
+            </ol>
+          </div>
+          <button class="text-button article-toggle" type="button" aria-expanded="false">
+            Artikel öffnen ↓
+          </button>
+        </article>
+
+        <article class="help-article" id="artikel-schlaf"
+          data-article="schlaf"
+          data-title="Wenn du nicht zur Ruhe kommst"
+          data-keywords="schlaf einschlafen wach nachts grübeln gedanken unruhe müde erschöpft entspannen">
+          <span class="article-symbol">08</span>
+          <p class="eyebrow">RUHE & ERHOLUNG</p>
+          <h3>Wenn du nicht zur Ruhe kommst</h3>
+          <p>Du musst deinen Kopf nicht mit Gewalt zum Schweigen bringen.</p>
+          <div class="article-body">
+            <h4>Weniger Druck, mehr Ruhe.</h4>
+            <ol>
+              <li>Schreib Gedanken auf, damit du sie nicht im Kopf behalten musst.</li>
+              <li>Mach das Licht etwas ruhiger und leg das Handy beiseite, wenn dir das guttut.</li>
+              <li>Höre etwas Ruhiges oder richte deine Aufmerksamkeit auf eine angenehme, neutrale Sache.</li>
+              <li>Wenn du nicht einschläfst, mach dir nicht zusätzlich Vorwürfe.</li>
+              <li>Wenn Schlafprobleme länger anhalten oder dich stark belasten, sprich mit einer erwachsenen Vertrauensperson oder medizinischem Fachpersonal.</li>
+            </ol>
+          </div>
+          <button class="text-button article-toggle" type="button" aria-expanded="false">
+            Artikel öffnen ↓
+          </button>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="help-last section-wrap">
+      <div class="help-last-checker checker" aria-hidden="true"></div>
+      <p class="eyebrow">ZUM MITNEHMEN</p>
+      <h2>Du darfst Hilfe brauchen.</h2>
+      <p>
+        Du musst nicht alles heute lösen. Fang mit dem nächsten
+        kleinen Schritt an – und hole dir Unterstützung, wenn du
+        sie brauchst.
+      </p>
+      <a class="button button-dark" href="index.html">Zur Startseite ↗</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">+</span>
+      <span>positiv<span class="brand-light">helpcenter</span></span>
+    </a>
+    <span class="footer-note">
+      In Zusammenarbeit mit <strong>MaxOfficial</strong> :D
+    </span>
+    <span class="footer-copy">© <span id="currentYear"></span></span>
+  </footer>
+
+</body>
+</html>
