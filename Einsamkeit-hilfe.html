@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7e8b5">
+  <title>Einsamkeit – Hilfe finden</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --lonely-paper: #fff9e9;
+      --lonely-ink: #25231f;
+      --lonely-yellow: #ffdc59;
+      --lonely-orange: #ff914d;
+      --lonely-border: #25231f;
+      --lonely-muted: #625e54;
+    }
+
+    body {
+      background: var(--lonely-paper);
+      color: var(--lonely-ink);
+    }
+
+    .lonely-page {
+      width: min(100% - 32px, 900px);
+      margin: 0 auto;
+      padding: 24px 0 60px;
+    }
+
+    .lonely-back {
+      display: inline-block;
+      margin: 0 0 24px;
+      padding: 10px 15px;
+      border: 2px solid var(--lonely-border);
+      border-radius: 8px;
+      color: var(--lonely-ink);
+      background: white;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--lonely-border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .lonely-back:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--lonely-border);
+    }
+
+    .lonely-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 58px);
+      background: var(--lonely-yellow);
+      border: 3px solid var(--lonely-border);
+      border-radius: 16px;
+      box-shadow: 7px 7px 0 var(--lonely-border);
+      margin-bottom: 38px;
+    }
+
+    .lonely-label {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 2px solid var(--lonely-border);
+      border-radius: 5px;
+      background: white;
+      font-family: "DM Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .lonely-hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 20px 0 14px;
+      font-size: clamp(2.3rem, 7vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      overflow-wrap: anywhere;
+    }
+
+    .lonely-hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.7;
+    }
+
+    .lonely-decoration {
+      position: absolute;
+      right: 25px;
+      bottom: -30px;
+      font-size: clamp(6rem, 18vw, 12rem);
+      line-height: 1;
+      opacity: 0.13;
+      transform: rotate(-12deg);
+      pointer-events: none;
+    }
+
+    .lonely-section {
+      margin: 34px 0;
+      padding: clamp(22px, 4vw, 36px);
+      border: 2px solid var(--lonely-border);
+      border-radius: 14px;
+      box-shadow: 5px 5px 0 var(--lonely-border);
+    }
+
+    .lonely-section.personal {
+      background: #fff;
+    }
+
+    .lonely-section.facts {
+      background: #ffe7d3;
+    }
+
+    .lonely-section h2 {
+      margin: 14px 0 20px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .lonely-section h3 {
+      margin: 26px 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .lonely-section p,
+    .lonely-section li {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .lonely-section p {
+      margin: 12px 0;
+    }
+
+    .lonely-section ul {
+      padding-left: 22px;
+    }
+
+    .lonely-section li {
+      margin: 8px 0;
+    }
+
+    .lonely-note {
+      margin-top: 22px;
+      padding: 17px 19px;
+      background: var(--lonely-yellow);
+      border-left: 5px solid var(--lonely-border);
+      border-radius: 5px;
+      line-height: 1.7;
+    }
+
+    .lonely-resource {
+      display: block;
+      margin: 12px 0;
+      padding: 16px 18px;
+      border: 2px solid var(--lonely-border);
+      border-radius: 9px;
+      background: white;
+      color: var(--lonely-ink);
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--lonely-border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .lonely-resource:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--lonely-border);
+    }
+
+    .lonely-resource strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .lonely-resource span {
+      display: block;
+      color: var(--lonely-muted);
+      line-height: 1.6;
+    }
+
+    .lonely-footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 2px dashed var(--lonely-border);
+      text-align: center;
+      color: var(--lonely-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 520px) {
+      .lonely-page {
+        width: min(100% - 22px, 900px);
+        padding-top: 16px;
+      }
+
+      .lonely-hero {
+        box-shadow: 4px 4px 0 var(--lonely-border);
+      }
+
+      .lonely-section {
+        box-shadow: 3px 3px 0 var(--lonely-border);
+      }
+
+      .lonely-section p,
+      .lonely-section li {
+        font-size: 0.96rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="lonely-page">
+
+    <a class="lonely-back" href="hilfe.html">← Zurück zur Hilfe-Seite</a>
+
+    <header class="lonely-hero">
+      <span class="lonely-label">Ein Thema, über das wir reden sollten</span>
+      <h1>Du musst dich nicht allein fühlen.</h1>
+      <p>
+        Einsamkeit kann wehtun – auch dann, wenn du von Menschen umgeben bist.
+        Deine Gefühle sind nicht falsch, und du musst dich dafür nicht schämen.
+      </p>
+      <div class="lonely-decoration" aria-hidden="true">✳</div>
+    </header>
+
+    <!-- TEIL 1: PERSÖNLICH UND EMOTIONAL -->
+    <section class="lonely-section personal">
+      <span class="lonely-label">Teil 01 · Die Gefühle</span>
+      <h2>Wenn du dich allein fühlst, obwohl Menschen da sind</h2>
+
+      <p>
+        Manchmal ist Einsamkeit nicht einfach nur, dass niemand neben dir sitzt.
+        Manchmal bist du in einer Gruppe, schreibst mit Leuten oder lachst sogar
+        mit anderen – und trotzdem hast du das Gefühl, dass dich niemand wirklich
+        versteht.
+      </p>
+
+      <p>
+        Vielleicht wartest du darauf, dass sich jemand von selbst meldet.
+        Vielleicht möchtest du erzählen, was in dir vorgeht, weißt aber nicht,
+        wie du anfangen sollst. Oder du hast Angst, anderen zu viel zu sein,
+        und behältst deshalb lieber alles für dich.
+      </p>
+
+      <p>
+        Besonders schwer kann es sein, wenn dir bestimmte Menschen fehlen.
+        Du kannst jemanden vermissen und gleichzeitig versuchen, deinen Alltag
+        ganz normal weiterzumachen. Beides darf nebeneinander existieren.
+      </p>
+
+      <h3>Du musst nicht immer die Person sein, die sich meldet</h3>
+
+      <p>
+        Es ist verständlich, wenn du dir wünschst, dass andere auch einmal an
+        dich denken, nachfragen oder zeigen, dass du ihnen wichtig bist.
+        Freundschaften sollten sich nicht dauerhaft so anfühlen, als müsstest
+        nur du sie am Leben halten.
+      </p>
+
+      <p>
+        Trotzdem bedeutet eine ausbleibende Nachricht nicht automatisch, dass
+        du unwichtig bist. Menschen haben unterschiedliche Gewohnheiten und
+        manchmal eigene Probleme. Wenn dich eine Beziehung oder Freundschaft
+        belastet, darfst du darüber sprechen, statt alles allein zu deuten.
+      </p>
+
+      <h3>Du musst deine Gefühle nicht verstecken</h3>
+
+      <p>
+        Du musst nicht immer lustig, hilfsbereit oder gut gelaunt sein, damit
+        andere gern Zeit mit dir verbringen. Du darfst einen schlechten Tag
+        haben. Du darfst unsicher sein. Und du darfst sagen, dass es dir gerade
+        nicht gut geht, ohne sofort eine perfekte Erklärung dafür zu haben.
+      </p>
+
+      <p>
+        Einsamkeit ist kein Beweis dafür, dass mit dir etwas nicht stimmt.
+        Sie ist ein Gefühl, das ernst genommen werden darf – und mit dem du
+        nicht für immer allein bleiben musst.
+      </p>
+
+      <div class="lonely-note">
+        **Denk daran:** Du musst nicht erst völlig am Ende sein, bevor du mit
+        jemandem über deine Gefühle sprechen darfst. Auch ein leises
+        „Mir geht es gerade nicht so gut“ ist ein guter Anfang.
+      </div>
+    </section>
+
+    <!-- TEIL 2: FAKTEN UND PRAKTISCHE HILFE -->
+    <section class="lonely-section facts">
+      <span class="lonely-label">Teil 02 · Wissen und Hilfe</span>
+      <h2>Was gegen Einsamkeit helfen kann</h2>
+
+      <p>
+        Einsamkeit beschreibt das Gefühl, dass die Nähe oder Verbindung zu
+        anderen Menschen fehlt. Sie ist nicht dasselbe wie Alleinsein:
+        Manche Menschen genießen Zeit für sich, während andere sich selbst
+        in einer großen Gruppe einsam fühlen können.
+      </p>
+
+      <p>
+        Es gibt keine einzelne Lösung, die für alle funktioniert. Oft helfen
+        kleine Schritte, wieder mehr Kontakt, Sicherheit und Zugehörigkeit
+        im Alltag zu erleben.
+      </p>
+
+      <h3>1. Fang mit einem kleinen Kontakt an</h3>
+      <p>
+        Du musst nicht sofort eine große Freundesgruppe finden. Vielleicht
+        schreibst du einer Person, mit der du dich wohlfühlst, fragst jemanden,
+        ob ihr gemeinsam etwas machen wollt, oder kommst mit einer Person aus
+        deiner Klasse ins Gespräch.
+      </p>
+
+      <h3>2. Sag möglichst konkret, was du brauchst</h3>
+      <p>
+        Wenn du dich jemandem anvertrauen möchtest, kannst du beispielsweise
+        sagen: „Ich fühle mich in letzter Zeit oft allein. Können wir ein
+        bisschen reden?“ Du kannst auch dazusagen, ob du gerade Rat möchtest
+        oder einfach jemanden brauchst, der zuhört.
+      </p>
+
+      <h3>3. Such nach regelmäßigen Begegnungen</h3>
+      <p>
+        Vereine, kreative Gruppen, Sport, gemeinsame Interessen oder
+        ehrenamtliche Aktivitäten können Gelegenheiten schaffen, Menschen
+        wiederholt zu treffen. Nähe entsteht oft nicht sofort, sondern
+        entwickelt sich über mehrere Begegnungen.
+      </p>
+
+      <h3>4. Achte auf dich, ohne dich unter Druck zu setzen</h3>
+      <p>
+        Schlaf, Bewegung, regelmäßiges Essen und Aktivitäten, die dir guttun,
+        können deinen Alltag stabilisieren. Sie ersetzen keine menschliche
+        Verbindung, können dir aber helfen, mit belastenden Gefühlen
+        umzugehen. Du musst nicht jeden Tag produktiv oder gut gelaunt sein.
+      </p>
+
+      <h3>5. Hol dir Unterstützung, wenn es länger anhält</h3>
+      <p>
+        Wenn Einsamkeit über längere Zeit anhält, deinen Schlaf oder deinen
+        Alltag beeinträchtigt oder du dich immer mehr zurückziehst, sprich
+        mit einer Vertrauensperson, einer Schulsozialarbeiterin oder einem
+        Schulsozialarbeiter oder einer Beratungsstelle. Du musst nicht warten,
+        bis es unerträglich wird.
+      </p>
+
+      <div class="lonely-note">
+        **Wichtig:** Du musst nicht mit allen Menschen gut auskommen, um
+        dazuzugehören. Es kann schon viel bedeuten, eine Person zu finden,
+        bei der du dich sicher fühlst und nicht ständig etwas vorspielen musst.
+      </div>
+
+      <h3>Hier kannst du dir Unterstützung holen</h3>
+
+      <a class="lonely-resource"
+         href="https://www.nummergegenkummer.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>Nummer gegen Kummer</strong>
+        <span>
+          Kostenlose und anonyme Beratung für Kinder und Jugendliche.
+          Informationen zu den aktuellen Kontaktmöglichkeiten findest du
+          auf der offiziellen Website.
+        </span>
+      </a>
+
+      <a class="lonely-resource"
+         href="https://www.telefonseelsorge.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>TelefonSeelsorge</strong>
+        <span>
+          Vertrauliche Unterstützung bei seelischen Belastungen.
+          Auf der Website findest du die verfügbaren Beratungsangebote.
+        </span>
+      </a>
+
+      <a class="lonely-resource"
+         href="https://www.jugendnotmail.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>JugendNotmail</strong>
+        <span>
+          Online-Beratung für junge Menschen, wenn Sorgen, Gefühle oder
+          persönliche Probleme schwer allein zu bewältigen sind.
+        </span>
+      </a>
+    </section>
+
+    <footer class="lonely-footer">
+      <p>Du bist mehr als das, was du gerade fühlst.</p>
+      <p>In Zusammenarbeit mit MaxOfficial :D</p>
+      <a href="hilfe.html">Zurück zur Übersicht</a>
+    </footer>
+
+  </main>
+</body>
+</html>
