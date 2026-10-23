@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7e8b5">
+  <title>Selbstwert – Hilfe finden</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --self-paper: #fff9e9;
+      --self-ink: #25231f;
+      --self-yellow: #ffdc59;
+      --self-orange: #ff914d;
+      --self-border: #25231f;
+      --self-muted: #625e54;
+    }
+
+    body {
+      background: var(--self-paper);
+      color: var(--self-ink);
+    }
+
+    .self-page {
+      width: min(100% - 32px, 900px);
+      margin: 0 auto;
+      padding: 24px 0 60px;
+    }
+
+    .self-back {
+      display: inline-block;
+      margin: 0 0 24px;
+      padding: 10px 15px;
+      border: 2px solid var(--self-border);
+      border-radius: 8px;
+      color: var(--self-ink);
+      background: white;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--self-border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .self-back:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--self-border);
+    }
+
+    .self-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 58px);
+      background: var(--self-yellow);
+      border: 3px solid var(--self-border);
+      border-radius: 16px;
+      box-shadow: 7px 7px 0 var(--self-border);
+      margin-bottom: 38px;
+    }
+
+    .self-label {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 2px solid var(--self-border);
+      border-radius: 5px;
+      background: white;
+      font-family: "DM Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .self-hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 20px 0 14px;
+      font-size: clamp(2.3rem, 7vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      overflow-wrap: anywhere;
+    }
+
+    .self-hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.7;
+    }
+
+    .self-decoration {
+      position: absolute;
+      right: 25px;
+      bottom: -30px;
+      font-size: clamp(6rem, 18vw, 12rem);
+      line-height: 1;
+      opacity: 0.13;
+      transform: rotate(-12deg);
+      pointer-events: none;
+    }
+
+    .self-section {
+      margin: 34px 0;
+      padding: clamp(22px, 4vw, 36px);
+      border: 2px solid var(--self-border);
+      border-radius: 14px;
+      box-shadow: 5px 5px 0 var(--self-border);
+    }
+
+    .self-section.personal {
+      background: #fff;
+    }
+
+    .self-section.facts {
+      background: #ffe7d3;
+    }
+
+    .self-section h2 {
+      margin: 14px 0 20px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .self-section h3 {
+      margin: 26px 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .self-section p,
+    .self-section li {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .self-section p {
+      margin: 12px 0;
+    }
+
+    .self-section ul {
+      padding-left: 22px;
+    }
+
+    .self-section li {
+      margin: 8px 0;
+    }
+
+    .self-note {
+      margin-top: 22px;
+      padding: 17px 19px;
+      background: var(--self-yellow);
+      border-left: 5px solid var(--self-border);
+      border-radius: 5px;
+      line-height: 1.7;
+    }
+
+    .self-resource {
+      display: block;
+      margin: 12px 0;
+      padding: 16px 18px;
+      border: 2px solid var(--self-border);
+      border-radius: 9px;
+      background: white;
+      color: var(--self-ink);
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--self-border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .self-resource:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--self-border);
+    }
+
+    .self-resource strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .self-resource span {
+      display: block;
+      color: var(--self-muted);
+      line-height: 1.6;
+    }
+
+    .self-footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 2px dashed var(--self-border);
+      text-align: center;
+      color: var(--self-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 520px) {
+      .self-page {
+        width: min(100% - 22px, 900px);
+        padding-top: 16px;
+      }
+
+      .self-hero {
+        box-shadow: 4px 4px 0 var(--self-border);
+      }
+
+      .self-section {
+        box-shadow: 3px 3px 0 var(--self-border);
+      }
+
+      .self-section p,
+      .self-section li {
+        font-size: 0.96rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="self-page">
+
+    <a class="self-back" href="hilfe.html">← Zurück zur Hilfe-Seite</a>
+
+    <header class="self-hero">
+      <span class="self-label">Ein Thema, über das wir reden sollten</span>
+      <h1>Du bist mehr als deine Zweifel.</h1>
+      <p>
+        Du musst nicht perfekt sein, um wertvoll zu sein.
+        Dein Wert hängt nicht davon ab, wie viele Menschen dich mögen,
+        wie viel du erreichst oder ob du immer alles richtig machst.
+      </p>
+      <div class="self-decoration" aria-hidden="true">✳</div>
+    </header>
+
+    <!-- TEIL 1: PERSÖNLICH UND EMOTIONAL -->
+    <section class="self-section personal">
+      <span class="self-label">Teil 01 · Die Gefühle</span>
+      <h2>Wenn du an dir selbst zweifelst</h2>
+
+      <p>
+        Manchmal reicht ein einziger Kommentar, ein Vergleich oder ein
+        Moment, in dem du dich ausgeschlossen fühlst, damit du anfängst,
+        an dir selbst zu zweifeln. Plötzlich fragst du dich, ob du anders
+        sein müsstest, ob du etwas falsch gemacht hast oder ob du überhaupt
+        gut genug bist.
+      </p>
+
+      <p>
+        Vielleicht denkst du viel darüber nach, wie andere dich sehen.
+        Du überlegst, ob du zu viel redest, zu wenig sagst, zu empfindlich
+        bist oder nicht genug gibst. Manchmal versuchst du, es allen recht
+        zu machen, damit niemand enttäuscht von dir ist.
+      </p>
+
+      <p>
+        Das Problem daran: Wenn du ständig versuchst, den Erwartungen
+        anderer zu entsprechen, kann es passieren, dass du deine eigenen
+        Bedürfnisse kaum noch wahrnimmst. Du kümmerst dich darum, dass
+        alle anderen zufrieden sind, und vergisst dabei, dass auch du
+        Rücksicht und Verständnis verdient hast.
+      </p>
+
+      <h3>Du musst dir deinen Wert nicht verdienen</h3>
+
+      <p>
+        Du musst nicht immer hilfsbereit sein. Du musst nicht jede
+        Unterhaltung retten, jeden Konflikt lösen oder immer die richtigen
+        Worte finden. Du darfst Fehler machen, Grenzen setzen und manchmal
+        einfach nicht wissen, was du tun sollst.
+      </p>
+
+      <p>
+        Auch wenn jemand enttäuscht von dir ist, bedeutet das nicht
+        automatisch, dass du ein schlechter Mensch bist. Du kannst
+        Verantwortung übernehmen, dich entschuldigen und aus Fehlern
+        lernen, ohne dich selbst deshalb komplett abzuwerten.
+      </p>
+
+      <h3>Vergleiche erzählen nie die ganze Geschichte</h3>
+
+      <p>
+        Es ist leicht, bei anderen nur das zu sehen, was scheinbar besser
+        läuft: ihre Freundschaften, ihre Erfolge, ihr Selbstvertrauen oder
+        die Art, wie sie mit Situationen umgehen. Dabei kennst du nicht
+        unbedingt ihre Zweifel oder Schwierigkeiten.
+      </p>
+
+      <p>
+        Du musst nicht genauso sein wie andere, um dazuzugehören.
+        Deine Persönlichkeit darf sich entwickeln. Du darfst neue
+        Interessen entdecken, deine Meinung ändern und herausfinden,
+        was wirklich zu dir passt.
+      </p>
+
+      <h3>Sprich mit dir selbst wie mit einem Menschen, den du magst</h3>
+
+      <p>
+        Wenn du einen Fehler machst, würdest du einem guten Freund
+        wahrscheinlich nicht sagen, dass er deshalb wertlos ist.
+        Versuch, dir selbst dieselbe Fairness entgegenzubringen.
+        Das bedeutet nicht, dass du alles an dir gut finden musst.
+        Es bedeutet, dass du dich auch dann respektvoll behandeln darfst,
+        wenn du mit dir unzufrieden bist.
+      </p>
+
+      <div class="self-note">
+        <strong>Denk daran:</strong> Du musst nicht erst selbstbewusst
+        werden, um Respekt zu verdienen. Du darfst dich unsicher fühlen
+        und trotzdem freundlich zu dir selbst sein.
+      </div>
+    </section>
+
+    <!-- TEIL 2: FAKTEN UND PRAKTISCHE HILFE -->
+    <section class="self-section facts">
+      <span class="self-label">Teil 02 · Wissen und Hilfe</span>
+      <h2>Wie du deinen Selbstwert stärken kannst</h2>
+
+      <p>
+        Selbstwert beschreibt, wie du deinen eigenen Wert als Person
+        einschätzt. Er kann je nach Lebensphase und Situation schwanken.
+        Selbstwertprobleme sind keine persönliche Schwäche und lassen sich
+        durch Übung, unterstützende Beziehungen und bei Bedarf professionelle
+        Hilfe angehen.
+      </p>
+
+      <h3>1. Achte auf deine innere Stimme</h3>
+
+      <p>
+        Beobachte, wie du mit dir selbst sprichst. Gedanken wie
+        „Ich mache immer alles falsch“ oder „Niemand mag mich“ sind
+        sehr allgemeine Urteile. Überlege, ob es wirklich immer so ist
+        oder ob gerade ein schwieriger Moment deine Sicht beeinflusst.
+      </p>
+
+      <p>
+        Du musst einen negativen Gedanken nicht sofort durch einen
+        übertrieben positiven ersetzen. Ein realistischer Satz kann
+        hilfreicher sein: „Das lief nicht so, wie ich wollte, aber ich
+        kann daraus lernen.“
+      </p>
+
+      <h3>2. Unterscheide Fehler von deinem Wert als Mensch</h3>
+
+      <p>
+        Fehler sind Informationen darüber, was in einer bestimmten
+        Situation nicht funktioniert hat. Sie sind kein vollständiges
+        Urteil über deine Persönlichkeit. Wenn du etwas falsch machst,
+        frage dich lieber, was du beim nächsten Mal anders versuchen
+        möchtest, statt dich selbst abzuwerten.
+      </p>
+
+      <h3>3. Setze gesunde Grenzen</h3>
+
+      <p>
+        Du darfst Nein sagen, wenn etwas für dich nicht passt. Du darfst
+        dir Zeit zum Nachdenken nehmen und musst nicht jede Bitte erfüllen.
+        Grenzen können Beziehungen sogar verbessern, weil sie klarer
+        machen, was für dich in Ordnung ist und was nicht.
+      </p>
+
+      <h3>4. Suche Beziehungen, in denen du du selbst sein kannst</h3>
+
+      <p>
+        Gute Beziehungen müssen nicht immer konfliktfrei sein. Wichtig ist,
+        dass Respekt, Ehrlichkeit und gegenseitiges Zuhören möglich sind.
+        Du solltest nicht dauerhaft Angst haben müssen, ausgelacht,
+        abgewertet oder unter Druck gesetzt zu werden.
+      </p>
+
+      <h3>5. Nimm kleine Fortschritte ernst</h3>
+
+      <p>
+        Selbstwert entsteht nicht nur durch große Erfolge. Es kann ein
+        Fortschritt sein, eine eigene Meinung auszusprechen, um Hilfe zu
+        bitten, einen Fehler zu akzeptieren oder dir eine Pause zu erlauben.
+        Du musst nicht alles auf einmal verändern.
+      </p>
+
+      <h3>6. Hol dir Unterstützung, wenn Selbstzweifel dich belasten</h3>
+
+      <p>
+        Wenn du dich häufig wertlos fühlst, dich ständig mit anderen
+        vergleichst oder deine Selbstzweifel deinen Alltag und deine
+        Beziehungen beeinträchtigen, sprich mit einer Vertrauensperson
+        oder einer psychologischen Fachkraft. Unterstützung anzunehmen
+        ist ein sinnvoller Schritt und kein Zeichen von Schwäche.
+      </p>
+
+      <div class="self-note">
+        <strong>Wichtig:</strong> Du musst dich nicht jeden Tag mögen,
+        um dich selbst respektvoll behandeln zu können. Selbstwert bedeutet
+        nicht, immer von sich überzeugt zu sein, sondern sich auch in
+        schwierigen Momenten nicht die eigene Würde abzusprechen.
+      </div>
+
+      <h3>Hier kannst du dir Unterstützung holen</h3>
+
+      <a class="self-resource"
+         href="https://www.nummergegenkummer.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>Nummer gegen Kummer</strong>
+        <span>
+          Kostenlose und anonyme Beratung für Kinder und Jugendliche.
+          Auf der offiziellen Website findest du die aktuellen
+          Kontaktmöglichkeiten.
+        </span>
+      </a>
+
+      <a class="self-resource"
+         href="https://www.jugendnotmail.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>JugendNotmail</strong>
+        <span>
+          Online-Beratung für junge Menschen bei Sorgen, persönlichen
+          Problemen und seelischen Belastungen.
+        </span>
+      </a>
+
+      <a class="self-resource"
+         href="https://www.telefonseelsorge.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>TelefonSeelsorge</strong>
+        <span>
+          Vertrauliche Unterstützung bei seelischen Belastungen.
+          Die Website informiert über die verfügbaren Beratungsangebote.
+        </span>
+      </a>
+    </section>
+
+    <footer class="self-footer">
+      <p>Du musst nicht perfekt sein, um wichtig zu sein.</p>
+      <p>In Zusammenarbeit mit MaxOfficial :D</p>
+      <a href="hilfe.html">Zurück zur Übersicht</a>
+    </footer>
+
+  </main>
+</body>
+</html>
