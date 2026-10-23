@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Überforderung – Positivhelpcenter</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .ueber-page {
+      --ueber-yellow: #ffda57;
+      --ueber-orange: #ffb36b;
+      --ueber-ink: #171717;
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      color: var(--ueber-ink);
+      font-family: "DM Sans", Arial, sans-serif;
+    }
+
+    .ueber-page * {
+      box-sizing: border-box;
+    }
+
+    .ueber-back {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 10px 16px;
+      border: 2px solid var(--ueber-ink);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ueber-ink);
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 3px 3px 0 var(--ueber-ink);
+    }
+
+    .ueber-hero {
+      padding: 30px;
+      margin-bottom: 26px;
+      background: var(--ueber-yellow);
+      border: 2px solid var(--ueber-ink);
+      border-radius: 18px;
+      box-shadow: 5px 5px 0 var(--ueber-ink);
+    }
+
+    .ueber-tag {
+      display: inline-block;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      border: 2px solid var(--ueber-ink);
+      border-radius: 7px;
+      background: #fff;
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .ueber-hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 6vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+    }
+
+    .ueber-hero p {
+      max-width: 720px;
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .ueber-section {
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 2px solid var(--ueber-ink);
+      border-radius: 16px;
+      background: #fffdf8;
+    }
+
+    .ueber-section h2 {
+      margin: 0 0 16px;
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.7px;
+    }
+
+    .ueber-section h3 {
+      margin: 20px 0 8px;
+      font-size: 19px;
+    }
+
+    .ueber-section p,
+    .ueber-section li {
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .ueber-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .ueber-columns > div + div {
+      padding-left: 24px;
+      border-left: 2px solid #e5dfd3;
+    }
+
+    .ueber-note {
+      padding: 15px 17px;
+      margin-top: 18px;
+      border-left: 5px solid var(--ueber-ink);
+      border-radius: 9px;
+      background: var(--ueber-yellow);
+      line-height: 1.7;
+    }
+
+    .ueber-tips {
+      padding: 0;
+      list-style: none;
+      counter-reset: ueber-counter;
+    }
+
+    .ueber-tips li {
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 18px;
+      counter-increment: ueber-counter;
+    }
+
+    .ueber-tips li::before {
+      content: counter(ueber-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--ueber-ink);
+      border-radius: 50%;
+      background: var(--ueber-yellow);
+      font-weight: 800;
+    }
+
+    .ueber-resource {
+      display: block;
+      padding: 15px;
+      margin-top: 12px;
+      border: 2px solid var(--ueber-ink);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--ueber-ink);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .ueber-resource:hover {
+      transform: translateY(-2px);
+      box-shadow: 3px 3px 0 var(--ueber-ink);
+    }
+
+    .ueber-resource strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .ueber-resource span {
+      display: block;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .ueber-footer {
+      padding-top: 18px;
+      border-top: 2px dashed #aaa;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .ueber-footer a {
+      color: var(--ueber-ink);
+      font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      .ueber-page {
+        padding: 16px 12px 28px;
+      }
+
+      .ueber-hero {
+        padding: 22px 18px;
+      }
+
+      .ueber-section {
+        padding: 19px 16px;
+      }
+
+      .ueber-columns {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .ueber-columns > div + div {
+        padding-left: 0;
+        padding-top: 18px;
+        border-left: none;
+        border-top: 2px solid #e5dfd3;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="ueber-page">
+
+    <a class="ueber-back" href="hilfe.html">← Zurück zur Hilfe-Seite</a>
+
+    <header class="ueber-hero">
+      <span class="ueber-tag">Stress & Gedanken</span>
+      <h1>Wenn alles gleichzeitig zu viel ist</h1>
+      <p>
+        Wenn sich Aufgaben, Sorgen und Erwartungen stapeln, kann es schwer sein,
+        überhaupt noch zu wissen, wo du anfangen sollst. Du musst nicht alles
+        auf einmal lösen. Wir schauen gemeinsam auf kleine, machbare Schritte.
+      </p>
+    </header>
+
+    <section class="ueber-section">
+      <span class="ueber-tag">Teil 01 · Die Gefühle</span>
+      <h2>Wenn dein Kopf keine Pause macht</h2>
+
+      <div class="ueber-columns">
+        <div>
+          <p>
+            Manchmal kommt nicht nur eine Sache zusammen, sondern gleich alles:
+            Schule, Freundschaften, Familie, Erwartungen und Gedanken, die einfach
+            nicht verschwinden wollen.
+          </p>
+
+          <p>
+            Vielleicht möchtest du alles richtig machen. Du denkst an das,
+            was du noch erledigen musst, an Gespräche, die dich beschäftigen,
+            oder an Dinge, die schiefgehen könnten. Selbst wenn du gerade nichts
+            tust, fühlt es sich an, als müsstest du eigentlich etwas erledigen.
+          </p>
+
+          <p>
+            Je mehr sich ansammelt, desto schwieriger kann es werden, anzufangen.
+            Und wenn du dann nichts schaffst, machst du dir vielleicht zusätzlich
+            Vorwürfe. So entsteht ein Kreislauf, aus dem es schwer sein kann,
+            allein herauszufinden.
+          </p>
+
+          <p>
+            Aber Überforderung bedeutet nicht, dass du schwach bist.
+            Sie kann ein Zeichen dafür sein, dass gerade mehr auf dich einwirkt,
+            als du im Moment bewältigen kannst.
+          </p>
+        </div>
+
+        <div>
+          <h3>Überforderung kann sich so zeigen</h3>
+
+          <ul>
+            <li>Du weißt nicht, welche Aufgabe du zuerst erledigen sollst.</li>
+            <li>Du fühlst dich innerlich unruhig oder angespannt.</li>
+            <li>Du kannst dich schlecht konzentrieren.</li>
+            <li>Du reagierst schneller gereizt oder möchtest dich zurückziehen.</li>
+            <li>Du grübelst ständig über Dinge nach.</li>
+            <li>Selbst kleine Aufgaben fühlen sich plötzlich riesig an.</li>
+          </ul>
+
+          <div class="ueber-note">
+            <strong>Das darfst du dir sagen:</strong><br>
+            „Ich muss nicht alles jetzt lösen. Ich darf kurz anhalten und
+            herausfinden, was ich gerade wirklich brauche.“
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ueber-section" style="background: #fff0df;">
+      <span class="ueber-tag">Teil 02 · Wissen und Hilfe</span>
+      <h2>Was du tun kannst, wenn alles zu viel wird</h2>
+
+      <div class="ueber-columns">
+        <div>
+          <h3>Finde einen Anfang, der machbar ist</h3>
+
+          <ol class="ueber-tips">
+            <li>
+              <strong>Halte kurz inne.</strong><br>
+              Du musst nicht sofort eine Lösung finden. Stell beide Füße auf
+              den Boden, atme in deinem eigenen Tempo und nimm wahr, was gerade
+              um dich herum ist.
+            </li>
+
+            <li>
+              <strong>Schreibe alles auf.</strong><br>
+              Notiere Aufgaben und Sorgen, die in deinem Kopf kreisen.
+              Du musst sie noch nicht sortieren. Manchmal hilft es bereits,
+              sie nicht ständig im Kopf behalten zu müssen.
+            </li>
+
+            <li>
+              <strong>Unterscheide zwischen dringend und später.</strong><br>
+              Was muss wirklich heute erledigt werden? Was kann warten?
+              Nicht jede Aufgabe hat dieselbe Priorität.
+            </li>
+
+            <li>
+              <strong>Wähle nur einen kleinen Schritt.</strong><br>
+              Statt „Ich muss alles lernen“ könnte dein erster Schritt sein,
+              die Unterlagen herauszulegen oder eine einzelne Aufgabe anzusehen.
+            </li>
+
+            <li>
+              <strong>Plane Erholung mit ein.</strong><br>
+              Pausen sind kein Beweis für Faulheit. Dein Kopf braucht Zeit,
+              um sich zu erholen. Versuche, Pausen nicht erst dann zu machen,
+              wenn gar nichts mehr geht.
+            </li>
+
+            <li>
+              <strong>Sprich aus, was dich belastet.</strong><br>
+              Wende dich an eine Person, der du vertraust. Du musst nicht sofort
+              um Rat bitten. Du kannst auch einfach sagen, dass gerade alles
+              zu viel ist und du jemanden zum Zuhören brauchst.
+            </li>
+          </ol>
+
+          <div class="ueber-note">
+            <strong>Die Ein-Minuten-Frage:</strong><br>
+            Was ist die kleinste sinnvolle Sache, die ich jetzt tun kann?
+            Wenn dir keine einfällt, darf dein nächster Schritt auch einfach
+            eine Pause sein.
+          </div>
+        </div>
+
+        <div>
+          <h3>Warum sich Überforderung so stark anfühlen kann</h3>
+
+          <p>
+            Wenn viele Anforderungen gleichzeitig auf dich einwirken, kann Stress
+            deine Aufmerksamkeit, Konzentration und Entscheidungsfähigkeit
+            beeinträchtigen. Dann fällt es manchmal schwerer, Aufgaben zu ordnen
+            oder überhaupt anzufangen.
+          </p>
+
+          <p>
+            Stress ist eine normale Reaktion auf Belastung. Entscheidend ist,
+            wie lange er anhält und wie stark er deinen Alltag beeinträchtigt.
+            Es gibt keine einzelne Methode, die für alle Menschen funktioniert.
+            Oft hilft es, mehrere kleine Veränderungen auszuprobieren.
+          </p>
+
+          <h3>Wann du dir Unterstützung holen solltest</h3>
+
+          <p>
+            Wenn du dich über längere Zeit überfordert fühlst, schlecht schläfst,
+            häufig Angst hast oder Schule, Freundschaften und Alltag darunter leiden,
+            sprich mit einer vertrauten erwachsenen Person oder einer Fachperson.
+          </p>
+
+          <p>
+            Du musst nicht warten, bis alles zusammenbricht. Unterstützung ist
+            auch dann sinnvoll, wenn du noch nicht genau erklären kannst,
+            was dich belastet.
+          </p>
+
+          <h3>Hier kannst du Hilfe finden</h3>
+
+          <a class="ueber-resource"
+             href="https://www.nummergegenkummer.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>Nummer gegen Kummer ↗</strong>
+            <span>
+              Kostenlose und anonyme Beratung für Kinder und Jugendliche.
+              Auf der Website findest du die aktuellen Kontaktmöglichkeiten.
+            </span>
+          </a>
+
+          <a class="ueber-resource"
+             href="https://jugendnotmail.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>JugendNotmail ↗</strong>
+            <span>
+              Online-Beratung für junge Menschen bei Stress, Sorgen und
+              persönlichen Problemen.
+            </span>
+          </a>
+
+          <a class="ueber-resource"
+             href="https://www.telefonseelsorge.de/"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>TelefonSeelsorge ↗</strong>
+            <span>
+              Vertrauliche Unterstützung bei seelischen Belastungen.
+              Auf der Website findest du die verfügbaren Beratungsangebote.
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ueber-footer">
+      <p>
+        Du musst nicht alles auf einmal schaffen. Ein kleiner Schritt zählt.
+        <br>
+        In Zusammenarbeit mit MaxOfficial :D
+      </p>
+
+      <a href="hilfe.html">Zurück zur Übersicht →</a>
+    </footer>
+
+  </main>
+</body>
+</html>
