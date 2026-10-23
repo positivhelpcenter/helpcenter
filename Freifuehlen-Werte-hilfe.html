@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f0df">
+  <meta name="description" content="Ein Ort für queere Menschen: Selbstakzeptanz, lesbische und schwule Liebe, persönliche Werte und das Recht, du selbst zu sein.">
+  <title>Frei fühlen & Werte erkennen – Positivhelpcenter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    #frei-page {
+      --cream: #f6f0df;
+      --paper: #fffdf6;
+      --yellow: #ffe66d;
+      --orange: #ff8b42;
+      --black: #171717;
+      --muted: #656158;
+      --line: 2px solid var(--black);
+
+      color: var(--black);
+      background: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    #frei-page * {
+      box-sizing: border-box;
+    }
+
+    #frei-page a {
+      color: inherit;
+    }
+
+    #frei-page .frei-top {
+      border-bottom: var(--line);
+      padding: 14px 20px;
+      background: var(--yellow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    #frei-page .frei-brand {
+      font-size: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: -0.4px;
+    }
+
+    #frei-page .frei-label,
+    #frei-page .frei-mono {
+      font: 11px "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #frei-page .frei-wrap {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 38px 0 54px;
+    }
+
+    #frei-page .frei-back {
+      display: inline-block;
+      border: var(--line);
+      background: var(--paper);
+      padding: 9px 13px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 3px 3px 0 var(--black);
+      margin-bottom: 28px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    #frei-page .frei-back:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--black);
+    }
+
+    #frei-page .frei-hero {
+      border: var(--line);
+      background: var(--yellow);
+      padding: clamp(24px, 5vw, 48px);
+      box-shadow: 7px 7px 0 var(--black);
+      margin-bottom: 34px;
+    }
+
+    #frei-page .frei-kicker {
+      font: 11px "DM Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin: 0 0 12px;
+    }
+
+    #frei-page h1 {
+      font-size: clamp(35px, 7vw, 60px);
+      line-height: 1.04;
+      letter-spacing: -2px;
+      margin: 0 0 18px;
+      font-weight: 800;
+    }
+
+    #frei-page .frei-intro {
+      font-size: 17px;
+      max-width: 680px;
+      margin: 0;
+    }
+
+    #frei-page .frei-stamp {
+      display: inline-block;
+      border: var(--line);
+      background: var(--orange);
+      padding: 7px 11px;
+      font: 11px "DM Mono", monospace;
+      text-transform: uppercase;
+      margin-top: 24px;
+      transform: rotate(-2deg);
+    }
+
+    #frei-page .frei-section {
+      margin: 34px 0;
+    }
+
+    #frei-page h2 {
+      font-size: clamp(24px, 4vw, 32px);
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+      margin: 0 0 14px;
+    }
+
+    #frei-page h3 {
+      font-size: 18px;
+      line-height: 1.35;
+      margin: 0 0 8px;
+    }
+
+    #frei-page p {
+      margin: 0 0 14px;
+    }
+
+    #frei-page .frei-card {
+      border: var(--line);
+      background: var(--paper);
+      padding: 22px;
+      margin: 16px 0;
+    }
+
+    #frei-page .frei-card.yellow {
+      background: #fff0a8;
+    }
+
+    #frei-page .frei-card.orange {
+      background: #ffe0c8;
+    }
+
+    #frei-page .frei-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    #frei-page .frei-grid .frei-card {
+      margin: 0;
+    }
+
+    #frei-page .frei-number {
+      font: 11px "DM Mono", monospace;
+      display: inline-block;
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    #frei-page .frei-list {
+      padding-left: 22px;
+      margin: 10px 0 0;
+    }
+
+    #frei-page .frei-list li {
+      margin: 9px 0;
+      padding-left: 3px;
+    }
+
+    #frei-page .frei-quote {
+      border: var(--line);
+      background: var(--yellow);
+      padding: 24px;
+      font-size: clamp(20px, 4vw, 27px);
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: -0.4px;
+      margin: 18px 0;
+    }
+
+    #frei-page .frei-note {
+      border-left: 5px solid var(--orange);
+      background: var(--paper);
+      padding: 14px 17px;
+      margin: 18px 0;
+    }
+
+    #frei-page .frei-footer {
+      border-top: var(--line);
+      background: var(--yellow);
+      text-align: center;
+      padding: 22px 16px;
+      font-size: 12px;
+    }
+
+    #frei-page .frei-footer p {
+      margin: 4px 0;
+    }
+
+    #frei-page .frei-footer .frei-mono {
+      font-size: 10px;
+    }
+
+    @media (max-width: 600px) {
+      #frei-page .frei-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #frei-page .frei-wrap {
+        width: calc(100% - 24px);
+        padding-top: 25px;
+      }
+
+      #frei-page .frei-hero {
+        box-shadow: 4px 4px 0 var(--black);
+      }
+
+      #frei-page h1 {
+        letter-spacing: -1px;
+      }
+    }
+  </style>
+</head>
+
+<body style="margin:0;">
+  <main id="frei-page">
+    <header class="frei-top">
+      <a class="frei-brand" href="hilfe.html">POSITIVHELPCENTER</a>
+      <span class="frei-label">Identität · Liebe · Freiheit</span>
+    </header>
+
+    <div class="frei-wrap">
+      <a class="frei-back" href="hilfe.html">← Zurück zur Hilfe-Übersicht</a>
+
+      <section class="frei-hero">
+        <p class="frei-kicker">02 / Du darfst du selbst sein</p>
+        <h1>Frei fühlen.<br>Du selbst sein.</h1>
+        <p class="frei-intro">
+          Wer bin ich? Wen liebe ich? Was ist mir wichtig? Und wie möchte ich
+          leben? Du darfst diese Fragen in deinem eigenen Tempo beantworten.
+          Ob lesbisch, schwul, bi, queer oder noch am Herausfinden:
+          Du musst dich nicht beeilen, um deinen Platz in der Welt zu verdienen.
+        </p>
+        <span class="frei-stamp">Dein Leben · Deine Gefühle · Dein Tempo</span>
+      </section>
+
+      <section class="frei-section">
+        <h2>Du musst dich nicht erst verstehen, um wertvoll zu sein.</h2>
+        <p>
+          Vielleicht hast du schon eine klare Vorstellung davon, wer du bist.
+          Vielleicht verändert sich gerade vieles. Vielleicht fühlst du dich
+          sicher, manchmal unsicher oder hast mehr Fragen als Antworten.
+        </p>
+        <p>
+          All das darf sein. Identität ist etwas Persönliches. Manche Menschen
+          wissen früh, wen sie lieben oder wie sie sich beschreiben möchten.
+          Andere brauchen länger oder verwenden unterschiedliche Begriffe
+          zu verschiedenen Zeiten.
+        </p>
+
+        <div class="frei-card yellow">
+          <h3>Du musst kein Etikett finden.</h3>
+          <p>
+            Begriffe wie schwul, lesbisch, bi oder queer können helfen,
+            die eigenen Gefühle zu beschreiben und Gemeinschaft zu finden.
+            Du darfst einen Begriff verwenden, ihn später ändern oder überhaupt
+            keinen benutzen. Niemand anderes muss deine Identität für dich
+            festlegen.
+          </p>
+        </div>
+      </section>
+
+      <section class="frei-section">
+        <h2>Liebe ist nicht weniger wert, nur weil sie queer ist.</h2>
+
+        <div class="frei-grid">
+          <article class="frei-card">
+            <span class="frei-number">01 / SCHWUL</span>
+            <h3>Jungs, die Jungs lieben</h3>
+            <p>
+              Wenn ein Junge oder Mann andere Jungs oder Männer liebt,
+              kann „schwul“ die passende Bezeichnung sein. Seine Liebe
+              ist nicht weniger echt, ernst oder bedeutungsvoll als die
+              Liebe anderer Menschen.
+            </p>
+          </article>
+
+          <article class="frei-card">
+            <span class="frei-number">02 / LESBISCH</span>
+            <h3>Mädchen, die Mädchen lieben</h3>
+            <p>
+              Wenn ein Mädchen oder eine Frau andere Mädchen oder Frauen liebt,
+              kann „lesbisch“ die passende Bezeichnung sein. Sie darf stolz
+              auf sich sein und Beziehungen führen, in denen sie respektiert
+              und ernst genommen wird.
+            </p>
+          </article>
+
+          <article class="frei-card">
+            <span class="frei-number">03 / QUEER</span>
+            <h3>Ein Wort für viele Erfahrungen</h3>
+            <p>
+              Manche Menschen verwenden „queer“ als übergreifende Bezeichnung,
+              weil ihre sexuelle Orientierung oder Geschlechtsidentität nicht
+              den üblichen gesellschaftlichen Erwartungen entspricht.
+              Nicht alle mögen oder verwenden diesen Begriff.
+            </p>
+          </article>
+
+          <article class="frei-card">
+            <span class="frei-number">04 / NOCH OFFEN</span>
+            <h3>Du darfst es herausfinden</h3>
+            <p>
+              Du musst heute nicht wissen, wie du dich in fünf Jahren
+              beschreiben wirst. Fragen zu haben bedeutet nicht, dass mit
+              dir etwas nicht stimmt. Du darfst dir Zeit lassen.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="frei-section">
+        <h2>Was bedeutet es, sich frei zu fühlen?</h2>
+        <p>
+          Frei zu sein bedeutet nicht, niemals Angst zu haben oder immer
+          selbstbewusst aufzutreten. Es kann bedeuten, Schritt für Schritt
+          herauszufinden, was sich für dich richtig anfühlt, und deine
+          Entscheidungen nicht ausschließlich an den Erwartungen anderer
+          auszurichten.
+        </p>
+
+        <div class="frei-card">
+          <h3>Freiheit kann bedeuten …</h3>
+          <ul class="frei-list">
+            <li>deine Gefühle ernst zu nehmen, ohne dich dafür zu verurteilen;</li>
+            <li>Menschen zu lieben, ohne ihre Liebe mit der anderer vergleichen zu müssen;</li>
+            <li>Nein zu sagen, wenn dir etwas nicht guttut;</li>
+            <li>deine Meinung zu ändern, wenn du etwas Neues über dich lernst;</li>
+            <li>deine Grenzen zu schützen und die Grenzen anderer zu respektieren;</li>
+            <li>selbst zu entscheiden, wem du etwas Persönliches erzählen möchtest;</li>
+            <li>Unterstützung anzunehmen, ohne dich dafür schwach zu fühlen.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="frei-section">
+        <h2>Deine Werte erkennen</h2>
+        <p>
+          Werte sind Dinge, die dir im Leben wichtig sind. Sie können dir
+          Orientierung geben, wenn du Entscheidungen treffen musst oder
+          nicht weißt, welchen Weg du gehen möchtest.
+        </p>
+        <p>
+          Du musst deine Werte nicht von anderen übernehmen. Du kannst sie
+          selbst entdecken, hinterfragen und im Laufe deines Lebens verändern.
+        </p>
+
+        <div class="frei-grid">
+          <article class="frei-card">
+            <h3>Respekt</h3>
+            <p>
+              Ich möchte Menschen ernst nehmen und selbst ernst genommen werden.
+              Niemand sollte wegen seiner Identität abgewertet werden.
+            </p>
+          </article>
+
+          <article class="frei-card">
+            <h3>Ehrlichkeit</h3>
+            <p>
+              Ich möchte ehrlich mit mir selbst umgehen. Gleichzeitig darf
+              ich selbst bestimmen, welche persönlichen Informationen ich
+              anderen anvertraue.
+            </p>
+          </article>
+
+          <article class="frei-card">
+            <h3>Freiheit</h3>
+            <p>
+              Ich möchte Entscheidungen treffen können, die zu mir passen,
+              ohne andere zu kontrollieren oder mich selbst aufzugeben.
+            </p>
+          </article>
+
+          <article class="frei-card">
+            <h3>Mitgefühl</h3>
+            <p>
+              Ich möchte anderen freundlich begegnen und mir selbst dieselbe
+              Geduld zugestehen, die ich einem Menschen geben würde, den ich mag.
+            </p>
+          </article>
+
+          <article class="frei-card">
+            <h3>Mut</h3>
+            <p>
+              Mut heißt nicht, keine Angst zu haben. Manchmal bedeutet Mut,
+              eine Frage zu stellen, Hilfe zu suchen oder sich Zeit zu nehmen.
+            </p>
+          </article>
+
+          <article class="frei-card">
+            <h3>Verbundenheit</h3>
+            <p>
+              Ich möchte Beziehungen, in denen Menschen einander zuhören,
+              Grenzen respektieren und sich gegenseitig unterstützen.
+            </p>
+          </article>
+        </div>
+
+        <div class="frei-note">
+          <strong>Eine kleine Übung:</strong>
+          Überlege, welche drei Werte dir besonders wichtig sind.
+          Frage dich dann: „Wie möchte ich diese Werte in meinem Alltag leben?“
+          Es geht nicht darum, alles perfekt umzusetzen. Es geht darum,
+          herauszufinden, was für dich zählt.
+        </div>
+      </section>
+
+      <section class="frei-section">
+        <h2>Wenn andere deine Identität nicht verstehen</h2>
+        <p>
+          Es kann wehtun, wenn Menschen abwertend reagieren, Witze auf deine
+          Kosten machen oder deine Gefühle nicht ernst nehmen. Vielleicht
+          machst du dir Sorgen, wie Familie, Freundeskreis oder Schule reagieren.
+        </p>
+        <p>
+          Du bist nicht dafür verantwortlich, alle Vorurteile anderer Menschen
+          zu beseitigen. Du musst auch niemanden von deinem Wert überzeugen.
+          Deine Identität verdient Respekt, selbst wenn andere sie noch nicht
+          verstehen.
+        </p>
+
+        <div class="frei-card orange">
+          <h3>Du bestimmst dein eigenes Tempo.</h3>
+          <p>
+            Du musst dich nicht outen, bevor du dich bereit fühlst. Ein Coming-out
+            ist eine persönliche Entscheidung und keine Pflicht. Wenn du Angst
+            vor Ablehnung, Bestrafung oder einer unsicheren Reaktion hast,
+            darfst du zuerst überlegen, welche Menschen und Orte für dich
+            sicher sind.
+          </p>
+        </div>
+
+        <p>
+          Wenn jemand dich bedroht, bedrängt oder diskriminiert, ist es in
+          Ordnung, Unterstützung zu suchen. Wende dich an eine Person, der du
+          vertraust, eine Beratungsstelle oder eine Anlaufstelle an deiner Schule.
+          Du musst damit nicht allein umgehen.
+        </p>
+      </section>
+
+      <section class="frei-section">
+        <h2>Eine gesunde Beziehung fühlt sich respektvoll an.</h2>
+        <p>
+          Queere Beziehungen verdienen dieselbe Fürsorge und denselben Respekt
+          wie alle anderen Beziehungen. Wichtig ist nicht, wie andere eure
+          Beziehung nennen, sondern wie ihr miteinander umgeht.
+        </p>
+
+        <div class="frei-card">
+          <h3>In einer guten Beziehung darfst du …</h3>
+          <ul class="frei-list">
+            <li>deine Meinung sagen, ohne Angst vor Einschüchterung zu haben;</li>
+            <li>eigene Freundschaften und Interessen behalten;</li>
+            <li>persönliche Grenzen setzen und die Grenzen deines Partners oder deiner Partnerin respektieren;</li>
+            <li>über Unsicherheiten sprechen, ohne ausgelacht zu werden;</li>
+            <li>Nein sagen und ein Nein akzeptieren;</li>
+            <li>erwarten, dass Privates nicht ohne deine Zustimmung weitererzählt wird;</li>
+            <li>eine Beziehung beenden, wenn sie dir nicht guttut.</li>
+          </ul>
+        </div>
+
+        <p>
+          Liebe bedeutet nicht, dass du dich selbst aufgeben musst. Du darfst
+          jemanden sehr lieben und trotzdem eigene Bedürfnisse, Grenzen und
+          Werte haben.
+        </p>
+      </section>
+
+      <section class="frei-section">
+        <h2>Wenn du dich selbst noch nicht akzeptieren kannst</h2>
+        <p>
+          Selbstakzeptanz kommt nicht immer auf einmal. Vielleicht hast du
+          negative Aussagen über queere Menschen gehört oder gelernt,
+          deine Gefühle zu hinterfragen. Solche Erfahrungen können nachwirken.
+        </p>
+        <p>
+          Du musst dich nicht zwingen, jeden Tag stolz oder glücklich zu sein.
+          Es reicht, wenn du dir die Möglichkeit offenhältst, dir selbst mit
+          mehr Verständnis zu begegnen.
+        </p>
+
+        <div class="frei-quote">
+          „Ich muss mich nicht kleiner machen, damit andere sich wohler fühlen.“
+        </div>
+
+        <div class="frei-quote">
+          „Meine Gefühle verdienen es, ernst genommen zu werden.“
+        </div>
+
+        <div class="frei-quote">
+          „Ich darf herausfinden, wer ich bin – in meinem eigenen Tempo.“
+        </div>
+
+        <div class="frei-quote">
+          „Ich verdiene Respekt, auch wenn jemand mich nicht versteht.“
+        </div>
+
+        <div class="frei-quote">
+          „Ich bin mehr als die Meinung anderer Menschen über mich.“
+        </div>
+      </section>
+
+      <section class="frei-section">
+        <h2>Du musst nicht alles allein herausfinden.</h2>
+        <p>
+          Es kann helfen, mit anderen queeren Menschen zu sprechen oder
+          Geschichten von Menschen zu lesen, die ähnliche Fragen hatten.
+          Gemeinschaft kann zeigen, dass es viele unterschiedliche Wege gibt,
+          ein erfülltes Leben zu führen.
+        </p>
+        <p>
+          Suche dir möglichst respektvolle und sichere Räume. Du entscheidest,
+          was du teilen möchtest und wann. Wenn du Unterstützung bei Angst,
+          Ablehnung oder familiären Konflikten brauchst, kann eine
+          queersensible Beratungsstelle ein guter Anfang sein.
+        </p>
+      </section>
+
+      <section class="frei-section">
+        <h2>Beratung und Unterstützung</h2>
+
+        <div class="frei-card">
+          <h3>Nummer gegen Kummer</h3>
+          <p>
+            Für Kinder und Jugendliche gibt es eine anonyme und kostenlose
+            Beratung. Du kannst auch über persönliche Sorgen sprechen,
+            wenn du noch nicht weißt, wem du dich anvertrauen möchtest.
+          </p>
+          <p>
+            Telefon: <strong>116 111</strong>
+          </p>
+          <p>
+            Website:
+            <a href="https://www.nummergegenkummer.de/" target="_blank" rel="noopener noreferrer">nummergegenkummer.de</a>
+          </p>
+        </div>
+
+        <div class="frei-card">
+          <h3>Coming Out Day e. V.</h3>
+          <p>
+            Informationen rund um Coming-out, Sichtbarkeit und queere Themen
+            findest du unter:
+          </p>
+          <p>
+            <a href="https://www.comingoutday.de/" target="_blank" rel="noopener noreferrer">comingoutday.de</a>
+          </p>
+        </div>
+
+        <div class="frei-card">
+          <h3>Queer Lexikon</h3>
+          <p>
+            Eine Anlaufstelle mit Informationen zu sexueller Orientierung,
+            Geschlechtsidentität und queeren Begriffen:
+          </p>
+          <p>
+            <a href="https://queer-lexikon.net/" target="_blank" rel="noopener noreferrer">queer-lexikon.net</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="frei-section">
+        <h2>Eine letzte Erinnerung</h2>
+        <div class="frei-card yellow">
+          <p>
+            Du musst nicht so leben, wie andere es für dich vorgesehen haben.
+            Du darfst Fragen stellen, deine Werte entdecken, Grenzen setzen
+            und Menschen lieben, die dir wichtig sind.
+          </p>
+          <p>
+            Du musst heute nicht alle Antworten kennen. Du musst nicht immer
+            mutig sein. Und du musst dich nicht erst verändern, um Respekt
+            zu verdienen.
+          </p>
+          <p>
+            <strong>Dein Leben gehört dir. Deine Gefühle zählen.
+            Und du verdienst es, sicher, respektvoll und frei leben zu können.</strong>
+          </p>
+        </div>
+      </section>
+
+      <a class="frei-back" href="hilfe.html">← Zurück zur Hilfe-Übersicht</a>
+    </div>
+
+    <footer class="frei-footer">
+      <p><strong>POSITIVHELPCENTER</strong></p>
+      <p>Ein Ort für Verständnis, Orientierung und neue Kraft.</p>
+      <p>In Zusammenarbeit mit MaxOfficial :D</p>
+      <p class="frei-mono">Sei freundlich zu dir selbst.</p>
+    </footer>
+  </main>
+</body>
+</html>
