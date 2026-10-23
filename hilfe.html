@@ -9,6 +9,465 @@
   <title>Hilfe finden – Positivhelpcenter</title>
   <link rel="stylesheet" href="styles.css">
   <script src="hilfe.js" defer></script>
+
+  <style>
+    /* Gestaltung nur für die Hilfeseite */
+    .help-page {
+      background: #fffdf6;
+    }
+
+    .help-page .lifebuoy-hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 5%;
+      padding-top: 65px;
+      padding-bottom: 70px;
+    }
+
+    .help-page .lifebuoy-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .help-page .lifebuoy-art {
+      position: relative;
+      display: grid;
+      min-height: 350px;
+      place-items: center;
+    }
+
+    .help-page .lifebuoy-shadow {
+      position: absolute;
+      width: 235px;
+      height: 235px;
+      border-radius: 50%;
+      background: rgba(25, 25, 20, .12);
+      filter: blur(14px);
+      transform: translate(10px, 15px);
+    }
+
+    .help-page .lifebuoy {
+      position: relative;
+      display: grid;
+      width: 235px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid rgba(25, 25, 20, .22);
+      border-radius: 50%;
+      background: conic-gradient(
+        #f7cf45 0deg 45deg,
+        #fffdf6 45deg 90deg,
+        #f7cf45 90deg 135deg,
+        #fffdf6 135deg 180deg,
+        #f7cf45 180deg 225deg,
+        #fffdf6 225deg 270deg,
+        #f7cf45 270deg 315deg,
+        #fffdf6 315deg 360deg
+      );
+      box-shadow: inset 0 0 0 13px rgba(255,255,255,.3),
+                  0 9px 0 rgba(25,25,20,.08);
+      transform: rotate(-12deg);
+    }
+
+    .help-page .lifebuoy-center {
+      width: 105px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(25,25,20,.2);
+      border-radius: 50%;
+      background: #fffdf6;
+      box-shadow: inset 0 4px 9px rgba(25,25,20,.1);
+    }
+
+    .help-page .lifebuoy-checker {
+      position: absolute;
+      right: 4%;
+      bottom: 25px;
+      width: 88px;
+      height: 88px;
+      border: 5px solid #fffdf6;
+      transform: rotate(7deg);
+    }
+
+    .help-page .lifebuoy-sparkle {
+      position: absolute;
+      top: 25px;
+      right: 12%;
+      font-size: 35px;
+    }
+
+    .help-page .lifebuoy-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 1.3px;
+    }
+
+    /* Suche im Light-Glass-Stil */
+    .help-page .lifebuoy-search {
+      padding-top: 55px;
+      padding-bottom: 80px;
+      border-top: 1px solid var(--line);
+    }
+
+    .help-page .search-intro,
+    .help-page .library-intro {
+      max-width: 650px;
+      margin: 15px 0 25px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .help-page .article-search {
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 16px;
+      background: rgba(255,255,255,.68);
+      box-shadow: 0 12px 35px rgba(80,65,20,.08),
+                  inset 0 1px 0 rgba(255,255,255,.95);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .help-page .search-input-wrap {
+      position: relative;
+    }
+
+    .help-page .article-search textarea {
+      display: block;
+      width: 100%;
+      min-height: 100px;
+      padding: 18px 58px 18px 17px;
+      resize: vertical;
+      border: 1px solid rgba(25,25,20,.08);
+      border-radius: 11px;
+      outline: none;
+      background: rgba(255,255,255,.58);
+      color: var(--ink);
+      font: 14px/1.7 var(--sans);
+    }
+
+    .help-page .article-search textarea::placeholder {
+      color: #888373;
+    }
+
+    .help-page .article-search textarea:focus {
+      border-color: rgba(190,143,28,.6);
+      box-shadow: 0 0 0 3px rgba(247,207,69,.2);
+    }
+
+    .help-page .search-submit {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: grid;
+      width: 39px;
+      height: 39px;
+      place-items: center;
+      border: 1px solid rgba(25,25,20,.12);
+      border-radius: 50%;
+      background: var(--yellow);
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .help-page .search-submit:hover {
+      background: var(--orange);
+      transform: scale(1.06);
+    }
+
+    .help-page .search-submit svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .help-page .search-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 10px 7px 3px;
+    }
+
+    .help-page .search-bottom > span {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .help-page .topic-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .help-page .topic-chips button {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: #fffefa;
+      font: 12px var(--sans);
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .help-page .topic-chips button:hover {
+      background: var(--yellow-light);
+      transform: translateY(-2px);
+    }
+
+    .help-page .quick-topics {
+      margin-top: 35px;
+    }
+
+    /* Hängende Post-its */
+    .help-page .urgent-section {
+      padding: 65px 0 80px;
+      background: #fff4d0;
+      border-top: 1px solid rgba(25,25,20,.08);
+      border-bottom: 1px solid rgba(25,25,20,.08);
+    }
+
+    .help-page .urgent-heading {
+      max-width: 680px;
+      margin-bottom: 35px;
+    }
+
+    .help-page .urgent-heading > p:last-child {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .help-page .urgent-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+      gap: 20px;
+    }
+
+    .help-page .urgent-card {
+      position: relative;
+      min-width: 0;
+      padding: 25px 21px 24px;
+      border: 1px solid rgba(70,55,20,.1);
+      border-radius: 3px 3px 7px 3px;
+      background: #fff2a8;
+      box-shadow: 3px 7px 15px rgba(70,55,20,.11);
+      transform: rotate(-1.2deg);
+    }
+
+    .help-page .urgent-card:nth-child(2) {
+      background: #ffe0b8;
+      transform: rotate(1.4deg) translateY(12px);
+    }
+
+    .help-page .urgent-card:nth-child(3) {
+      background: #eaf0d4;
+      transform: rotate(-.7deg);
+    }
+
+    .help-page .urgent-card::before {
+      position: absolute;
+      top: -9px;
+      left: calc(50% - 30px);
+      width: 60px;
+      height: 17px;
+      background: rgba(255,255,255,.62);
+      content: "";
+      transform: rotate(-2deg);
+    }
+
+    .help-page .urgent-number {
+      display: inline-grid;
+      width: 31px;
+      height: 31px;
+      place-items: center;
+      border: 1px solid rgba(25,25,20,.3);
+      border-radius: 50%;
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+
+    .help-page .urgent-card h3 {
+      margin: 17px 0 10px;
+      font-size: 19px;
+      letter-spacing: -.5px;
+      line-height: 1.25;
+    }
+
+    .help-page .urgent-card p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.85;
+    }
+
+    .help-page .urgent-card .text-button {
+      margin-top: 14px;
+    }
+
+    .help-page .urgent-note {
+      margin-top: 38px;
+      color: #625638;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    /* Artikelkarten */
+    .help-page .article-library {
+      padding-top: 80px;
+      padding-bottom: 85px;
+    }
+
+    .help-page .article-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .help-page .help-article {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #fffefa;
+      box-shadow: 0 4px 12px rgba(25,25,20,.025);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .help-page .help-article:hover {
+      transform: translateY(-3px);
+      box-shadow: 4px 5px 0 var(--yellow);
+    }
+
+    .help-page .article-symbol {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      margin-bottom: 22px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background: var(--yellow-light);
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+
+    .help-page .help-article .eyebrow {
+      margin-bottom: 8px;
+      font-size: 9px;
+    }
+
+    .help-page .help-article h3 {
+      margin: 0 0 9px;
+      font-size: 18px;
+      letter-spacing: -.5px;
+      line-height: 1.3;
+    }
+
+    .help-page .help-article > p:not(.eyebrow) {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .help-page .article-open-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+      padding: 9px 0 4px;
+      border-bottom: 1px solid var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .help-page .article-open-link:hover {
+      color: #8a5a0a;
+    }
+
+    .help-page .help-last {
+      margin-bottom: 60px;
+      padding: 45px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--cream);
+    }
+
+    .help-page .help-last > p:not(.eyebrow) {
+      max-width: 590px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 760px) {
+      .help-page .lifebuoy-hero {
+        grid-template-columns: 1fr;
+        padding-top: 45px;
+      }
+
+      .help-page .lifebuoy-art {
+        min-height: 285px;
+        margin-top: 5px;
+      }
+
+      .help-page .lifebuoy {
+        width: 205px;
+      }
+
+      .help-page .lifebuoy-center {
+        width: 90px;
+      }
+
+      .help-page .lifebuoy-caption {
+        bottom: 0;
+      }
+
+      .help-page .urgent-grid,
+      .help-page .article-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .help-page .urgent-card,
+      .help-page .urgent-card:nth-child(2),
+      .help-page .urgent-card:nth-child(3) {
+        transform: rotate(-.4deg);
+      }
+
+      .help-page .urgent-card:nth-child(2) {
+        transform: rotate(.5deg);
+      }
+
+      .help-page .search-bottom {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .help-page .search-bottom .button {
+        align-self: flex-start;
+      }
+
+      .help-page .help-last {
+        padding: 28px 23px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .help-page .help-article,
+      .help-page .topic-chips button,
+      .help-page .search-submit {
+        transition: none;
+      }
+    }
+  </style>
 </head>
 
 <body class="help-page">
@@ -20,15 +479,14 @@
     </a>
 
     <button class="menu-toggle" id="menuToggle"
-      aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainNav">
-      <span></span>
-      <span></span>
+      type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span>
     </button>
 
-    <nav class="nav" id="mainNav">
+    <nav class="nav" id="mainNav" aria-label="Hauptnavigation">
       <a href="index.html">Startseite</a>
       <a href="#suche">Hilfe suchen</a>
-      <a href="#soforthilfe">Soforthilfe</a>
+      <a href="#soforthilfe">Wichtige Hinweise</a>
     </nav>
   </header>
 
@@ -44,8 +502,8 @@
 
         <p class="hero-text">
           Du musst nicht sofort wissen, was du brauchst.
-          Beschreib einfach, was los ist. Wir suchen den
-          passendsten Hilfe-Artikel für dich.
+          Such dir in deinem Tempo einen Gedanken, ein Thema
+          oder einen Artikel aus. Ein kleiner Schritt reicht.
         </p>
 
         <a class="button button-dark" href="#suche">
@@ -53,13 +511,13 @@
         </a>
       </div>
 
-      <div class="lifebuoy-art" aria-label="Rettungsring als Zeichen für Unterstützung">
+      <div class="lifebuoy-art" role="img" aria-label="Illustration eines Rettungsrings als Zeichen für Unterstützung">
         <div class="lifebuoy-shadow"></div>
         <div class="lifebuoy">
           <div class="lifebuoy-center"></div>
         </div>
         <div class="lifebuoy-checker checker" aria-hidden="true"></div>
-        <span class="lifebuoy-sparkle">✳</span>
+        <span class="lifebuoy-sparkle" aria-hidden="true">✳</span>
         <span class="lifebuoy-caption">DU MUSST NICHT ALLES ALLEIN SCHAFFEN.</span>
       </div>
     </section>
@@ -74,8 +532,9 @@
       </div>
 
       <p class="search-intro">
-        Ein Wort reicht. Du kannst aber auch einen ganzen Satz
-        oder mehrere Gedanken hineinschreiben.
+        Ein Wort reicht. Du kannst auch mehrere Gedanken
+        hineinschreiben. Die Suche hilft dir, passende Artikel
+        zu finden.
       </p>
 
       <form id="articleSearchForm" class="article-search">
@@ -83,18 +542,30 @@
           Suche nach einem Thema oder beschreibe deine Situation
         </label>
 
-        <textarea
-          id="articleSearch"
-          rows="3"
-          maxlength="1500"
-          placeholder="Zum Beispiel: Ich habe Angst, mein Kopf ist voll und ich weiß nicht, was ich tun soll …"
-          required
-        ></textarea>
+        <div class="search-input-wrap">
+          <textarea
+            id="articleSearch"
+            name="search"
+            rows="3"
+            maxlength="1500"
+            placeholder="Zum Beispiel: Ich fühle mich einsam oder habe gerade viel Stress …"
+            required
+          ></textarea>
+
+          <button class="search-submit" type="submit" aria-label="Hilfe suchen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <circle cx="10.8" cy="10.8" r="6.8"></circle>
+              <path d="m16 16 4.5 4.5"></path>
+            </svg>
+          </button>
+        </div>
 
         <div class="search-bottom">
-          <span>Dein Text wird nur lokal im Browser durchsucht.</span>
+          <span>Deine Eingabe wird von dieser Seite nicht an einen Server gesendet.</span>
           <button class="button button-dark" type="submit">
-            Hilfe finden <span>→</span>
+            Passende Artikel <span>→</span>
           </button>
         </div>
       </form>
@@ -108,65 +579,73 @@
         <p class="eyebrow">ODER WÄHLE EIN THEMA</p>
         <div class="topic-chips">
           <button type="button" data-topic="angst">Angst & Panik</button>
-          <button type="button" data-topic="ueberforderung">Überforderung</button>
+          <button type="button" data-topic="ueberforderung">Zu viel im Kopf</button>
           <button type="button" data-topic="krampfanfall">Krampfanfall</button>
           <button type="button" data-topic="traurigkeit">Traurigkeit</button>
-          <button type="button" data-topic="streit">Streit & Beziehungen</button>
+          <button type="button" data-topic="streit">Liebe & Beziehungen</button>
           <button type="button" data-topic="schule">Schule & Druck</button>
           <button type="button" data-topic="einsamkeit">Einsamkeit</button>
           <button type="button" data-topic="schlaf">Schlaf & Unruhe</button>
+          <button type="button" data-topic="kraft">Neue Kraft finden</button>
         </div>
       </div>
     </section>
 
     <section class="urgent-section" id="soforthilfe">
       <div class="urgent-inner section-wrap">
-        <p class="eyebrow">BEVOR DU WEITERSUCHST</p>
-        <h2>Du brauchst gerade sofort Hilfe?</h2>
-
-        <p>
-          Wenn du dich akut unsicher fühlst, starke körperliche
-          Beschwerden hast oder jemand einen Krampfanfall hat,
-          warte nicht auf einen Artikel.
-        </p>
+        <div class="urgent-heading">
+          <p class="eyebrow">EINE WICHTIGE NOTIZ</p>
+          <h2>Bevor du weitersuchst.</h2>
+          <p>
+            Diese Seite bietet allgemeine Informationen und Unterstützung
+            für schwierige Momente. Sie ersetzt keine medizinische
+            Untersuchung und keine professionelle Hilfe.
+          </p>
+        </div>
 
         <div class="urgent-grid">
           <article class="urgent-card">
             <span class="urgent-number">01</span>
-            <h3>Akute Gefahr</h3>
+            <h3>Akute Hilfe</h3>
             <p>
-              Bei unmittelbarer Gefahr oder einem medizinischen
-              Notfall in Deutschland: <strong>112</strong> anrufen.
-              Bitte hole auch eine erwachsene Vertrauensperson dazu.
+              Bei akuter Hilfe, starken Schmerzen oder Unfällen hilft dir
+              diese Seite nicht weiter. Wenn es dir nicht gut geht, wähle
+              in Deutschland die <u><strong>112</strong></u>.
+              Hole, wenn möglich, eine erwachsene Vertrauensperson dazu.
             </p>
-            <a class="button button-dark" href="tel:112">112 anrufen</a>
           </article>
 
           <article class="urgent-card">
             <span class="urgent-number">02</span>
-            <h3>Krampfanfall</h3>
+            <h3>Bei einem Krampfanfall</h3>
             <p>
-              Räume gefährliche Gegenstände weg, schütze den Kopf,
-              halte die Person nicht fest und stecke nichts in den
-              Mund. Miss die Dauer und rufe bei einem ersten Anfall,
-              einem Anfall über fünf Minuten, wiederholten Anfällen,
-              Atemproblemen oder Verletzungen den Notruf.
+              Halte die Person nicht fest und stecke nichts in ihren Mund.
+              Räume gefährliche Gegenstände weg und schütze den Kopf.
+              Bei einem ersten Anfall, einem Anfall über fünf Minuten,
+              wiederholten Anfällen, Atemproblemen oder Verletzungen ist
+              dringend medizinische Hilfe nötig.
             </p>
-            <a class="text-button" href="#artikel-krampfanfall">
-              Artikel zum Krampfanfall lesen ↓
+            <a class="text-button" href="Krampfanfälle-hilfe.html">
+              Sicherheitshinweise lesen ↗
             </a>
           </article>
 
           <article class="urgent-card">
             <span class="urgent-number">03</span>
-            <h3>Nicht allein bleiben</h3>
+            <h3>Du musst nicht allein bleiben</h3>
             <p>
-              Wenn du kannst, gehe zu einer vertrauten erwachsenen
-              Person und sage direkt: „Mir geht es gerade nicht gut.
-              Bitte bleib bei mir.“
+              Wenn du dich überfordert fühlst, kannst du zu einer
+              vertrauten Person gehen und sagen:
+              „Mir geht es gerade nicht gut. Kannst du bitte bei mir bleiben?“
+              Du musst nicht erst die richtigen Worte finden.
             </p>
           </article>
         </div>
+
+        <p class="urgent-note">
+          Die unterstrichene 112 ist hier nur ein Hinweistext und kein Link.
+          Diese Seite startet keinen Anruf.
+        </p>
       </div>
     </section>
 
@@ -174,14 +653,14 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">KLEINE SCHRITTE</p>
-          <h2>Die Hilfe-Artikel.</h2>
+          <h2>Was dich gerade beschäftigt.</h2>
         </div>
         <span class="section-number">02 / DEIN TEMPO</span>
       </div>
 
       <p class="library-intro">
-        Du kannst die Artikel direkt öffnen oder oben nach
-        passenden Stichwörtern suchen.
+        Jeder Artikel hat seine eigene Seite. Du kannst in Ruhe lesen,
+        was zu deiner Situation passt.
       </p>
 
       <div class="article-grid">
@@ -189,188 +668,100 @@
         <article class="help-article" id="artikel-angst"
           data-article="angst"
           data-title="Wenn Angst oder Panik hochkommt"
-          data-keywords="angst panik panikattacke angstzustand herzklopfen zittern atemnot unruhe angstgefühl überwältigt nervös angst haben">
+          data-keywords="angst panik panikattacke herzklopfen zittern unruhe nervös angstgefühl">
           <span class="article-symbol">01</span>
           <p class="eyebrow">ANGST & UNRUHE</p>
           <h3>Wenn Angst oder Panik hochkommt</h3>
-          <p>Ein kleiner Anker für den Moment, in dem alles bedrohlich wirkt.</p>
-          <div class="article-body">
-            <h4>Du musst gerade nicht alles lösen.</h4>
-            <ol>
-              <li>Wenn möglich, setz dich an einen sicheren Ort und lass deine Füße den Boden berühren.</li>
-              <li>Schau dich langsam um. Nenne fünf Dinge, die du sehen kannst, und drei Geräusche, die du hörst.</li>
-              <li>Atme so, wie es für dich angenehm ist. Du musst deinen Atem nicht erzwingen oder besonders tief einatmen.</li>
-              <li>Erinnere dich: „Ich erlebe gerade starke Angst. Ich darf mir Unterstützung holen.“</li>
-              <li>Wenn du dich körperlich sehr schlecht fühlst, die Beschwerden neu oder ungewöhnlich sind oder du unsicher bist, hole medizinische Hilfe.</li>
-            </ol>
-            <p>Wenn möglich, sag einer vertrauten Person, was gerade passiert.</p>
-          </div>
-          <button class="text-button article-toggle" type="button" aria-expanded="false">
-            Artikel öffnen ↓
-          </button>
+          <p>Ein kleiner Anker für Momente, in denen alles bedrohlich wirkt.</p>
+          <a class="article-open-link" href="Angst-hilfe.html">Artikel lesen <span>↗</span></a>
         </article>
 
         <article class="help-article" id="artikel-ueberforderung"
           data-article="ueberforderung"
           data-title="Wenn alles gleichzeitig zu viel ist"
-          data-keywords="überforderung stress druck zu viel kopf gedanken chaos alles gleichzeitig panik aufgaben erschöpft nicht mehr können">
+          data-keywords="überforderung stress druck gedanken chaos aufgaben erschöpft">
           <span class="article-symbol">02</span>
           <p class="eyebrow">STRESS & GEDANKEN</p>
           <h3>Wenn alles gleichzeitig zu viel ist</h3>
           <p>Du musst nicht alle Probleme auf einmal bearbeiten.</p>
-          <div class="article-body">
-            <h4>Mach die nächste Minute kleiner.</h4>
-            <ol>
-              <li>Unterbrich kurz das, was du gerade tust, wenn du an einem sicheren Ort bist.</li>
-              <li>Schreib alles auf, was in deinem Kopf kreist. Du musst es nicht sortieren.</li>
-              <li>Wähle nur eine Sache, die wirklich als Nächstes dran ist. Der Rest darf warten.</li>
-              <li>Trink etwas Wasser, lockere deine Schultern oder setz dich kurz hin.</li>
-              <li>Wenn es weiterhin zu viel ist, bitte jemanden, mit dir gemeinsam den nächsten Schritt zu finden.</li>
-            </ol>
-            <p>Du musst nicht erst zusammenbrechen, bevor du eine Pause machen darfst.</p>
-          </div>
-          <button class="text-button article-toggle" type="button" aria-expanded="false">
-            Artikel öffnen ↓
-          </button>
+          <a class="article-open-link" href="Ueberforderung-hilfe.html">Artikel lesen <span>↗</span></a>
         </article>
 
         <article class="help-article" id="artikel-krampfanfall"
           data-article="krampfanfall"
           data-title="Wenn jemand einen Krampfanfall hat"
-          data-keywords="krampfanfall krämpfe epilepsie zucken bewusstlos notfall anfall medizinische hilfe verletzung atmen">
+          data-keywords="krampfanfall krämpfe epilepsie zucken bewusstlos notfall anfall">
           <span class="article-symbol">03</span>
-          <p class="eyebrow">MEDIZINISCHE SOFORTHILFE</p>
+          <p class="eyebrow">MEDIZINISCHE INFORMATION</p>
           <h3>Wenn jemand einen Krampfanfall hat</h3>
-          <p>Wichtige Sicherheitsregeln – kein Ersatz für den Rettungsdienst.</p>
-          <div class="article-body">
-            <h4>So kannst du helfen.</h4>
-            <ol>
-              <li>Bleib möglichst ruhig und bitte eine weitere Person um Hilfe.</li>
-              <li>Räume gefährliche Gegenstände aus der Umgebung und lege, wenn möglich, etwas Weiches unter den Kopf.</li>
-              <li>Halte die Person nicht fest. Stecke nichts in den Mund und gib nichts zu trinken.</li>
-              <li>Merke dir, wann der Anfall begonnen hat. Beobachte, was passiert.</li>
-              <li>Rufe 112, wenn es der erste Anfall ist, der Anfall länger als fünf Minuten dauert, weitere Anfälle folgen, die Atmung problematisch ist oder eine Verletzung auftritt.</li>
-              <li>Wenn die Krampfbewegungen vorbei sind, überprüfe die Atmung. Wenn die Person bewusstlos ist, aber normal atmet, bringe sie – sofern möglich – in die stabile Seitenlage. Folge den Anweisungen der Leitstelle.</li>
-            </ol>
-            <p>Wenn du selbst betroffen bist, versuche nicht, die Situation allein zu bewältigen. Hole sofort eine erwachsene Person und medizinische Hilfe.</p>
-          </div>
-          <button class="text-button article-toggle" type="button" aria-expanded="false">
-            Artikel öffnen ↓
-          </button>
+          <p>Wichtige Sicherheitshinweise für diesen medizinischen Notfall.</p>
+          <a class="article-open-link" href="Krampfanfälle-hilfe.html">Artikel lesen <span>↗</span></a>
         </article>
 
         <article class="help-article" id="artikel-traurigkeit"
           data-article="traurigkeit"
           data-title="Wenn du traurig bist"
-          data-keywords="traurig traurig sein weinen niedergeschlagen enttäuscht hoffnungslos schlechte laune weinen gefühle schwerer tag">
+          data-keywords="traurig weinen niedergeschlagen enttäuscht gefühle schwerer tag">
           <span class="article-symbol">04</span>
           <p class="eyebrow">GEFÜHLE</p>
           <h3>Wenn du traurig bist</h3>
           <p>Du musst deine Gefühle nicht sofort wegmachen.</p>
-          <div class="article-body">
-            <h4>Gib dir etwas Raum.</h4>
-            <ol>
-              <li>Versuche nicht, dich dafür zu verurteilen, dass du traurig bist.</li>
-              <li>Überlege, ob du gerade Ruhe, Gesellschaft, Bewegung oder ein Gespräch brauchst.</li>
-              <li>Schreib auf, was dich belastet, oder erzähle es jemandem, dem du vertraust.</li>
-              <li>Such dir eine kleine, machbare Sache für diesen Moment – zum Beispiel etwas trinken oder dich gemütlich hinsetzen.</li>
-            </ol>
-            <p>Wenn die Traurigkeit lange anhält oder deinen Alltag stark beeinträchtigt, darfst du dir professionelle Unterstützung holen.</p>
-          </div>
-          <button class="text-button article-toggle" type="button" aria-expanded="false">
-            Artikel öffnen ↓
-          </button>
+          <a class="article-open-link" href="Traurigkeit-hilfe.html">Artikel lesen <span>↗</span></a>
         </article>
 
         <article class="help-article" id="artikel-streit"
           data-article="streit"
-          data-title="Wenn es Streit oder Probleme mit Menschen gibt"
-          data-keywords="streit freund freundin beziehung eltern familie freunde mobbing konflikt missverständnis wut enttäuschung liebe">
+          data-title="Liebe, Streit und Beziehungen"
+          data-keywords="liebe beziehung freund freundin eltern familie freunde streit konflikt wut enttäuschung">
           <span class="article-symbol">05</span>
-          <p class="eyebrow">MENSCHEN & BEZIEHUNGEN</p>
-          <h3>Wenn es Streit gibt</h3>
-          <p>Du darfst kurz Abstand gewinnen, bevor du reagieren musst.</p>
-          <div class="article-body">
-            <h4>Erst sortieren, dann entscheiden.</h4>
-            <ol>
-              <li>Wenn es sicher ist, nimm dir etwas Abstand, bis du wieder ruhiger denken kannst.</li>
-              <li>Trenne das, was tatsächlich passiert ist, von dem, was du befürchtest.</li>
-              <li>Überlege, was du brauchst: eine Entschuldigung, eine Erklärung, eine Grenze oder einfach Zeit.</li>
-              <li>Wenn du reden möchtest, beschreibe deine Gefühle, ohne dich zu etwas zu zwingen.</li>
-              <li>Wenn dich jemand bedroht, kontrolliert oder verletzt, wende dich an eine vertrauenswürdige Person.</li>
-            </ol>
-          </div>
-          <button class="text-button article-toggle" type="button" aria-expanded="false">
-            Artikel öffnen ↓
-          </button>
+          <p class="eyebrow">LIEBE & BEZIEHUNGEN</p>
+          <h3>Wenn Beziehungen kompliziert sind</h3>
+          <p>Sortiere deine Gefühle und finde heraus, was du brauchst.</p>
+          <a class="article-open-link" href="Liebe-hilfe.html">Artikel lesen <span>↗</span></a>
         </article>
 
         <article class="help-article" id="artikel-schule"
           data-article="schule"
           data-title="Wenn Schule und Erwartungen Druck machen"
-          data-keywords="schule hausaufgaben lernen prüfung noten lehrer klausur stress druck versagen leistungsdruck angst vor schule">
+          data-keywords="schule hausaufgaben lernen prüfung noten lehrer klausur leistungsdruck">
           <span class="article-symbol">06</span>
           <p class="eyebrow">SCHULE & ERWARTUNGEN</p>
           <h3>Wenn Schule Druck macht</h3>
           <p>Du bist mehr als deine Noten und erledigten Aufgaben.</p>
-          <div class="article-body">
-            <h4>Eine Aufgabe nach der anderen.</h4>
-            <ol>
-              <li>Schreib auf, was wirklich erledigt werden muss.</li>
-              <li>Wähle einen kleinen Anfang, nicht gleich das ganze Projekt.</li>
-              <li>Plane Pausen ein und bitte um Hilfe, wenn du nicht weiterkommst.</li>
-              <li>Sprich mit einer Lehrkraft, einer Vertrauensperson oder deinen Eltern, wenn der Druck zu groß wird.</li>
-            </ol>
-            <p>Du musst nicht perfekt sein, um Hilfe verdient zu haben.</p>
-          </div>
-          <button class="text-button article-toggle" type="button" aria-expanded="false">
-            Artikel öffnen ↓
-          </button>
+          <a class="article-open-link" href="Schule-hilfe.html">Artikel lesen <span>↗</span></a>
         </article>
 
         <article class="help-article" id="artikel-einsamkeit"
           data-article="einsamkeit"
           data-title="Wenn du dich allein fühlst"
-          data-keywords="einsam allein niemand versteht mich keine freunde ausgeschlossen unverstanden isoliert kontakt">
+          data-keywords="einsam allein keine freunde ausgeschlossen unverstanden isoliert kontakt">
           <span class="article-symbol">07</span>
           <p class="eyebrow">NÄHE & VERBINDUNG</p>
           <h3>Wenn du dich allein fühlst</h3>
-          <p>Du musst nicht viele Menschen haben. Ein sicherer Kontakt kann ein Anfang sein.</p>
-          <div class="article-body">
-            <h4>Ein kleiner Kontakt reicht für den Anfang.</h4>
-            <ol>
-              <li>Überlege, ob es eine Person gibt, bei der du dich einigermaßen sicher fühlst.</li>
-              <li>Du kannst eine kurze Nachricht schicken: „Hey, mir geht es gerade nicht so gut. Hast du kurz Zeit?“</li>
-              <li>Wenn dir Schreiben schwerfällt, suche einen Ort, an dem du dich wohlfühlst, oder eine vertraute erwachsene Person.</li>
-              <li>Wenn du dich schon länger einsam fühlst, darfst du dir Unterstützung holen. Du musst das nicht allein lösen.</li>
-            </ol>
-          </div>
-          <button class="text-button article-toggle" type="button" aria-expanded="false">
-            Artikel öffnen ↓
-          </button>
+          <p>Ein sicherer Kontakt kann ein Anfang sein – ganz ohne Druck.</p>
+          <a class="article-open-link" href="Einsamkeit-hilfe.html">Artikel lesen <span>↗</span></a>
         </article>
 
         <article class="help-article" id="artikel-schlaf"
           data-article="schlaf"
           data-title="Wenn du nicht zur Ruhe kommst"
-          data-keywords="schlaf einschlafen wach nachts grübeln gedanken unruhe müde erschöpft entspannen">
+          data-keywords="schlaf einschlafen wach nachts grübeln gedanken unruhe müde entspannen">
           <span class="article-symbol">08</span>
           <p class="eyebrow">RUHE & ERHOLUNG</p>
           <h3>Wenn du nicht zur Ruhe kommst</h3>
           <p>Du musst deinen Kopf nicht mit Gewalt zum Schweigen bringen.</p>
-          <div class="article-body">
-            <h4>Weniger Druck, mehr Ruhe.</h4>
-            <ol>
-              <li>Schreib Gedanken auf, damit du sie nicht im Kopf behalten musst.</li>
-              <li>Mach das Licht etwas ruhiger und leg das Handy beiseite, wenn dir das guttut.</li>
-              <li>Höre etwas Ruhiges oder richte deine Aufmerksamkeit auf eine angenehme, neutrale Sache.</li>
-              <li>Wenn du nicht einschläfst, mach dir nicht zusätzlich Vorwürfe.</li>
-              <li>Wenn Schlafprobleme länger anhalten oder dich stark belasten, sprich mit einer erwachsenen Vertrauensperson oder medizinischem Fachpersonal.</li>
-            </ol>
-          </div>
-          <button class="text-button article-toggle" type="button" aria-expanded="false">
-            Artikel öffnen ↓
-          </button>
+          <a class="article-open-link" href="Schlaf-hilfe.html">Artikel lesen <span>↗</span></a>
+        </article>
+
+        <article class="help-article" id="artikel-kraft"
+          data-article="kraft"
+          data-title="Wenn du neue Kraft brauchst"
+          data-keywords="kraft mut erschöpft hoffnung pause weitermachen motivation selbstvertrauen">
+          <span class="article-symbol">09</span>
+          <p class="eyebrow">KRAFT & MUT</p>
+          <h3>Wenn du neue Kraft brauchst</h3>
+          <p>Manchmal reicht es, erst einmal nur den nächsten Schritt zu sehen.</p>
+          <a class="article-open-link" href="Kraft-hilfe.html">Artikel lesen <span>↗</span></a>
         </article>
 
       </div>
@@ -385,7 +776,7 @@
         kleinen Schritt an – und hole dir Unterstützung, wenn du
         sie brauchst.
       </p>
-      <a class="button button-dark" href="index.html">Zur Startseite ↗</a>
+      <a class="button button-dark" href="index.html">Zur Startseite <span>↗</span></a>
     </section>
   </main>
 
