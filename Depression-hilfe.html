@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7e8b5">
+  <title>Depression – Hilfe finden</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --depression-paper: #fff9e9;
+      --depression-ink: #25231f;
+      --depression-yellow: #ffdc59;
+      --depression-orange: #ff914d;
+      --depression-border: #25231f;
+      --depression-muted: #625e54;
+    }
+
+    body {
+      background: var(--depression-paper);
+      color: var(--depression-ink);
+    }
+
+    .depression-page {
+      width: min(100% - 32px, 900px);
+      margin: 0 auto;
+      padding: 24px 0 60px;
+    }
+
+    .depression-back {
+      display: inline-block;
+      margin: 0 0 24px;
+      padding: 10px 15px;
+      border: 2px solid var(--depression-border);
+      border-radius: 8px;
+      color: var(--depression-ink);
+      background: white;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--depression-border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .depression-back:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--depression-border);
+    }
+
+    .depression-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 58px);
+      background: var(--depression-yellow);
+      border: 3px solid var(--depression-border);
+      border-radius: 16px;
+      box-shadow: 7px 7px 0 var(--depression-border);
+      margin-bottom: 38px;
+    }
+
+    .depression-label {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 2px solid var(--depression-border);
+      border-radius: 5px;
+      background: white;
+      font-family: "DM Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .depression-hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 20px 0 14px;
+      font-size: clamp(2.3rem, 7vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      overflow-wrap: anywhere;
+    }
+
+    .depression-hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.7;
+    }
+
+    .depression-decoration {
+      position: absolute;
+      right: 25px;
+      bottom: -30px;
+      font-size: clamp(6rem, 18vw, 12rem);
+      line-height: 1;
+      opacity: 0.13;
+      transform: rotate(-12deg);
+      pointer-events: none;
+    }
+
+    .depression-section {
+      margin: 34px 0;
+      padding: clamp(22px, 4vw, 36px);
+      border: 2px solid var(--depression-border);
+      border-radius: 14px;
+      box-shadow: 5px 5px 0 var(--depression-border);
+    }
+
+    .depression-section.personal {
+      background: #fff;
+    }
+
+    .depression-section.facts {
+      background: #ffe7d3;
+    }
+
+    .depression-section h2 {
+      margin: 14px 0 20px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .depression-section h3 {
+      margin: 26px 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .depression-section p,
+    .depression-section li {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .depression-section p {
+      margin: 12px 0;
+    }
+
+    .depression-section ul {
+      padding-left: 22px;
+    }
+
+    .depression-section li {
+      margin: 8px 0;
+    }
+
+    .depression-note {
+      margin-top: 22px;
+      padding: 17px 19px;
+      background: var(--depression-yellow);
+      border-left: 5px solid var(--depression-border);
+      border-radius: 5px;
+      line-height: 1.7;
+    }
+
+    .depression-resource {
+      display: block;
+      margin: 12px 0;
+      padding: 16px 18px;
+      border: 2px solid var(--depression-border);
+      border-radius: 9px;
+      background: white;
+      color: var(--depression-ink);
+      text-decoration: none;
+      box-shadow: 3px 3px 0 var(--depression-border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .depression-resource:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--depression-border);
+    }
+
+    .depression-resource strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .depression-resource span {
+      display: block;
+      color: var(--depression-muted);
+      line-height: 1.6;
+    }
+
+    .depression-footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 2px dashed var(--depression-border);
+      text-align: center;
+      color: var(--depression-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 520px) {
+      .depression-page {
+        width: min(100% - 22px, 900px);
+        padding-top: 16px;
+      }
+
+      .depression-hero {
+        box-shadow: 4px 4px 0 var(--depression-border);
+      }
+
+      .depression-section {
+        box-shadow: 3px 3px 0 var(--depression-border);
+      }
+
+      .depression-section p,
+      .depression-section li {
+        font-size: 0.96rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="depression-page">
+
+    <a class="depression-back" href="hilfe.html">← Zurück zur Hilfe-Seite</a>
+
+    <header class="depression-hero">
+      <span class="depression-label">Ein Thema, über das wir reden sollten</span>
+      <h1>Du musst nicht so tun, als wäre alles okay.</h1>
+      <p>
+        Wenn selbst einfache Dinge plötzlich schwer werden, du dich leer
+        fühlst oder kaum noch Freude empfindest, verdienst du Verständnis
+        und Unterstützung – keinen zusätzlichen Druck.
+      </p>
+      <div class="depression-decoration" aria-hidden="true">✳</div>
+    </header>
+
+    <!-- TEIL 1: PERSÖNLICH UND EMOTIONAL -->
+    <section class="depression-section personal">
+      <span class="depression-label">Teil 01 · Die Gefühle</span>
+      <h2>Wenn sich alles schwerer anfühlt als früher</h2>
+
+      <p>
+        Manchmal merkst du selbst nicht genau, wann sich etwas verändert hat.
+        Dinge, die dir früher Spaß gemacht haben, fühlen sich plötzlich
+        anstrengend an. Nachrichten beantworten kostet Kraft. Verabredungen
+        erscheinen kompliziert. Und selbst an Tagen, an denen eigentlich
+        nichts Schlimmes passiert, fühlst du dich nicht richtig gut.
+      </p>
+
+      <p>
+        Vielleicht kannst du nicht einmal erklären, warum es dir so geht.
+        Du weißt nur, dass du müde bist – nicht unbedingt, weil du zu wenig
+        geschlafen hast, sondern weil sich alles in deinem Kopf und in deinem
+        Alltag schwer anfühlt.
+      </p>
+
+      <p>
+        Vielleicht fällt es dir leichter, nach außen zu lächeln und zu sagen,
+        dass alles passt. Du möchtest niemanden beunruhigen oder hast Angst,
+        dass andere deine Gefühle nicht verstehen. Also machst du weiter,
+        obwohl du eigentlich eine Pause bräuchtest.
+      </p>
+
+      <h3>Du musst nicht erst einen Grund finden, um Hilfe zu verdienen</h3>
+
+      <p>
+        Manchmal suchen Menschen nach einer Erklärung für ihre Traurigkeit.
+        Sie fragen sich, ob sie sich anstellen, ob andere größere Probleme
+        haben oder ob sie sich einfach zusammenreißen sollten.
+      </p>
+
+      <p>
+        Aber Gefühle sind kein Wettbewerb. Du musst nicht beweisen, dass
+        es dir schlecht genug geht. Wenn du dich über längere Zeit
+        niedergeschlagen, leer oder erschöpft fühlst, darfst du darüber
+        sprechen – auch dann, wenn du nicht genau weißt, woher es kommt.
+      </p>
+
+      <h3>Du bist nicht faul, nur weil dir etwas schwerfällt</h3>
+
+      <p>
+        Wenn deine Energie fehlt, können sogar kleine Aufgaben riesig
+        erscheinen. Sich fertig zu machen, aufzuräumen oder sich bei
+        jemandem zu melden, kann dann viel Kraft kosten.
+      </p>
+
+      <p>
+        Das bedeutet nicht, dass du wertlos bist oder dich nicht genug
+        anstrengst. Vielleicht brauchst du gerade Unterstützung, Entlastung
+        oder eine andere Art, mit deiner Situation umzugehen.
+      </p>
+
+      <h3>Du musst nicht alles allein aushalten</h3>
+
+      <p>
+        Du musst nicht sofort die richtigen Worte finden. Ein einfaches
+        „Mir geht es schon länger nicht gut, und ich weiß nicht genau warum“
+        reicht, um ein Gespräch zu beginnen.
+      </p>
+
+      <p>
+        Wenn jemand nicht sofort versteht, was in dir vorgeht, heißt das
+        nicht, dass deine Gefühle unwichtig sind. Es kann helfen, eine
+        andere Vertrauensperson zu suchen oder professionelle Unterstützung
+        anzunehmen.
+      </p>
+
+      <div class="depression-note">
+        <strong>Denk daran:</strong> Du musst nicht erst wieder funktionieren,
+        bevor du Unterstützung verdienst. Du darfst Hilfe bekommen, während
+        du dich schlecht fühlst – nicht erst danach.
+      </div>
+    </section>
+
+    <!-- TEIL 2: FAKTEN UND PRAKTISCHE HILFE -->
+    <section class="depression-section facts">
+      <span class="depression-label">Teil 02 · Wissen und Hilfe</span>
+      <h2>Was du über Depressionen wissen solltest</h2>
+
+      <p>
+        Eine Depression ist mehr als eine vorübergehende schlechte Stimmung.
+        Sie kann beeinflussen, wie ein Mensch fühlt, denkt, schläft und den
+        Alltag bewältigt. Sie ist eine ernst zu nehmende psychische Erkrankung
+        und keine persönliche Schwäche.
+      </p>
+
+      <p>
+        Nicht jede traurige Phase ist eine Depression. Wenn Beschwerden
+        jedoch anhalten, mehrere Lebensbereiche betreffen oder deutlich
+        zunehmen, ist es sinnvoll, mit einer Fachperson darüber zu sprechen.
+      </p>
+
+      <h3>Mögliche Anzeichen</h3>
+
+      <ul>
+        <li>Anhaltende Niedergeschlagenheit, Leere oder innere Gefühllosigkeit.</li>
+        <li>Weniger Interesse oder Freude an Dingen, die früher wichtig waren.</li>
+        <li>Wenig Energie oder ungewöhnlich starke Erschöpfung.</li>
+        <li>Schwierigkeiten mit Konzentration oder Entscheidungen.</li>
+        <li>Veränderungen beim Schlafen oder Appetit.</li>
+        <li>Starke Selbstzweifel, Schuldgefühle oder das Gefühl, nichts wert zu sein.</li>
+        <li>Rückzug von Freunden, Familie oder gewohnten Aktivitäten.</li>
+      </ul>
+
+      <p>
+        Diese Anzeichen können auch andere Ursachen haben. Eine Liste im
+        Internet kann keine Diagnose stellen. Entscheidend ist, wie es dir
+        insgesamt geht und ob du Unterstützung benötigst.
+      </p>
+
+      <h3>1. Mach den Alltag vorübergehend kleiner</h3>
+
+      <p>
+        Wenn alles zu viel wird, teile Aufgaben in kleine Schritte auf.
+        Statt den ganzen Tag planen zu müssen, konzentriere dich auf den
+        nächsten machbaren Schritt. Es ist in Ordnung, Prioritäten zu setzen
+        und Dinge zu verschieben, die gerade nicht dringend sind.
+      </p>
+
+      <h3>2. Versuche, eine einfache Tagesstruktur zu behalten</h3>
+
+      <p>
+        Regelmäßige Essenszeiten, ein möglichst gleichmäßiger Schlafrhythmus
+        und kurze Aktivitäten können Orientierung geben. Setze dir dabei
+        realistische Ziele. Du musst nicht jeden Tag gleich viel schaffen.
+      </p>
+
+      <h3>3. Bleib nach Möglichkeit mit jemandem in Kontakt</h3>
+
+      <p>
+        Du musst nicht ständig reden oder unter Menschen sein. Manchmal
+        reicht eine kurze Nachricht, ein gemeinsamer Spaziergang oder die
+        Anwesenheit einer vertrauten Person. Sag ruhig, wenn du gerade
+        keine Lösungen brauchst, sondern einfach jemanden, der zuhört.
+      </p>
+
+      <h3>4. Sprich mit einer erwachsenen Vertrauensperson</h3>
+
+      <p>
+        Wenn du noch zur Schule gehst, können zum Beispiel eine vertraute
+        Person aus deiner Familie, eine Lehrkraft oder die Schulsozialarbeit
+        ein erster Anlaufpunkt sein. Du kannst auch direkt eine Arztpraxis
+        oder psychologische Beratungsstelle kontaktieren.
+      </p>
+
+      <h3>5. Professionelle Hilfe kann einen Unterschied machen</h3>
+
+      <p>
+        Depressionen sind behandelbar. Je nach Situation können
+        Psychotherapie, ärztliche Unterstützung und weitere geeignete
+        Maßnahmen helfen. Du musst nicht allein herausfinden, welche
+        Behandlung zu dir passt.
+      </p>
+
+      <div class="depression-note">
+        <strong>Wichtig:</strong> Wenn du dich über längere Zeit schlecht
+        fühlst, im Alltag kaum noch zurechtkommst oder deine Situation
+        sich verschlimmert, warte nicht darauf, dass es von allein besser
+        wird. Bitte eine Vertrauensperson, dich bei der Suche nach Hilfe
+        zu unterstützen.
+      </div>
+
+      <h3>Hier kannst du dir Unterstützung holen</h3>
+
+      <a class="depression-resource"
+         href="https://www.nummergegenkummer.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>Nummer gegen Kummer</strong>
+        <span>
+          Kostenlose und anonyme Beratung für Kinder und Jugendliche.
+          Auf der offiziellen Website findest du die aktuellen
+          Kontaktmöglichkeiten.
+        </span>
+      </a>
+
+      <a class="depression-resource"
+         href="https://www.jugendnotmail.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>JugendNotmail</strong>
+        <span>
+          Online-Beratung für junge Menschen bei seelischen Belastungen,
+          Sorgen und persönlichen Problemen.
+        </span>
+      </a>
+
+      <a class="depression-resource"
+         href="https://www.telefonseelsorge.de/"
+         target="_blank"
+         rel="noopener noreferrer">
+        <strong>TelefonSeelsorge</strong>
+        <span>
+          Vertrauliche Unterstützung bei seelischen Belastungen.
+          Auf der Website findest du die verfügbaren Beratungsangebote.
+        </span>
+      </a>
+    </section>
+
+    <footer class="depression-footer">
+      <p>Du musst nicht jeden Tag stark sein, um Unterstützung zu verdienen.</p>
+      <p>In Zusammenarbeit mit MaxOfficial :D</p>
+      <a href="hilfe.html">Zurück zur Übersicht</a>
+    </footer>
+
+  </main>
+</body>
+</html>
