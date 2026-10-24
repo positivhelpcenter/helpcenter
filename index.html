@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -25,8 +24,7 @@
 
     <nav class="nav" id="mainNav" aria-label="Hauptnavigation">
       <a href="hilfe.html" aria-label="Zur Hilfe-Seite">Hilfe <span aria-hidden="true">↗</span></a>
-      <a href="#gedanken">Gedanken</a>
-      <a href="#chat" class="nav-pill">Kurz reden ↗</a>
+      <a href="lerntour.html">Lernen Tour</a>
     </nav>
   </header>
 
@@ -36,9 +34,6 @@
         <p class="eyebrow"><span class="status-dot"></span> EIN PLATZ FÜR DICH</p>
         <h1>Du musst nicht<br>alles <span>allein</span> sortieren.</h1>
         <p class="hero-text">Für dich. In deinem Tempo.</p>
-        <a class="button button-dark" href="hilfe.html">
-          Hilfe finden <span>↗</span>
-        </a>
       </div>
 
       <div class="hero-art" aria-label="Retro-Grafik">
@@ -57,104 +52,28 @@
       </div>
     </section>
 
-    <section class="help-section section-wrap" id="hilfe">
+    <section class="help-section section-wrap" id="angebote">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">WAS BRAUCHST DU GERADE?</p>
-          <h2>Fang klein an.</h2>
+          <p class="eyebrow">ENTDECKE UNSERE ANGEBOTE</p>
+          <h2>Wo möchtest du hin?</h2>
         </div>
-        <span class="section-number">01 / 03</span>
+        <span class="section-number">01 / 02</span>
       </div>
 
-      <div class="help-grid">
-        <button class="help-card" data-help="stress" type="button">
-          <span class="card-symbol">↗</span>
-          <span class="card-title">Zu viel im Kopf</span>
-          <span class="card-subtitle">Gedanken sortieren</span>
-        </button>
+      <div class="start-links">
+        <a class="start-link" href="https://positivhelpcenter.github.io/helpcenter/hilfe.html">
+          <span class="start-link-number">01</span>
+          <span class="start-link-title">Hilfe</span>
+          <span class="start-link-arrow">↗</span>
+        </a>
 
-        <button class="help-card" data-help="down" type="button">
-          <span class="card-symbol">☼</span>
-          <span class="card-title">Ein schwerer Tag</span>
-          <span class="card-subtitle">Wieder Boden finden</span>
-        </button>
-
-        <button class="help-card" data-help="talk" type="button">
-          <span class="card-symbol">···</span>
-          <span class="card-title">Einfach reden</span>
-          <span class="card-subtitle">Schreib, was dich beschäftigt</span>
-        </button>
-      </div>
-
-      <div class="help-response" id="helpResponse" hidden aria-live="polite">
-        <p class="eyebrow">EIN KLEINER IMPULS</p>
-        <p id="helpResponseText"></p>
-        <button class="text-button" id="closeHelp" type="button">Schließen ×</button>
-      </div>
-
-      <div class="help-more">
-        <p>Du suchst etwas Bestimmtes oder möchtest verschiedene Themen entdecken?</p>
-        <a class="button button-dark" href="hilfe.html">
-          Zur gesamten Hilfe-Seite <span>↗</span>
+        <a class="start-link" href="lerntour.html">
+          <span class="start-link-number">02</span>
+          <span class="start-link-title">Lernen Tour</span>
+          <span class="start-link-arrow">↗</span>
         </a>
       </div>
-    </section>
-
-    <section class="thought-section" id="gedanken">
-      <div class="thought-inner section-wrap">
-        <div class="checker checker-corner" aria-hidden="true"></div>
-        <p class="eyebrow">GEDANKEN</p>
-        <div class="thought-mark">“</div>
-        <h2 id="quoteText">Du darfst langsam machen.</h2>
-        <button class="button button-outline" id="newQuote" type="button">
-          Anderer Gedanke ↻
-        </button>
-        <span class="thought-stamp">KEEP GOING<br>YOUR WAY</span>
-      </div>
-    </section>
-
-    <section class="chat-section section-wrap" id="chat">
-      <div class="chat-intro">
-        <p class="eyebrow">GEDANKENRAUM</p>
-        <h2>Was liegt dir<br><span>auf dem Herzen?</span></h2>
-        <p>Schreib es einfach auf.</p>
-      </div>
-
-      <div class="chat-card">
-        <div class="chat-card-top">
-          <span class="chat-status">
-            <span class="status-dot"></span> GEDANKENRAUM
-          </span>
-          <span class="chat-decoration">✳</span>
-        </div>
-
-        <div class="chat-messages" id="chatMessages" aria-live="polite">
-          <div class="message message-bot">
-            Hey. Was beschäftigt dich gerade?
-          </div>
-        </div>
-
-        <form class="chat-form" id="chatForm">
-          <label class="sr-only" for="chatInput">Deine Nachricht</label>
-          <input id="chatInput" name="message" type="text" maxlength="500"
-            placeholder="Deine Gedanken …" autocomplete="off" required>
-          <button type="submit" aria-label="Nachricht senden">↑</button>
-        </form>
-
-        <p class="chat-note">
-          Ein Impuls-Chat, kein Ersatz für professionelle Hilfe.
-        </p>
-      </div>
-    </section>
-
-    <section class="closing section-wrap">
-      <div class="closing-checker" aria-hidden="true"></div>
-      <p class="eyebrow">WEITER IN DEINEM TEMPO</p>
-      <h2>Ein Schritt<br>nach dem anderen.</h2>
-      <a href="hilfe.html" class="button button-dark">
-        Hilfe entdecken ↗
-      </a>
-      <a href="#start" class="text-button">Nach oben ↑</a>
     </section>
   </main>
 
@@ -170,5 +89,10 @@
 
     <span class="footer-copy">© <span id="currentYear"></span></span>
   </footer>
+
+  <script>
+    const year = document.getElementById("currentYear");
+    if (year) year.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
