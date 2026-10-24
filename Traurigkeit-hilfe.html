@@ -1,0 +1,333 @@
+<!-- Traurigkeit-hilfe.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7cf45">
+  <meta name="description" content="Hilfe bei Traurigkeit – Gedanken sortieren und kleine Schritte finden.">
+  <title>Traurigkeit – Positivhelpcenter</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .sad-page {
+      width: min(900px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 54px 0 80px;
+    }
+
+    .sad-label {
+      display: inline-block;
+      padding: 7px 11px;
+      background: #f7cf45;
+      border: 1px solid #191919;
+      border-radius: 5px;
+      font-family: "DM Mono", monospace;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .sad-page h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+    }
+
+    .sad-page h1 span {
+      color: #a47b00;
+    }
+
+    .sad-intro {
+      max-width: 650px;
+      color: #555044;
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .sad-note {
+      margin: 30px 0;
+      padding: 23px 25px;
+      border-left: 4px solid #f7cf45;
+      background: rgba(247, 207, 69, .16);
+      line-height: 1.8;
+    }
+
+    .sad-section {
+      margin-top: 42px;
+    }
+
+    .sad-section h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      letter-spacing: -.04em;
+    }
+
+    .sad-section p,
+    .sad-section li {
+      color: #514d42;
+      line-height: 1.85;
+    }
+
+    .sad-section ul {
+      padding-left: 22px;
+    }
+
+    .sad-steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .sad-step {
+      padding: 20px;
+      border: 1px solid #e3d9bd;
+      border-radius: 10px;
+      background: rgba(255, 253, 247, .8);
+    }
+
+    .sad-step-number {
+      display: inline-grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: #f7cf45;
+      font-weight: 800;
+    }
+
+    .sad-step h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .sad-step p {
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    .sad-help-box {
+      margin-top: 42px;
+      padding: 25px;
+      border: 1.5px solid #191919;
+      border-radius: 12px;
+      background: #f7cf45;
+    }
+
+    .sad-help-box h2 {
+      margin-top: 0;
+    }
+
+    .sad-help-box p {
+      line-height: 1.8;
+    }
+
+    .sad-help-box a {
+      color: #191919;
+      font-weight: 800;
+      text-underline-offset: 3px;
+    }
+
+    .sad-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .sad-actions a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 46px;
+      padding: 12px 17px;
+      border: 1.5px solid #191919;
+      border-radius: 7px;
+      color: #191919;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .sad-actions .sad-primary {
+      background: #191919;
+      color: white;
+    }
+
+    .sad-actions a:hover {
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 560px) {
+      .sad-page {
+        width: calc(100% - 28px);
+        padding-top: 38px;
+      }
+
+      .sad-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .sad-note,
+      .sad-help-box {
+        padding: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Positivhelpcenter Startseite">
+      <span class="brand-mark">+</span>
+      <span>positiv<span class="brand-light">helpcenter</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="index.html">Startseite <span aria-hidden="true">↗</span></a>
+      <a href="hilfe.html">Hilfe <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main class="sad-page">
+    <span class="sad-label">HILFE · GEFÜHLE</span>
+
+    <h1>Wenn alles<br><span>schwer wirkt.</span></h1>
+
+    <p class="sad-intro">
+      Manchmal ist man traurig, ohne genau zu wissen, warum. Manchmal kommt
+      vieles zusammen. Du musst deine Gefühle nicht sofort erklären oder
+      wegmachen. Du darfst erst einmal wahrnehmen, wie es dir gerade geht.
+    </p>
+
+    <div class="sad-note">
+      **Wichtig:** Traurigkeit bedeutet nicht, dass mit dir etwas falsch ist.
+      Gefühle können sich verändern. Du musst nicht sofort eine Lösung finden
+      und auch nicht so tun, als wäre alles in Ordnung.
+    </div>
+
+    <section class="sad-section">
+      <h2>Was du jetzt versuchen kannst</h2>
+      <p>
+        Du brauchst keinen perfekten Plan. Such dir eine Sache aus, die sich
+        gerade machbar anfühlt.
+      </p>
+
+      <div class="sad-steps">
+        <article class="sad-step">
+          <span class="sad-step-number">1</span>
+          <h3>Mach kurz langsamer</h3>
+          <p>
+            Setz dich bequem hin und atme ruhig ein und aus. Du musst nicht
+            sofort wieder funktionieren.
+          </p>
+        </article>
+
+        <article class="sad-step">
+          <span class="sad-step-number">2</span>
+          <h3>Gib dem Gefühl einen Namen</h3>
+          <p>
+            Frag dich: Bin ich enttäuscht, einsam, erschöpft, überfordert
+            oder einfach traurig? Du darfst es auch noch nicht wissen.
+          </p>
+        </article>
+
+        <article class="sad-step">
+          <span class="sad-step-number">3</span>
+          <h3>Tu etwas Kleines für dich</h3>
+          <p>
+            Trink etwas, öffne das Fenster, hör ein ruhiges Lied oder kuschle
+            dich in eine Decke. Eine Kleinigkeit reicht für den Anfang.
+          </p>
+        </article>
+
+        <article class="sad-step">
+          <span class="sad-step-number">4</span>
+          <h3>Schreib es auf</h3>
+          <p>
+            Schreib ungefiltert auf, was dich beschäftigt. Du musst daraus
+            keinen schönen Text machen und niemandem etwas beweisen.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sad-section">
+      <h2>Wenn du nicht weißt, warum du traurig bist</h2>
+      <p>
+        Nicht jedes Gefühl hat einen sofort erkennbaren Grund. Müdigkeit,
+        Stress, Streit, Veränderungen oder viele kleine Dinge können sich
+        ansammeln. Du musst nicht alles auf einmal herausfinden.
+      </p>
+      <p>
+        Vielleicht hilft es, dich zu fragen:
+      </p>
+      <ul>
+        <li>Was war heute besonders anstrengend?</li>
+        <li>Was hätte ich gerade gebraucht?</li>
+        <li>Würde mir Ruhe helfen oder möchte ich lieber nicht allein sein?</li>
+        <li>Was wäre eine kleine Sache, die den nächsten Moment leichter macht?</li>
+      </ul>
+      <p>
+        Du musst diese Fragen nicht beantworten, wenn sie sich gerade zu viel
+        anfühlen.
+      </p>
+    </section>
+
+    <section class="sad-section">
+      <h2>Du musst nicht alles allein tragen</h2>
+      <p>
+        Wenn du schon länger traurig bist, dich im Alltag kaum noch aufraffen
+        kannst oder deine Traurigkeit immer stärker wird, sprich mit einer
+        Person, der du vertraust. Das kann jemand aus deiner Familie, deinem
+        Freundeskreis, der Schule oder eine Beratungsstelle sein.
+      </p>
+      <p>
+        Du musst nicht erst beweisen, dass es dir schlecht genug geht, um
+        Unterstützung zu verdienen.
+      </p>
+    </section>
+
+    <section class="sad-help-box">
+      <h2>Wenn du Unterstützung brauchst</h2>
+      <p>
+        Du kannst dich an eine Vertrauensperson wenden oder professionelle
+        Unterstützung suchen. In Deutschland erreichst du die
+        TelefonSeelsorge kostenlos und anonym unter
+        <strong>0800 1110111</strong>, <strong>0800 1110222</strong> oder
+        <strong>116 123</strong>. Bei unmittelbarer Gefahr oder einem
+        medizinischen Notfall gilt die <strong>112</strong>.
+      </p>
+      <p>
+        Wenn du noch minderjährig bist, kannst du dich außerdem anonym und
+        kostenlos an die Nummer gegen Kummer für Kinder und Jugendliche unter
+        <strong>116 111</strong> wenden.
+      </p>
+    </section>
+
+    <div class="sad-actions">
+      <a class="sad-primary" href="hilfe.html">Weitere Hilfe finden ↗</a>
+      <a href="index.html#chat">Zum Gedankenraum ↗</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">+</span>
+      <span>positiv<span class="brand-light">helpcenter</span></span>
+    </a>
+
+    <span class="footer-note">
+      In Zusammenarbeit mit <strong>MaxOfficial</strong> :D
+    </span>
+
+    <span class="footer-copy">© <span id="currentYear"></span></span>
+  </footer>
+
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
