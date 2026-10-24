@@ -1,0 +1,1139 @@
+<!-- lerntour.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7cf45">
+  <meta name="description" content="Deine gemütliche Lernreise – lernen in deinem Tempo.">
+  <title>Lernen Tour – Positivhelpcenter</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --lt-yellow: #f7cf45;
+      --lt-yellow-light: #ffe99b;
+      --lt-cream: #fff7df;
+      --lt-ink: #171717;
+      --lt-white: #fffdf5;
+      --lt-green: #b8dca8;
+      --lt-blue: #b8ddf3;
+      --lt-pink: #f5c9d9;
+      --lt-border: 2px solid var(--lt-ink);
+      --lt-shadow: 5px 5px 0 var(--lt-ink);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--lt-ink);
+      background: var(--lt-cream);
+      font-family: "DM Sans", "Trebuchet MS", sans-serif;
+    }
+
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .lt-wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin-inline: auto;
+    }
+
+    .lt-header {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 17px max(20px, calc((100% - 1180px) / 2));
+      background: var(--lt-yellow);
+      border-bottom: var(--lt-border);
+    }
+
+    .lt-brand {
+      color: var(--lt-ink);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      letter-spacing: -.7px;
+    }
+
+    .lt-brand span { font-weight: 400; }
+    .lt-nav { display: flex; align-items: center; gap: 22px; }
+
+    .lt-nav a {
+      color: var(--lt-ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .lt-nav a:last-child {
+      border-bottom: 2px solid var(--lt-ink);
+      padding-bottom: 4px;
+    }
+
+    .lt-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 30px;
+      padding-block: clamp(38px, 7vw, 78px) 50px;
+      overflow: hidden;
+    }
+
+    .lt-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 7px 12px;
+      border: 1.5px solid var(--lt-ink);
+      border-radius: 9px;
+      background: var(--lt-yellow);
+      font-family: "DM Mono", monospace;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .lt-hero h1 {
+      max-width: 640px;
+      margin: 0;
+      font-size: clamp(2.6rem, 6.4vw, 5rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+    }
+
+    .lt-hero h1 span { color: #a16b00; }
+
+    .lt-lead {
+      max-width: 490px;
+      margin: 22px 0 0;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      line-height: 1.75;
+    }
+
+    .lt-handnote {
+      display: inline-block;
+      margin: 24px 0 0 14px;
+      font-weight: 800;
+      transform: rotate(-4deg);
+    }
+
+    .lt-globe-scene {
+      position: relative;
+      display: grid;
+      min-height: 350px;
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .lt-globe {
+      position: relative;
+      display: grid;
+      width: clamp(210px, 30vw, 300px);
+      aspect-ratio: 1;
+      place-items: center;
+      overflow: hidden;
+      border: 3px solid var(--lt-ink);
+      border-radius: 50%;
+      background: linear-gradient(150deg, #c9ecf9, #87c9ec);
+      box-shadow: inset -16px -15px 0 #0000000d, 8px 9px 0 #1717171a;
+    }
+
+    .lt-continent {
+      position: absolute;
+      background: #a8d88d;
+      border: 2px solid #527c4a;
+      border-radius: 48% 38% 55% 30%;
+    }
+
+    .lt-continent.one {
+      width: 29%;
+      height: 40%;
+      top: 15%;
+      left: 19%;
+      transform: rotate(22deg);
+    }
+
+    .lt-continent.two {
+      width: 21%;
+      height: 42%;
+      top: 43%;
+      left: 38%;
+      transform: rotate(-20deg);
+    }
+
+    .lt-continent.three {
+      width: 27%;
+      height: 24%;
+      top: 27%;
+      right: 12%;
+      transform: rotate(-15deg);
+    }
+
+    .lt-continent.four {
+      width: 13%;
+      height: 18%;
+      right: 19%;
+      bottom: 16%;
+      transform: rotate(30deg);
+    }
+
+    .lt-pin {
+      position: absolute;
+      z-index: 2;
+      width: 17px;
+      height: 17px;
+      border: 2px solid var(--lt-ink);
+      border-radius: 50% 50% 50% 0;
+      background: var(--lt-yellow);
+      transform: rotate(-45deg);
+    }
+
+    .lt-pin.p1 { top: 28%; left: 28%; }
+    .lt-pin.p2 { top: 45%; right: 23%; }
+    .lt-pin.p3 { bottom: 23%; left: 45%; }
+
+    .lt-flight-path {
+      position: absolute;
+      z-index: -1;
+      width: 96%;
+      height: 75%;
+      border: 2px dashed var(--lt-ink);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+    }
+
+    .lt-plane {
+      position: absolute;
+      z-index: 3;
+      top: 13%;
+      left: 8%;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      transform: rotate(12deg);
+      filter: drop-shadow(2px 3px 0 #17171720);
+      transition: top .6s ease, left .6s ease, transform .6s ease;
+    }
+
+    .lt-doodle {
+      position: absolute;
+      font-size: 1.7rem;
+      font-weight: 900;
+    }
+
+    .lt-doodle.star { top: 5%; right: 8%; }
+    .lt-doodle.cloud { bottom: 5%; left: 1%; }
+    .lt-sticker {
+      position: absolute;
+      right: 0;
+      bottom: 8%;
+      max-width: 145px;
+      padding: 12px;
+      border: var(--lt-border);
+      border-radius: 12px;
+      background: var(--lt-white);
+      font-size: .95rem;
+      font-weight: 800;
+      transform: rotate(5deg);
+    }
+
+    .lt-checker {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      opacity: .85;
+      background: conic-gradient(var(--lt-ink) 25%, transparent 0 50%, var(--lt-ink) 0 75%, transparent 0);
+      background-size: 28px 28px;
+    }
+
+    .lt-checker.top { top: -2px; right: -2px; }
+    .lt-checker.bottom { bottom: 12px; left: -5px; }
+
+    .lt-planner {
+      display: grid;
+      grid-template-columns: minmax(230px, .95fr) minmax(280px, 1fr) minmax(160px, .55fr);
+      align-items: center;
+      gap: 24px;
+      padding: clamp(20px, 3vw, 34px);
+      border: 2px solid #e6b92c;
+      border-radius: 24px;
+      background: var(--lt-yellow);
+      box-shadow: 0 7px 0 #1717170d;
+    }
+
+    .lt-field + .lt-field { margin-top: 27px; }
+
+    .lt-field h2 {
+      margin: 0 0 5px;
+      font-size: 1.05rem;
+    }
+
+    .lt-field p {
+      margin: 0 0 14px;
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    .lt-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .lt-option {
+      min-height: 44px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--lt-ink);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--lt-ink);
+      cursor: pointer;
+      font-size: .9rem;
+      font-weight: 800;
+      transition: background .15s, color .15s, transform .15s;
+    }
+
+    .lt-option:hover { transform: translateY(-2px); }
+    .lt-option[aria-pressed="true"] {
+      background: var(--lt-ink);
+      color: white;
+    }
+
+    .lt-devices .lt-option {
+      flex: 1 1 72px;
+      min-width: 68px;
+      border-radius: 13px;
+      padding: 11px 8px;
+    }
+
+    .lt-device-icon {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.3rem;
+    }
+
+    .lt-pass {
+      position: relative;
+      padding: 23px;
+      border: 2px solid #eadfbd;
+      border-radius: 18px;
+      background: var(--lt-white);
+      box-shadow: 0 4px 0 #17171712;
+    }
+
+    .lt-pass:before, .lt-pass:after {
+      position: absolute;
+      top: 50%;
+      width: 18px;
+      height: 28px;
+      content: "";
+      background: var(--lt-yellow);
+      border: 2px solid #e6b92c;
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lt-pass:before { left: -12px; border-left: 0; }
+    .lt-pass:after { right: -12px; border-right: 0; }
+
+    .lt-pass-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 13px;
+      border-bottom: 1px dashed #9d967f;
+      font-weight: 900;
+    }
+
+    .lt-barcode {
+      width: 55px;
+      height: 24px;
+      background: repeating-linear-gradient(90deg, #171717 0 2px, transparent 2px 4px, #171717 4px 5px, transparent 5px 8px);
+    }
+
+    .lt-pass-route {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
+      margin: 19px 0;
+    }
+
+    .lt-pass-route small {
+      display: block;
+      margin-bottom: 5px;
+      color: #625b4a;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+
+    .lt-pass-route strong { font-size: .9rem; }
+    .lt-pass-route .lt-destination { text-align: right; }
+
+    .lt-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 48px;
+      padding: 13px 18px;
+      border: var(--lt-border);
+      border-radius: 999px;
+      background: var(--lt-ink);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 900;
+      transition: transform .15s, background .15s;
+    }
+
+    .lt-button:hover { transform: translateY(-2px); }
+    .lt-button:disabled { cursor: not-allowed; opacity: .55; transform: none; }
+    .lt-button.secondary { background: var(--lt-white); color: var(--lt-ink); }
+    .lt-button.pause { background: #fff0b8; color: var(--lt-ink); }
+
+    .lt-pass-note {
+      margin: 12px 0 0;
+      text-align: center;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    .lt-water-side {
+      text-align: center;
+    }
+
+    .lt-water-illustration {
+      display: inline-block;
+      font-size: 4.6rem;
+      animation: lt-bob 3s ease-in-out infinite;
+    }
+
+    .lt-water-bubble {
+      display: inline-block;
+      padding: 9px 12px;
+      border: 1.5px solid var(--lt-ink);
+      border-radius: 13px;
+      background: var(--lt-white);
+      font-weight: 800;
+      transform: rotate(4deg);
+    }
+
+    .lt-tip-note {
+      margin-top: 18px;
+      padding: 15px;
+      border: 1.5px solid #d4ac2e;
+      border-radius: 12px;
+      background: #ffedaa;
+      text-align: left;
+      transform: rotate(-2deg);
+    }
+
+    .lt-tip-note strong { display: block; margin-bottom: 7px; }
+    .lt-tip-note p { margin: 0; line-height: 1.5; font-size: .9rem; }
+
+    @keyframes lt-bob {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-7px) rotate(3deg); }
+    }
+
+    .lt-companions { padding-block: 44px 65px; }
+
+    .lt-section-title {
+      margin: 0 0 20px;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      letter-spacing: -.04em;
+    }
+
+    .lt-companion-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .lt-companion {
+      padding: 20px;
+      border: 1.5px solid var(--lt-ink);
+      border-radius: 17px;
+      background: var(--lt-white);
+    }
+
+    .lt-companion:nth-child(2) { background: var(--lt-pink); }
+    .lt-companion:nth-child(3) { background: var(--lt-blue); }
+    .lt-companion:nth-child(4) { background: var(--lt-green); }
+
+    .lt-companion-icon { font-size: 2rem; }
+    .lt-companion h3 { margin: 12px 0 8px; font-size: 1.05rem; }
+    .lt-companion p { margin: 0; font-size: .9rem; line-height: 1.6; }
+
+    .lt-session {
+      display: none;
+      margin-block: 0 60px;
+      padding: clamp(20px, 4vw, 38px);
+      border: var(--lt-border);
+      border-radius: 24px;
+      background: var(--lt-white);
+      box-shadow: var(--lt-shadow);
+    }
+
+    .lt-session.active { display: block; }
+
+    .lt-session-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .lt-session-header h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); }
+    .lt-session-status { font-weight: 800; }
+
+    .lt-progress {
+      height: 12px;
+      margin: 20px 0;
+      overflow: hidden;
+      border: 1.5px solid var(--lt-ink);
+      border-radius: 99px;
+      background: #f2ead4;
+    }
+
+    .lt-progress-bar {
+      width: 0;
+      height: 100%;
+      background: var(--lt-yellow);
+      transition: width .4s linear;
+    }
+
+    .lt-session-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, .6fr);
+      gap: 22px;
+    }
+
+    .lt-timer-card, .lt-guidance-card {
+      padding: 22px;
+      border: 1.5px solid var(--lt-ink);
+      border-radius: 17px;
+      background: #fff9e9;
+    }
+
+    .lt-time {
+      margin: 10px 0;
+      font-family: "DM Mono", monospace;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -.06em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .lt-session-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .lt-session-controls .lt-button { width: auto; flex: 1 1 130px; }
+
+    .lt-tip-icon { font-size: 2.4rem; }
+    .lt-guidance-card h3 { margin: 8px 0; }
+    .lt-guidance-card p { line-height: 1.65; }
+
+    .lt-flying-water {
+      position: fixed;
+      z-index: 100;
+      top: 35%;
+      left: -130px;
+      font-size: 5rem;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .lt-flying-water.fly {
+      animation: lt-water-flight 3.2s ease-in-out forwards;
+    }
+
+    @keyframes lt-water-flight {
+      0% { left: -130px; top: 55%; opacity: 0; transform: rotate(-20deg) scale(.7); }
+      12% { opacity: 1; }
+      48% { top: 23%; transform: rotate(15deg) scale(1.15); }
+      86% { opacity: 1; }
+      100% { left: calc(100% + 30px); top: 42%; opacity: 0; transform: rotate(35deg) scale(.8); }
+    }
+
+    .lt-toast {
+      position: fixed;
+      z-index: 110;
+      right: 18px;
+      bottom: 18px;
+      width: min(340px, calc(100% - 36px));
+      padding: 18px;
+      border: var(--lt-border);
+      border-radius: 16px;
+      background: var(--lt-yellow-light);
+      box-shadow: 4px 4px 0 var(--lt-ink);
+      font-weight: 800;
+      line-height: 1.5;
+      transform: translateY(160%);
+      transition: transform .35s ease;
+    }
+
+    .lt-toast.show { transform: translateY(0); }
+
+    .lt-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 22px max(20px, calc((100% - 1180px) / 2));
+      background: var(--lt-yellow);
+      border-top: var(--lt-border);
+      font-size: .85rem;
+    }
+
+    .lt-footer a { color: var(--lt-ink); text-decoration: none; font-weight: 800; }
+
+    @media (max-width: 900px) {
+      .lt-planner { grid-template-columns: 1fr 1fr; }
+      .lt-water-side { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; gap: 15px; align-items: center; text-align: left; }
+      .lt-water-illustration { font-size: 3.4rem; }
+      .lt-tip-note { margin-top: 0; }
+      .lt-companion-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .lt-header { padding: 14px 18px; }
+      .lt-nav { gap: 12px; font-size: .88rem; }
+      .lt-hero { grid-template-columns: 1fr; padding-top: 35px; gap: 0; }
+      .lt-hero h1 { font-size: clamp(2.7rem, 13vw, 4rem); }
+      .lt-globe-scene { min-height: 300px; }
+      .lt-globe { width: min(66vw, 260px); }
+      .lt-sticker { right: 1%; bottom: 3%; max-width: 125px; font-size: .8rem; }
+      .lt-planner { grid-template-columns: 1fr; padding: 18px; }
+      .lt-water-side { grid-column: auto; }
+      .lt-pass { padding: 20px 18px; }
+      .lt-companion-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .lt-companion { padding: 15px; }
+      .lt-session-grid { grid-template-columns: 1fr; }
+      .lt-session-controls { flex-direction: column; }
+      .lt-session-controls .lt-button { width: 100%; }
+    }
+
+    @media (max-width: 390px) {
+      .lt-brand { font-size: .95rem; }
+      .lt-nav { gap: 8px; font-size: .8rem; }
+      .lt-companion-grid { grid-template-columns: 1fr; }
+      .lt-options { gap: 6px; }
+      .lt-option { padding: 9px 11px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="lt-header">
+    <a class="lt-brand" href="index.html" aria-label="Zur Positivhelpcenter-Startseite">✚ positiv<span>helpcenter</span></a>
+    <nav class="lt-nav" aria-label="Hauptnavigation">
+      <a href="hilfe.html">Hilfe ↗</a>
+      <a href="lerntour.html" aria-current="page">Lernen Tour</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="lt-hero lt-wrap">
+      <div>
+        <p class="lt-eyebrow">✳ LERNEN TOUR</p>
+        <h1>Deine persönliche <span>Lernreise.</span></h1>
+        <p class="lt-lead">
+          Einfach. Entspannt. In deinem Tempo.<br>
+          Wähle deine Dauer, starte deinen Boarding Pass und lass dich durch
+          kleine Pausen, Tipps und Erinnerungen begleiten.
+        </p>
+        <p class="lt-handnote">Du schaffst das! ♡</p>
+      </div>
+
+      <div class="lt-globe-scene" aria-label="Ein Flugzeug umrundet eine gezeichnete Weltkugel">
+        <div class="lt-checker top" aria-hidden="true"></div>
+        <div class="lt-checker bottom" aria-hidden="true"></div>
+        <div class="lt-flight-path" aria-hidden="true"></div>
+        <div class="lt-globe" aria-hidden="true">
+          <span class="lt-continent one"></span>
+          <span class="lt-continent two"></span>
+          <span class="lt-continent three"></span>
+          <span class="lt-continent four"></span>
+          <span class="lt-pin p1"></span>
+          <span class="lt-pin p2"></span>
+          <span class="lt-pin p3"></span>
+        </div>
+        <span class="lt-plane" id="heroPlane" aria-hidden="true">✈</span>
+        <span class="lt-doodle star" aria-hidden="true">✳</span>
+        <span class="lt-doodle cloud" aria-hidden="true">☁</span>
+        <div class="lt-sticker">Lernen ist eine Reise, kein Sprint. ♡</div>
+      </div>
+    </section>
+
+    <section class="lt-wrap lt-planner" id="boarding">
+      <div>
+        <div class="lt-field">
+          <h2>◷ Dauer wählen</h2>
+          <p>Wie lange möchtest du lernen?</p>
+          <div class="lt-options" id="durationOptions" role="group" aria-label="Lerndauer wählen">
+            <button class="lt-option" type="button" data-minutes="15" aria-pressed="false">15 Min</button>
+            <button class="lt-option" type="button" data-minutes="30" aria-pressed="true">30 Min</button>
+            <button class="lt-option" type="button" data-minutes="45" aria-pressed="false">45 Min</button>
+            <button class="lt-option" type="button" data-minutes="60" aria-pressed="false">60 Min</button>
+          </div>
+        </div>
+
+        <div class="lt-field">
+          <h2>▣ Gerät wählen</h2>
+          <p>Auf welchem Gerät lernst du?</p>
+          <div class="lt-options lt-devices" id="deviceOptions" role="group" aria-label="Gerät wählen">
+            <button class="lt-option" type="button" data-device="Handy" aria-pressed="false"><span class="lt-device-icon">▯</span>Handy</button>
+            <button class="lt-option" type="button" data-device="Tablet" aria-pressed="true"><span class="lt-device-icon">▣</span>Tablet</button>
+            <button class="lt-option" type="button" data-device="Laptop" aria-pressed="false"><span class="lt-device-icon">▱</span>Laptop</button>
+            <button class="lt-option" type="button" data-device="PC" aria-pressed="false"><span class="lt-device-icon">▣</span>PC</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lt-pass" aria-label="Dein Boarding Pass">
+        <div class="lt-pass-top">
+          <span>✈ BOARDING PASS</span>
+          <span class="lt-barcode" aria-hidden="true"></span>
+        </div>
+        <div class="lt-pass-route">
+          <div>
+            <small>VON</small>
+            <strong>Hier & Jetzt</strong>
+          </div>
+          <span aria-hidden="true">⟶</span>
+          <div class="lt-destination">
+            <small>NACH</small>
+            <strong>Deine Ziele</strong>
+          </div>
+        </div>
+        <button class="lt-button" id="startTour" type="button">Tour starten ↗</button>
+        <p class="lt-pass-note" id="passNote">30 Minuten · Tablet · Du kannst das. ♡</p>
+      </div>
+
+      <aside class="lt-water-side">
+        <div>
+          <div class="lt-water-illustration" aria-hidden="true">🥤</div>
+          <div class="lt-water-bubble">Trink etwas! ♡</div>
+        </div>
+        <div class="lt-tip-note">
+          <strong>☼ Tipp für dich:</strong>
+          <p>Atme kurz einmal tief durch. Hol dir Blätter und einen Stift, bevor du loslegst.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="lt-wrap lt-companions">
+      <h2 class="lt-section-title">✳ Deine Reisebegleiter</h2>
+      <div class="lt-companion-grid">
+        <article class="lt-companion">
+          <span class="lt-companion-icon" aria-hidden="true">📝</span>
+          <h3>Alles bereit?</h3>
+          <p>Hol dir Blätter, einen Stift und alles, was du für deine Lernreise brauchst.</p>
+        </article>
+        <article class="lt-companion">
+          <span class="lt-companion-icon" aria-hidden="true">🌬️</span>
+          <h3>Einmal durchatmen</h3>
+          <p>Locker deine Schultern. Atme ruhig ein und wieder aus. Du musst nicht hetzen.</p>
+        </article>
+        <article class="lt-companion">
+          <span class="lt-companion-icon" aria-hidden="true">💧</span>
+          <h3>Wasser nicht vergessen</h3>
+          <p>Zwischendurch erinnert dich deine Tour daran, etwas zu trinken.</p>
+        </article>
+        <article class="lt-companion">
+          <span class="lt-companion-icon" aria-hidden="true">☁️</span>
+          <h3>Pausen gehören dazu</h3>
+          <p>Kurze Erholung ist eingeplant. Du kannst jederzeit selbst pausieren.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="lt-wrap lt-session" id="session" aria-live="polite">
+      <div class="lt-session-header">
+        <h2 id="sessionTitle">✈ Deine Reise läuft!</h2>
+        <span class="lt-session-status" id="sessionStatus">Unterwegs zu deinen Zielen</span>
+      </div>
+      <div class="lt-progress" role="progressbar" aria-label="Fortschritt der Lernreise" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressTrack">
+        <div class="lt-progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="lt-session-grid">
+        <div class="lt-timer-card">
+          <p class="lt-eyebrow" id="phaseLabel">LERNZEIT</p>
+          <div class="lt-time" id="timerDisplay">30:00</div>
+          <p id="timerMessage">Du bist unterwegs. Ein Schritt nach dem anderen.</p>
+          <div class="lt-session-controls">
+            <button class="lt-button pause" id="pauseTour" type="button">Ⅱ Pause</button>
+            <button class="lt-button secondary" id="resumeTour" type="button" hidden>▶ Weiterlernen</button>
+            <button class="lt-button secondary" id="endTour" type="button">Tour beenden</button>
+          </div>
+        </div>
+
+        <aside class="lt-guidance-card">
+          <div class="lt-tip-icon" id="sessionTipIcon" aria-hidden="true">🌱</div>
+          <h3 id="sessionTipTitle">Dein nächster kleiner Schritt</h3>
+          <p id="sessionTipText">Lege deine Materialien bereit und entscheide, womit du anfangen möchtest.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="lt-flying-water" id="flyingWater" aria-hidden="true">🥤</div>
+  <div class="lt-toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="lt-footer">
+    <a href="index.html">✚ positivhelpcenter</a>
+    <span>In Zusammenarbeit mit <strong>MaxOfficial</strong> :D</span>
+    <span>© <span id="currentYear"></span></span>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const durationButtons = [...document.querySelectorAll("[data-minutes]")];
+      const deviceButtons = [...document.querySelectorAll("[data-device]")];
+      const startButton = document.getElementById("startTour");
+      const pauseButton = document.getElementById("pauseTour");
+      const resumeButton = document.getElementById("resumeTour");
+      const endButton = document.getElementById("endTour");
+      const session = document.getElementById("session");
+      const timerDisplay = document.getElementById("timerDisplay");
+      const phaseLabel = document.getElementById("phaseLabel");
+      const timerMessage = document.getElementById("timerMessage");
+      const sessionTitle = document.getElementById("sessionTitle");
+      const sessionStatus = document.getElementById("sessionStatus");
+      const sessionTipIcon = document.getElementById("sessionTipIcon");
+      const sessionTipTitle = document.getElementById("sessionTipTitle");
+      const sessionTipText = document.getElementById("sessionTipText");
+      const progressBar = document.getElementById("progressBar");
+      const progressTrack = document.getElementById("progressTrack");
+      const passNote = document.getElementById("passNote");
+      const flyingWater = document.getElementById("flyingWater");
+      const toast = document.getElementById("toast");
+      const heroPlane = document.getElementById("heroPlane");
+
+      let chosenMinutes = 30;
+      let chosenDevice = "Tablet";
+      let totalSeconds = chosenMinutes * 60;
+      let remainingSeconds = totalSeconds;
+      let startedAt = 0;
+      let pausedAt = 0;
+      let pausedTotal = 0;
+      let isRunning = false;
+      let isPaused = false;
+      let isOnBreak = false;
+      let breakEndsAt = 0;
+      let intervalId = null;
+      let waterTimeoutId = null;
+      let breakTimeoutId = null;
+      let toastTimeoutId = null;
+      let lastWaterAt = 0;
+      let lastTipAt = 0;
+      let nextBreakAt = 0;
+      let breakCount = 0;
+
+      const tips = [
+        { icon: "🌱", title: "Nur der nächste Schritt", text: "Such dir eine kleine Aufgabe aus. Du musst nicht alles auf einmal schaffen." },
+        { icon: "📝", title: "Gedanken aufs Papier", text: "Schreib die wichtigsten Punkte auf. So muss dein Kopf sie nicht alle gleichzeitig festhalten." },
+        { icon: "🌬️", title: "Kurz durchatmen", text: "Lass die Schultern locker. Atme ruhig ein und langsam wieder aus." },
+        { icon: "🔎", title: "Mach es übersichtlich", text: "Teile eine große Aufgabe in zwei oder drei kleine Schritte." },
+        { icon: "⭐", title: "Du kommst voran", text: "Auch ein kleiner Fortschritt zählt. Schau, was du schon geschafft hast." },
+        { icon: "🥤", title: "Ein Schluck Wasser", text: "Greif kurz zu deinem Getränk. Danach kannst du entspannt weitermachen." },
+        { icon: "🧸", title: "Sei freundlich zu dir", text: "Du musst nicht perfekt lernen. Üben und Fehler machen gehört dazu." },
+        { icon: "☁️", title: "Mini-Pause gefällig?", text: "Lockere Hände und Nacken. Ein kurzer Moment ohne Bildschirm kann guttun." }
+      ];
+
+      function formatTime(seconds) {
+        const safe = Math.max(0, Math.ceil(seconds));
+        const minutes = Math.floor(safe / 60);
+        const secs = safe % 60;
+        return String(minutes).padStart(2, "0") + ":" + String(secs).padStart(2, "0");
+      }
+
+      function selectOption(buttons, selectedButton) {
+        buttons.forEach(button => {
+          button.setAttribute("aria-pressed", String(button === selectedButton));
+        });
+      }
+
+      function updatePass() {
+        passNote.textContent = `${chosenMinutes} Minuten · ${chosenDevice} · Du kannst das. ♡`;
+      }
+
+      durationButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          if (isRunning) return;
+          chosenMinutes = Number(button.dataset.minutes);
+          selectOption(durationButtons, button);
+          updatePass();
+        });
+      });
+
+      deviceButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          if (isRunning) return;
+          chosenDevice = button.dataset.device;
+          selectOption(deviceButtons, button);
+          updatePass();
+        });
+      });
+
+      function showToast(message, duration = 4500) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(toastTimeoutId);
+        toastTimeoutId = setTimeout(() => toast.classList.remove("show"), duration);
+      }
+
+      function showTip() {
+        const tip = tips[Math.floor(Math.random() * tips.length)];
+        sessionTipIcon.textContent = tip.icon;
+        sessionTipTitle.textContent = tip.title;
+        sessionTipText.textContent = tip.text;
+        lastTipAt = Date.now();
+      }
+
+      function animatePlane(progress) {
+        const positions = [
+          { left: "8%", top: "13%", rotate: "12deg" },
+          { left: "73%", top: "12%", rotate: "55deg" },
+          { left: "83%", top: "68%", rotate: "125deg" },
+          { left: "12%", top: "76%", rotate: "205deg" },
+          { left: "8%", top: "13%", rotate: "372deg" }
+        ];
+        const scaled = Math.min(0.999, Math.max(0, progress)) * (positions.length - 1);
+        const index = Math.floor(scaled);
+        const next = positions[index + 1];
+        const current = positions[index];
+        const fraction = scaled - index;
+        heroPlane.style.left = `calc(${parseFloat(current.left) + (parseFloat(next.left) - parseFloat(current.left)) * fraction}%)`;
+        heroPlane.style.top = `calc(${parseFloat(current.top) + (parseFloat(next.top) - parseFloat(current.top)) * fraction}%)`;
+        heroPlane.style.transform = `rotate(${parseFloat(current.rotate) + (parseFloat(next.rotate) - parseFloat(current.rotate)) * fraction}deg)`;
+      }
+
+      function launchWaterReminder() {
+        flyingWater.classList.remove("fly");
+        void flyingWater.offsetWidth;
+        flyingWater.classList.add("fly");
+        showToast("Wasser-Post ist unterwegs! 🥤 Trink ein paar Schlucke, wenn du magst.");
+      }
+
+      function clearSessionTimers() {
+        clearInterval(intervalId);
+        clearTimeout(waterTimeoutId);
+        clearTimeout(breakTimeoutId);
+        intervalId = null;
+        waterTimeoutId = null;
+        breakTimeoutId = null;
+      }
+
+      function scheduleWaterReminder() {
+        clearTimeout(waterTimeoutId);
+        if (!isRunning || isPaused) return;
+        waterTimeoutId = setTimeout(() => {
+          if (!isRunning || isPaused) return;
+          launchWaterReminder();
+          scheduleWaterReminder();
+        }, 8 * 60 * 1000);
+      }
+
+      function startBreak(seconds, automatic) {
+        if (!isRunning || isPaused) return;
+        isOnBreak = true;
+        breakCount++;
+        breakEndsAt = Date.now() + seconds * 1000;
+        phaseLabel.textContent = automatic ? "AUTOMATISCHE PAUSE" : "DEINE PAUSE";
+        sessionTitle.textContent = automatic ? "☁️ Zeit zum Durchatmen!" : "☁️ Deine Pause";
+        sessionStatus.textContent = "Kleine Pause auf deiner Route";
+        timerMessage.textContent = automatic
+          ? "Die Reise macht kurz Halt. Beweg dich ein wenig oder schau aus dem Fenster."
+          : "Du hast dir eine Pause genommen. Lass dir einen Moment Zeit.";
+        sessionTipIcon.textContent = "🧸";
+        sessionTipTitle.textContent = "Mini-Pause";
+        sessionTipText.textContent = "Locker deine Schultern, streck dich sanft und trink etwas. Wenn du bereit bist, geht es weiter.";
+        pauseButton.hidden = true;
+        resumeButton.hidden = false;
+        resumeButton.textContent = "▶ Weiterlernen";
+        showToast(automatic ? "Kleiner Zwischenstopp! Zeit für eine kurze Erholung. ☁️" : "Pause aktiviert. Lass dir einen Moment Zeit. ♡", 5000);
+        render();
+      }
+
+      function resumeFromBreak() {
+        if (!isRunning || !isPaused && !isOnBreak) return;
+        if (isPaused) {
+          pausedTotal += Date.now() - pausedAt;
+          isPaused = false;
+        }
+        isOnBreak = false;
+        breakEndsAt = 0;
+        phaseLabel.textContent = "LERNZEIT";
+        sessionTitle.textContent = "✈ Deine Reise läuft!";
+        sessionStatus.textContent = "Unterwegs zu deinen Zielen";
+        timerMessage.textContent = "Willkommen zurück! Ein Schritt nach dem anderen.";
+        pauseButton.hidden = false;
+        resumeButton.hidden = true;
+        showTip();
+        tick();
+      }
+
+      function pauseTour() {
+        if (!isRunning || isPaused || isOnBreak) return;
+        isPaused = true;
+        pausedAt = Date.now();
+        clearTimeout(waterTimeoutId);
+        clearTimeout(breakTimeoutId);
+        phaseLabel.textContent = "PAUSIERT";
+        sessionStatus.textContent = "Deine Reise wartet auf dich";
+        timerMessage.textContent = "Alles gut. Mach in deinem Tempo weiter, wenn du bereit bist.";
+        pauseButton.hidden = true;
+        resumeButton.hidden = false;
+        resumeButton.textContent = "▶ Weiterlernen";
+        showToast("Deine Tour ist pausiert. Die Zeit läuft nicht weiter. ♡");
+      }
+
+      function finishTour(manual = false) {
+        clearSessionTimers();
+        isRunning = false;
+        isPaused = false;
+        isOnBreak = false;
+        pauseButton.hidden = false;
+        resumeButton.hidden = true;
+        startButton.disabled = false;
+        durationButtons.forEach(button => button.disabled = false);
+        deviceButtons.forEach(button => button.disabled = false);
+
+        if (manual) {
+          sessionTitle.textContent = "✈ Tour beendet";
+          sessionStatus.textContent = "Du kannst jederzeit neu starten";
+          phaseLabel.textContent = "REISE BEENDET";
+          timerMessage.textContent = "Gut gemacht, dass du dir Zeit genommen hast. ♡";
+          sessionTipIcon.textContent = "🌷";
+          sessionTipTitle.textContent = "Danke, dass du dabei warst";
+          sessionTipText.textContent = "Auch ein kleiner Lernschritt ist ein Schritt nach vorn.";
+          showToast("Deine Tour ist beendet. Sei stolz auf das, was du geschafft hast. ♡");
+        } else {
+          remainingSeconds = 0;
+          timerDisplay.textContent = "00:00";
+          progressBar.style.width = "100%";
+          progressTrack.setAttribute("aria-valuenow", "100");
+          sessionTitle.textContent = "🏁 Du bist angekommen!";
+          sessionStatus.textContent = "Reise erfolgreich abgeschlossen";
+          phaseLabel.textContent = "ZIEL ERREICHT";
+          timerMessage.textContent = "Deine Lernreise ist zu Ende. Atme durch und freu dich über deine Zeit.";
+          sessionTipIcon.textContent = "🌟";
+          sessionTipTitle.textContent = "Du hast es geschafft!";
+          sessionTipText.textContent = "Leg deine Materialien kurz beiseite. Du hast dir diese kleine Pause verdient.";
+          showToast("Du bist angekommen! 🎉 Deine Lernreise ist beendet.", 7000);
+        }
+        animatePlane(1);
+      }
+
+      function render() {
+        timerDisplay.textContent = formatTime(remainingSeconds);
+        const elapsed = totalSeconds - remainingSeconds;
+        const progress = totalSeconds ? Math.min(100, (elapsed / totalSeconds) * 100) : 0;
+        progressBar.style.width = `${progress}%`;
+        progressTrack.setAttribute("aria-valuenow", String(Math.round(progress)));
+        animatePlane(progress / 100);
+      }
+
+      function tick() {
+        if (!isRunning || isPaused) return;
+
+        const now = Date.now();
+
+        if (isOnBreak) {
+          const breakRemaining = Math.max(0, Math.ceil((breakEndsAt - now) / 1000));
+          timerDisplay.textContent = formatTime(breakRemaining);
+          if (breakRemaining <= 0) resumeFromBreak();
+          return;
+        }
+
+        const elapsed = Math.floor((now - startedAt - pausedTotal) / 1000);
+        remainingSeconds = Math.max(0, totalSeconds - elapsed);
+        render();
+
+        if (remainingSeconds <= 0) {
+          finishTour(false);
+          return;
+        }
+
+        if (elapsed >= nextBreakAt) {
+          nextBreakAt += 15 * 60;
+          startBreak(60, true);
+          return;
+        }
+
+        if (now - lastTipAt >= 4 * 60 * 1000) showTip();
+      }
+
+      function startTour() {
+        clearSessionTimers();
+        chosenMinutes = Number(document.querySelector('[data-minutes][aria-pressed="true"]').dataset.minutes);
+        chosenDevice = document.querySelector('[data-device][aria-pressed="true"]').dataset.device;
+        totalSeconds = chosenMinutes * 60;
+        remainingSeconds = totalSeconds;
+        startedAt = Date.now();
+        pausedAt = 0;
+        pausedTotal = 0;
+        isRunning = true;
+        isPaused = false;
+        isOnBreak = false;
+        breakCount = 0;
+        lastWaterAt = Date.now();
+        lastTipAt = Date.now();
+        nextBreakAt = 15 * 60;
+
+        session.classList.add("active");
+        startButton.disabled = true;
+        durationButtons.forEach(button => button.disabled = true);
+        deviceButtons.forEach(button => button.disabled = true);
+        pauseButton.hidden = false;
+        resumeButton.hidden = true;
+        phaseLabel.textContent = "LERNZEIT";
+        sessionTitle.textContent = "✈ Deine Reise läuft!";
+        sessionStatus.textContent = `Auf deiner Lernreise · ${chosenDevice}`;
+        timerMessage.textContent = "Du bist unterwegs. Ein Schritt nach dem anderen.";
+        showTip();
+        render();
+        scheduleWaterReminder();
+        intervalId = setInterval(tick, 250);
+        session.scrollIntoView({ behavior: "smooth", block: "start" });
+        showToast("Boarding abgeschlossen! Deine Lernreise beginnt. ✈", 4000);
+      }
+
+      startButton.addEventListener("click", startTour);
+      pauseButton.addEventListener("click", pauseTour);
+      resumeButton.addEventListener("click", resumeFromBreak);
+      endButton.addEventListener("click", () => finishTour(true));
+
+      document.getElementById("currentYear").textContent = new Date().getFullYear();
+      updatePass();
+    })();
+  </script>
+</body>
+</html>
