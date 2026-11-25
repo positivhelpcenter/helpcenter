@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7cf45">
+  <meta name="description" content="Spiele kleine Minispiele im Positivhelpcenter.">
+  <title>Spielen – Positivhelpcenter</title>
+  <link rel="stylesheet" href="spiele.css">
+  <script src="spiele.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">+</span>
+    <span>positiv<span class="brand-light">helpcenter</span></span>
+  </a>
+
+  <nav class="nav">
+    <a href="index.html">Startseite</a>
+    <a href="hilfe.html">Hilfe</a>
+    <a href="lerntour.html">Lernen Tour</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">DEINE KLEINE SPIELPAUSE</p>
+    <h1>Spiel mal.<br><span>Hab Spaß!</span></h1>
+    <p>Ein bisschen knobeln, ausprobieren und die Langeweile vertreiben.</p>
+    <div class="hero-decoration">✳ + ✳</div>
+  </section>
+
+  <section class="game-section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">DIE SPIELHALLE</p>
+        <h2>Was möchtest du spielen?</h2>
+      </div>
+      <span id="gameCount">8 SPIELE</span>
+    </div>
+
+    <input
+      type="search"
+      id="gameSearch"
+      class="search"
+      placeholder="Spiel suchen ..."
+      aria-label="Spiel suchen"
+    >
+
+    <div class="filters">
+      <button class="filter active" data-filter="Alle">Alle</button>
+      <button class="filter" data-filter="Denken">Denken</button>
+      <button class="filter" data-filter="Geschicklichkeit">Geschicklichkeit</button>
+      <button class="filter" data-filter="Reaktion">Reaktion</button>
+      <button class="filter" data-filter="Spaß">Spaß</button>
+    </div>
+
+    <div class="game-grid" id="gameGrid">
+
+      <button class="game-card" data-game="memory" data-category="Denken">
+        <span class="game-icon">🃏</span>
+        <span class="game-category">DENKEN</span>
+        <strong>Memory</strong>
+        <span>Finde alle Kartenpaare.</span>
+        <span class="play-label">Jetzt spielen ↗</span>
+      </button>
+
+      <button class="game-card" data-game="snake" data-category="Geschicklichkeit">
+        <span class="game-icon">🐍</span>
+        <span class="game-category">GESCHICKLICHKEIT</span>
+        <strong>Snake</strong>
+        <span>Wie lang wird deine Schlange?</span>
+        <span class="play-label">Jetzt spielen ↗</span>
+      </button>
+
+      <button class="game-card" data-game="reaction" data-category="Reaktion">
+        <span class="game-icon">⚡</span>
+        <span class="game-category">REAKTION</span>
+        <strong>Reaktionstest</strong>
+        <span>Wie schnell reagierst du?</span>
+        <span class="play-label">Jetzt spielen ↗</span>
+      </button>
+
+      <button class="game-card" data-game="tictactoe" data-category="Denken">
+        <span class="game-icon">⭕</span>
+        <span class="game-category">DENKEN</span>
+        <strong>Tic Tac Toe</strong>
+        <span>Schlage den Computer.</span>
+        <span class="play-label">Jetzt spielen ↗</span>
+      </button>
+
+      <button class="game-card" data-game="number" data-category="Denken">
+        <span class="game-icon">🔢</span>
+        <span class="game-category">DENKEN</span>
+        <strong>Zahlenraten</strong>
+        <span>Finde die geheime Zahl.</span>
+        <span class="play-label">Jetzt spielen ↗</span>
+      </button>
+
+      <button class="game-card" data-game="breaker" data-category="Geschicklichkeit">
+        <span class="game-icon">🧱</span>
+        <span class="game-category">GESCHICKLICHKEIT</span>
+        <strong>Brick Breaker</strong>
+        <span>Zerstöre alle Steine.</span>
+        <span class="play-label">Jetzt spielen ↗</span>
+      </button>
+
+      <button class="game-card" data-game="words" data-category="Denken">
+        <span class="game-icon">🔤</span>
+        <span class="game-category">DENKEN</span>
+        <strong>Wörtersuche</strong>
+        <span>Finde versteckte Wörter.</span>
+        <span class="play-label">Jetzt spielen ↗</span>
+      </button>
+
+      <button class="game-card" data-game="runner" data-category="Geschicklichkeit">
+        <span class="game-icon">🏃</span>
+        <span class="game-category">GESCHICKLICHKEIT</span>
+        <strong>Mini Runner</strong>
+        <span>Spring über Hindernisse.</span>
+        <span class="play-label">Jetzt spielen ↗</span>
+      </button>
+
+    </div>
+
+    <p id="noGames" hidden>Keine Spiele gefunden.</p>
+  </section>
+
+  <section class="game-area" id="gameArea" hidden>
+    <div class="game-area-heading">
+      <div>
+        <p class="eyebrow">JETZT WIRD GESPIELT</p>
+        <h2 id="activeGameTitle">Spiel</h2>
+      </div>
+      <button id="closeGame" class="close-button">✕ Schließen</button>
+    </div>
+    <div id="gameContent" class="game-content"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">+</span>
+    <span>positiv<span class="brand-light">helpcenter</span></span>
+  </a>
+  <span>In Zusammenarbeit mit <strong>MaxOfficial</strong> :D</span>
+  <span>© <span id="year"></span></span>
+</footer>
+
+</body>
+</html>
