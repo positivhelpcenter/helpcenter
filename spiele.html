@@ -1,154 +1,776 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f7cf45">
-  <meta name="description" content="Spiele kleine Minispiele im Positivhelpcenter.">
-  <title>Spielen – Positivhelpcenter</title>
-  <link rel="stylesheet" href="spiele.css">
-  <script src="spiele.js" defer></script>
+  <title>Spielhalle | Positivhelpcenter</title>
+  <meta name="description" content="Eine kleine Spielpause im Positivhelpcenter. Spiele Memory, Snake, Tic Tac Toe und mehr.">
+
+  <style>
+    :root {
+      --yellow: #f7cf45;
+      --yellow-light: #fff2bd;
+      --black: #171717;
+      --cream: #fff9e9;
+      --white: #fffef9;
+      --muted: #716b5d;
+      --border: #e9dfc7;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--black);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 254, 249, .96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      min-height: 70px;
+      margin: auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--black);
+      font-weight: 900;
+      font-size: 1.15rem;
+      text-decoration: none;
+      letter-spacing: -.5px;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: #a77b00;
+    }
+
+    .main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .main-nav a {
+      color: var(--black);
+      text-decoration: none;
+      font-size: .94rem;
+      font-weight: 700;
+      padding: 9px 13px;
+      border-radius: 999px;
+    }
+
+    .main-nav a:hover,
+    .main-nav a[aria-current="page"] {
+      background: var(--yellow-light);
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 35px auto 25px;
+      padding: 55px 30px;
+      background: var(--yellow);
+      border: 2px solid var(--black);
+      border-radius: 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .hero p {
+      max-width: 560px;
+      margin: 20px auto 0;
+      font-size: 1.05rem;
+    }
+
+    .hero-decoration {
+      margin-top: 22px;
+      font-size: 1.5rem;
+      letter-spacing: 12px;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: auto;
+      padding: 10px 22px 70px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 35px 0 18px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      letter-spacing: -1px;
+    }
+
+    .section-kicker {
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter {
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--black);
+      font-weight: 800;
+    }
+
+    .filter.active,
+    .filter:hover {
+      background: var(--yellow);
+      border-color: var(--black);
+    }
+
+    .search {
+      width: min(100%, 260px);
+      min-height: 43px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--white);
+      outline: none;
+    }
+
+    .search:focus,
+    .number-input:focus {
+      border-color: var(--black);
+      box-shadow: 0 0 0 3px rgba(247, 207, 69, .4);
+    }
+
+    #gameCount {
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .game-card {
+      min-width: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      color: var(--black);
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--black);
+      box-shadow: 4px 5px 0 var(--yellow);
+    }
+
+    .game-card[hidden] {
+      display: none;
+    }
+
+    .game-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 15px;
+      background: var(--yellow-light);
+      border-radius: 15px;
+      font-size: 1.8rem;
+    }
+
+    .game-category {
+      color: #8b6a0b;
+      font-size: .7rem;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+    }
+
+    .game-card h3 {
+      margin: 5px 0;
+      font-size: 1.2rem;
+    }
+
+    .game-card p {
+      min-height: 44px;
+      margin: 0 0 15px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .play-link {
+      margin-top: auto;
+      font-weight: 900;
+      font-size: .88rem;
+    }
+
+    #noGames {
+      padding: 25px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--white);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+    }
+
+    #noGames[hidden] {
+      display: none;
+    }
+
+    #gameArea {
+      margin-top: 38px;
+      padding: clamp(18px, 4vw, 32px);
+      background: var(--white);
+      border: 2px solid var(--black);
+      border-radius: 24px;
+      scroll-margin-top: 90px;
+    }
+
+    #gameArea[hidden] {
+      display: none;
+    }
+
+    .game-area-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .game-area-heading h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+    }
+
+    .close-button {
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--cream);
+      font-weight: 800;
+    }
+
+    #gameContent {
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    #gameContent h3 {
+      margin: 5px 0 8px;
+      font-size: 1.5rem;
+    }
+
+    #gameContent p {
+      color: var(--muted);
+    }
+
+    .game-message {
+      min-height: 27px;
+      margin: 15px 0;
+      color: var(--black) !important;
+      font-weight: 800;
+    }
+
+    .game-button {
+      min-height: 42px;
+      margin: 6px;
+      padding: 10px 17px;
+      color: var(--black);
+      background: var(--yellow);
+      border: 1.5px solid var(--black);
+      border-radius: 12px;
+      font-weight: 900;
+    }
+
+    .game-button:hover {
+      background: #f2bd20;
+    }
+
+    .memory-grid {
+      width: min(100%, 440px);
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .memory-card {
+      min-width: 0;
+      aspect-ratio: 1;
+      margin: 0;
+      padding: 0;
+      border: 1.5px solid var(--black);
+      border-radius: 13px;
+      background: var(--yellow-light);
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      font-weight: 900;
+    }
+
+    .memory-card.revealed {
+      background: var(--yellow);
+    }
+
+    .memory-card:disabled {
+      opacity: 1;
+      background: #e9e2ca;
+    }
+
+    .game-canvas {
+      display: block;
+      width: min(100%, 500px);
+      height: auto;
+      margin: 18px auto;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      touch-action: none;
+    }
+
+    .snake-controls {
+      width: 180px;
+      margin: 12px auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+    }
+
+    .snake-controls button {
+      min-height: 48px;
+      border: 1px solid var(--black);
+      border-radius: 10px;
+      background: var(--yellow);
+      font-size: 1.3rem;
+      font-weight: 900;
+      touch-action: manipulation;
+    }
+
+    .snake-controls button:first-child {
+      grid-column: 2;
+    }
+
+    .snake-controls button:nth-child(2) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .snake-controls button:nth-child(3) {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .snake-controls button:nth-child(4) {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    .reaction-area {
+      width: min(100%, 500px);
+      min-height: 180px;
+      margin: 20px auto;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--black);
+      border-radius: 18px;
+      background: var(--yellow);
+      font-size: clamp(1.5rem, 5vw, 2.4rem);
+      font-weight: 900;
+    }
+
+    .reaction-area.waiting {
+      color: white;
+      background: #b64232;
+    }
+
+    .reaction-area.go {
+      color: white;
+      background: #268b4b;
+    }
+
+    .ttt-grid {
+      width: min(100%, 330px);
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .ttt-cell {
+      aspect-ratio: 1;
+      margin: 0;
+      padding: 0;
+      border: 1.5px solid var(--black);
+      border-radius: 12px;
+      background: var(--yellow-light);
+      font-size: 2.5rem;
+      font-weight: 900;
+    }
+
+    .ttt-cell:disabled {
+      color: var(--black);
+      opacity: 1;
+    }
+
+    .number-input {
+      width: min(100%, 220px);
+      min-height: 45px;
+      margin: 8px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .word-grid {
+      width: min(100%, 390px);
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 5px;
+    }
+
+    .word-cell {
+      min-width: 0;
+      aspect-ratio: 1;
+      margin: 0;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: var(--cream);
+      font-weight: 900;
+    }
+
+    .word-cell.selected {
+      background: var(--yellow);
+      border-color: var(--black);
+    }
+
+    .word-cell.found {
+      color: white;
+      background: #268b4b;
+      border-color: #268b4b;
+    }
+
+    .site-footer {
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      font-size: .9rem;
+    }
+
+    .site-footer a {
+      color: var(--black);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    @media (max-width: 850px) {
+      .game-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .main-nav {
+        width: 100%;
+      }
+
+      .main-nav a {
+        padding: 8px 10px;
+        font-size: .85rem;
+      }
+
+      .hero {
+        margin: 18px 14px;
+        padding: 42px 18px;
+        border-radius: 20px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      main {
+        padding-right: 14px;
+        padding-left: 14px;
+      }
+
+      .toolbar {
+        align-items: stretch;
+      }
+
+      .filters {
+        width: 100%;
+      }
+
+      .filter {
+        flex: 1 1 auto;
+        padding: 8px 10px;
+        font-size: .84rem;
+      }
+
+      .search {
+        width: 100%;
+      }
+
+      .game-grid {
+        gap: 10px;
+      }
+
+      .game-card {
+        padding: 14px;
+      }
+
+      .game-card p {
+        min-height: 60px;
+      }
+
+      #gameArea {
+        padding: 16px 12px;
+      }
+
+      .game-area-heading {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .game-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .game-card p {
+        min-height: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">[+ <span>positivhelpcenter</span>]</a>
 
-<header class="topbar">
-  <a class="brand" href="index.html">
-    <span class="brand-mark">+</span>
-    <span>positiv<span class="brand-light">helpcenter</span></span>
-  </a>
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <a href="index.html">Startseite</a>
+        <a href="hilfe.html">Hilfe</a>
+        <a href="lerntour.html">Lernen Tour</a>
+        <a href="spiele.html" aria-current="page">Spielhalle</a>
+      </nav>
+    </div>
+  </header>
 
-  <nav class="nav">
-    <a href="index.html">Startseite</a>
-    <a href="hilfe.html">Hilfe</a>
-    <a href="lerntour.html">Lernen Tour</a>
-  </nav>
-</header>
-
-<main>
   <section class="hero">
-    <p class="eyebrow">DEINE KLEINE SPIELPAUSE</p>
-    <h1>Spiel mal.<br><span>Hab Spaß!</span></h1>
+    <span class="eyebrow">DEINE KLEINE SPIELPAUSE</span>
+    <h1>Spiel mal.<br>Hab Spaß!</h1>
     <p>Ein bisschen knobeln, ausprobieren und die Langeweile vertreiben.</p>
-    <div class="hero-decoration">✳ + ✳</div>
+    <div class="hero-decoration" aria-hidden="true">✳ + ✳</div>
   </section>
 
-  <section class="game-section">
+  <main>
     <div class="section-heading">
       <div>
-        <p class="eyebrow">DIE SPIELHALLE</p>
+        <div class="section-kicker">DIE SPIELHALLE</div>
         <h2>Was möchtest du spielen?</h2>
       </div>
       <span id="gameCount">8 SPIELE</span>
     </div>
 
-    <input
-      type="search"
-      id="gameSearch"
-      class="search"
-      placeholder="Spiel suchen ..."
-      aria-label="Spiel suchen"
-    >
+    <div class="toolbar">
+      <div class="filters" aria-label="Spielekategorien">
+        <button class="filter active" type="button" data-filter="Alle">Alle</button>
+        <button class="filter" type="button" data-filter="Denken">Denken</button>
+        <button class="filter" type="button" data-filter="Geschicklichkeit">Geschicklichkeit</button>
+        <button class="filter" type="button" data-filter="Reaktion">Reaktion</button>
+        <button class="filter" type="button" data-filter="Spaß">Spaß</button>
+      </div>
 
-    <div class="filters">
-      <button class="filter active" data-filter="Alle">Alle</button>
-      <button class="filter" data-filter="Denken">Denken</button>
-      <button class="filter" data-filter="Geschicklichkeit">Geschicklichkeit</button>
-      <button class="filter" data-filter="Reaktion">Reaktion</button>
-      <button class="filter" data-filter="Spaß">Spaß</button>
+      <input
+        class="search"
+        id="gameSearch"
+        type="search"
+        placeholder="Spiel suchen ..."
+        aria-label="Spiel suchen"
+      >
     </div>
 
-    <div class="game-grid" id="gameGrid">
-
-      <button class="game-card" data-game="memory" data-category="Denken">
+    <section class="game-grid" id="gameGrid" aria-label="Alle Spiele">
+      <button class="game-card" type="button" data-game="memory" data-category="Denken">
         <span class="game-icon">🃏</span>
         <span class="game-category">DENKEN</span>
-        <strong>Memory</strong>
-        <span>Finde alle Kartenpaare.</span>
-        <span class="play-label">Jetzt spielen ↗</span>
+        <h3>Memory</h3>
+        <p>Finde alle Kartenpaare.</p>
+        <span class="play-link">Jetzt spielen ↗</span>
       </button>
 
-      <button class="game-card" data-game="snake" data-category="Geschicklichkeit">
+      <button class="game-card" type="button" data-game="snake" data-category="Geschicklichkeit">
         <span class="game-icon">🐍</span>
         <span class="game-category">GESCHICKLICHKEIT</span>
-        <strong>Snake</strong>
-        <span>Wie lang wird deine Schlange?</span>
-        <span class="play-label">Jetzt spielen ↗</span>
+        <h3>Snake</h3>
+        <p>Wie lang wird deine Schlange?</p>
+        <span class="play-link">Jetzt spielen ↗</span>
       </button>
 
-      <button class="game-card" data-game="reaction" data-category="Reaktion">
+      <button class="game-card" type="button" data-game="reaction" data-category="Reaktion">
         <span class="game-icon">⚡</span>
         <span class="game-category">REAKTION</span>
-        <strong>Reaktionstest</strong>
-        <span>Wie schnell reagierst du?</span>
-        <span class="play-label">Jetzt spielen ↗</span>
+        <h3>Reaktionstest</h3>
+        <p>Wie schnell reagierst du?</p>
+        <span class="play-link">Jetzt spielen ↗</span>
       </button>
 
-      <button class="game-card" data-game="tictactoe" data-category="Denken">
+      <button class="game-card" type="button" data-game="tictactoe" data-category="Denken">
         <span class="game-icon">⭕</span>
         <span class="game-category">DENKEN</span>
-        <strong>Tic Tac Toe</strong>
-        <span>Schlage den Computer.</span>
-        <span class="play-label">Jetzt spielen ↗</span>
+        <h3>Tic Tac Toe</h3>
+        <p>Schlage den Computer.</p>
+        <span class="play-link">Jetzt spielen ↗</span>
       </button>
 
-      <button class="game-card" data-game="number" data-category="Denken">
+      <button class="game-card" type="button" data-game="number" data-category="Denken">
         <span class="game-icon">🔢</span>
         <span class="game-category">DENKEN</span>
-        <strong>Zahlenraten</strong>
-        <span>Finde die geheime Zahl.</span>
-        <span class="play-label">Jetzt spielen ↗</span>
+        <h3>Zahlenraten</h3>
+        <p>Finde die geheime Zahl.</p>
+        <span class="play-link">Jetzt spielen ↗</span>
       </button>
 
-      <button class="game-card" data-game="breaker" data-category="Geschicklichkeit">
+      <button class="game-card" type="button" data-game="breaker" data-category="Geschicklichkeit">
         <span class="game-icon">🧱</span>
         <span class="game-category">GESCHICKLICHKEIT</span>
-        <strong>Brick Breaker</strong>
-        <span>Zerstöre alle Steine.</span>
-        <span class="play-label">Jetzt spielen ↗</span>
+        <h3>Brick Breaker</h3>
+        <p>Zerstöre alle Steine.</p>
+        <span class="play-link">Jetzt spielen ↗</span>
       </button>
 
-      <button class="game-card" data-game="words" data-category="Denken">
+      <button class="game-card" type="button" data-game="words" data-category="Denken">
         <span class="game-icon">🔤</span>
         <span class="game-category">DENKEN</span>
-        <strong>Wörtersuche</strong>
-        <span>Finde versteckte Wörter.</span>
-        <span class="play-label">Jetzt spielen ↗</span>
+        <h3>Wörtersuche</h3>
+        <p>Finde versteckte Wörter.</p>
+        <span class="play-link">Jetzt spielen ↗</span>
       </button>
 
-      <button class="game-card" data-game="runner" data-category="Geschicklichkeit">
+      <button class="game-card" type="button" data-game="runner" data-category="Geschicklichkeit">
         <span class="game-icon">🏃</span>
         <span class="game-category">GESCHICKLICHKEIT</span>
-        <strong>Mini Runner</strong>
-        <span>Spring über Hindernisse.</span>
-        <span class="play-label">Jetzt spielen ↗</span>
+        <h3>Mini Runner</h3>
+        <p>Spring über Hindernisse.</p>
+        <span class="play-link">Jetzt spielen ↗</span>
       </button>
+    </section>
 
-    </div>
+    <p id="noGames" hidden>Keine Spiele gefunden. Probiere einen anderen Suchbegriff.</p>
 
-    <p id="noGames" hidden>Keine Spiele gefunden.</p>
-  </section>
-
-  <section class="game-area" id="gameArea" hidden>
-    <div class="game-area-heading">
-      <div>
-        <p class="eyebrow">JETZT WIRD GESPIELT</p>
+    <section id="gameArea" hidden aria-live="polite">
+      <div class="game-area-heading">
         <h2 id="activeGameTitle">Spiel</h2>
+        <button class="close-button" id="closeGame" type="button">✕ Schließen</button>
       </div>
-      <button id="closeGame" class="close-button">✕ Schließen</button>
-    </div>
-    <div id="gameContent" class="game-content"></div>
-  </section>
-</main>
+      <div id="gameContent"></div>
+    </section>
+  </main>
 
-<footer class="footer">
-  <a class="brand" href="index.html">
-    <span class="brand-mark">+</span>
-    <span>positiv<span class="brand-light">helpcenter</span></span>
-  </a>
-  <span>In Zusammenarbeit mit <strong>MaxOfficial</strong> :D</span>
-  <span>© <span id="year"></span></span>
-</footer>
+  <footer class="site-footer">
+    <p><a href="index.html">[+ positivhelpcenter]</a></p>
+    <p>In Zusammenarbeit mit <strong>MaxOfficial</strong> :D</p>
+    <p>© <span id="year">2026</span></p>
+  </footer>
 
+  <script src="spiele.js" defer></script>
 </body>
 </html>
