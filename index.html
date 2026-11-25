@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -23,16 +24,24 @@
     </button>
 
     <nav class="nav" id="mainNav" aria-label="Hauptnavigation">
-      <a href="hilfe.html" aria-label="Zur Hilfe-Seite">Hilfe <span aria-hidden="true">↗</span></a>
+      <a href="hilfe.html" aria-label="Zur Hilfe-Seite">
+        Hilfe <span aria-hidden="true">↗</span>
+      </a>
       <a href="lerntour.html">Lernen Tour</a>
+      <a href="spiele.html">Spielen <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
   <main>
     <section class="hero section-wrap" id="start">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot"></span> EIN PLATZ FÜR DICH</p>
+        <p class="eyebrow">
+          <span class="status-dot"></span>
+          EIN PLATZ FÜR DICH
+        </p>
+
         <h1>Du musst nicht<br>alles <span>allein</span> sortieren.</h1>
+
         <p class="hero-text">Für dich. In deinem Tempo.</p>
       </div>
 
@@ -58,11 +67,13 @@
           <p class="eyebrow">ENTDECKE UNSERE ANGEBOTE</p>
           <h2>Wo möchtest du hin?</h2>
         </div>
-        <span class="section-number">01 / 02</span>
+
+        <span class="section-number">01 / 03</span>
       </div>
 
       <div class="start-links">
-        <a class="start-link" href="https://positivhelpcenter.github.io/helpcenter/hilfe.html">
+
+        <a class="start-link" href="hilfe.html">
           <span class="start-link-number">01</span>
           <span class="start-link-title">Hilfe</span>
           <span class="start-link-arrow">↗</span>
@@ -73,6 +84,13 @@
           <span class="start-link-title">Lernen Tour</span>
           <span class="start-link-arrow">↗</span>
         </a>
+
+        <a class="start-link" href="spiele.html">
+          <span class="start-link-number">03</span>
+          <span class="start-link-title">Spielen</span>
+          <span class="start-link-arrow">↗</span>
+        </a>
+
       </div>
     </section>
   </main>
@@ -87,12 +105,16 @@
       In Zusammenarbeit mit <strong>MaxOfficial</strong> :D
     </span>
 
-    <span class="footer-copy">© <span id="currentYear"></span></span>
+    <span class="footer-copy">
+      © <span id="currentYear"></span>
+    </span>
   </footer>
 
   <script>
     const year = document.getElementById("currentYear");
-    if (year) year.textContent = new Date().getFullYear();
+    if (year) {
+      year.textContent = new Date().getFullYear();
+    }
   </script>
 </body>
 </html>
